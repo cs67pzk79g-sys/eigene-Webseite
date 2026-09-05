@@ -36,8 +36,13 @@
   --petrol-100: #E4F0F1;
   --petrol-050: #F3F9F9;
 
-  --kupfer-700: #9C5410;   /* Akzent, sparsam */
+  --kupfer-700: #9C5410;   /* Fläche: Badge-Hintergrund, Pflichtstern */
   --kupfer-100: #FBEEDF;
+
+  /* Warmer Akzent auf hellem Grund. Die Markenfarbe bleibt Petrol und trägt
+     alles Handelnde – Buttons, Links, Preise. Kupfer wärmt nur die
+     begleitenden Details, damit die Seite nicht kühl wirkt. */
+  --kupfer-akzent: #9C5410;
 
   /* Flächen und Text */
   --bg:         #FBFCFC;
@@ -105,6 +110,7 @@
     --petrol-050: #0E2126;
     --petrol-200: #23474F;
     --kupfer-100: #2A1D0F;
+    --kupfer-akzent: #C98243;
 
     --marke:       #58C4D2;
     --marke-hover: #7FD6E1;
@@ -133,6 +139,7 @@
   --petrol-050: #0E2126;
   --petrol-200: #23474F;
   --kupfer-100: #2A1D0F;
+  --kupfer-akzent: #C98243;
 
   --marke:       #58C4D2;
   --marke-hover: #7FD6E1;
@@ -615,7 +622,7 @@ code {
   top: .55em;
   width: .5rem;
   height: .8rem;
-  border: solid var(--marke);
+  border: solid var(--kupfer-akzent);
   border-width: 0 2px 2px 0;
   transform: rotate(42deg);
 }
@@ -960,7 +967,7 @@ code {
   top: .5em;
   width: .45rem;
   height: .75rem;
-  border: solid var(--marke);
+  border: solid var(--kupfer-akzent);
   border-width: 0 2px 2px 0;
   transform: rotate(42deg);
 }
@@ -1119,8 +1126,8 @@ code {
   height: 2.75rem;
   border-radius: 50%;
   background: var(--surface);
-  border: 2px solid var(--marke);
-  color: var(--marke);
+  border: 2px solid var(--kupfer-akzent);
+  color: var(--kupfer-akzent);
   font-family: var(--schrift-titel);
   font-weight: 700;
   font-size: 1.05rem;
