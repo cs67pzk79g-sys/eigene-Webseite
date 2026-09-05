@@ -43,6 +43,42 @@ python3 -m http.server 8000
 
 ---
 
+## Was noch zu tun ist
+
+Kurzübersicht zum Abhaken. Die Details zu jedem Punkt stehen darunter in der
+ausführlichen Checkliste.
+
+**Braucht die Gewerbeanmeldung – geht vorher nicht:**
+
+- [ ] Platzhalter füllen: Firmenname, Name, Anschrift, E-Mail, Telefon → [1](#1-platzhalter-ausfüllen)
+- [ ] Impressum und Datenschutzerklärung vervollständigen → [1](#1-platzhalter-ausfüllen)
+- [ ] Steuerhinweis festlegen: § 19 UStG oder zzgl. USt. → [1](#1-platzhalter-ausfüllen)
+- [ ] Hoster eintragen – bei GitHub Pages ist das GitHub Inc., USA → [1](#1-platzhalter-ausfüllen)
+- [ ] Zuständige Landesdatenschutzbehörde eintragen → [1](#1-platzhalter-ausfüllen)
+
+**Geht jederzeit, auch schon vorher:**
+
+- [ ] Entscheiden: solo oder zu zweit → [1](#1-platzhalter-ausfüllen)
+- [ ] Portraitfoto einsetzen → [2](#2-bilder-ersetzen)
+- [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
+- [ ] **Kontaktformular scharf schalten** – Endpunkt einrichten und in der
+      Datenschutzerklärung als Empfänger eintragen → [3](#3-kontaktformular-scharf-schalten)
+
+**Zum Schluss, unmittelbar vor dem Livegang:**
+
+- [ ] Demos veröffentlichen, damit die Referenz-Links funktionieren →
+      [DEMOS-VORBEREITEN.md](DEMOS-VORBEREITEN.md)
+- [ ] Entwurfs-Hinweise und Kommentare entfernen → [4](#4-entwurfs-kennzeichnung-entfernen)
+- [ ] `noindex` entfernen – sonst findet Google die Seite nie → [4](#4-entwurfs-kennzeichnung-entfernen)
+- [ ] Strukturierte Daten aktivieren, canonical und Open Graph setzen → [5](#5-seo-scharf-schalten)
+
+> Das Kontaktformular ist der einzige Punkt, an dem die Seite technisch noch nicht
+> vollständig ist. Bis dahin fängt `script.js` den Versand ab und sagt es dem
+> Besucher ehrlich – die Seite bleibt also jederzeit vorzeigbar, auch mit
+> unfertigem Formular.
+
+---
+
 ## Launch-Checkliste
 
 ### 1. Platzhalter ausfüllen
