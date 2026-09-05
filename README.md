@@ -23,7 +23,7 @@ assets/
   fonts.css                   @font-face-Regeln für die lokalen Schriften
   fonts/*.woff2               Bricolage Grotesque + Inter (SIL OFL 1.1), selbst gehostet
   projekt-haarscharf.jpg      Echter Screenshot des Demo-Projekts HAARSCHARF.
-  projekt-baeckerei-2000.svg  Platzhalter-Vorschau, durch echten Screenshot ersetzen
+  projekt-wenzel.jpg          Echter Screenshot des Demo-Projekts Frisörsalon Wenzel
   projekt-sonnenwerk.svg      Platzhalter-Vorschau, durch echten Screenshot ersetzen
 ```
 
@@ -72,10 +72,10 @@ Der Reihe nach:
 
 ### 2. Bilder ersetzen
 
-- **Projektvorschauen**: `assets/projekt-haarscharf.jpg` ist ein echter Screenshot.
-  Die beiden `assets/projekt-*.svg` sind dagegen selbst gezeichnete Schemen – durch
-  echte Aufnahmen im Seitenverhältnis 4:3 ersetzen und die `src`- und `alt`-Attribute
-  in `index.html` anpassen.
+- **Projektvorschauen**: `projekt-haarscharf.jpg` und `projekt-wenzel.jpg` sind echte
+  Screenshots, aufgenommen bei 1200 × 900 (4:3, passt ohne Beschnitt in die Kachel).
+  `projekt-sonnenwerk.svg` ist dagegen ein selbst gezeichnetes Schema – durch eine
+  echte Aufnahme im selben Format ersetzen und `src` und `alt` in `index.html` anpassen.
 - **Portraits**: In der Sektion „Über mich“ steht statt eines Fotos ein
   Platzhalterkreis. Der auszutauschende `<img>`-Tag steht als Kommentar daneben.
 - **Vorschaubild fürs Teilen** (Open Graph, 1200 × 630 px): unter `assets/`
@@ -86,16 +86,20 @@ Der Reihe nach:
 
 Die Kacheln im Abschnitt Referenzen zeigen auf Platzhalter statt auf echte Adressen.
 
-**HAARSCHARF.** liegt im Repository `cs67pzk79g-sys/Friseur`, ist aber noch nicht
-veröffentlicht. Zum Verlinken: in den Repository-Einstellungen unter *Pages* den
-Branch als Quelle wählen. Die Seite ist danach unter
-`https://cs67pzk79g-sys.github.io/Friseur/` erreichbar – diese Adresse gehört ins
-`href` der Kachel. Der passende Hinweis steht als Kommentar direkt darüber im HTML.
+Für beide Friseur-Projekte ist GitHub Pages noch nicht aktiviert. Zum Verlinken
+jeweils in den Repository-Einstellungen unter *Pages* den Branch als Quelle wählen;
+die entstehende Adresse gehört dann ins `href` der Kachel. Der passende Hinweis steht
+als Kommentar direkt über jeder Kachel im HTML.
 
-**Bäckerei 2000** und **Sonnenwerk Solartechnik** stehen bisher nur als Platzhalter
-mit schematischer Vorschau in der Seite. Gibt es diese Projekte (noch) nicht, die
-beiden `<article class="projekt reveal">`-Blöcke ersatzlos löschen – das Raster
-kommt auch mit einer oder zwei Kacheln zurecht.
+| Kachel | Repository | Adresse nach dem Aktivieren |
+|---|---|---|
+| HAARSCHARF. | `cs67pzk79g-sys/Friseur` | `https://cs67pzk79g-sys.github.io/Friseur/` |
+| Frisörsalon Wenzel | `cs67pzk79g-sys/Friseur-Vorzeige-2` | `https://cs67pzk79g-sys.github.io/Friseur-Vorzeige-2/` |
+
+**Sonnenwerk Solartechnik** steht bisher nur als Platzhalter mit schematischer
+Vorschau in der Seite. Gibt es das Projekt (noch) nicht, den zugehörigen
+`<article class="projekt reveal">`-Block ersatzlos löschen – das Raster kommt auch
+mit einer oder zwei Kacheln zurecht.
 
 ### 3. Kontaktformular scharf schalten
 
@@ -143,7 +147,7 @@ Zum Aktivieren:
 | **Cookie-Banner** (§ 25 TDDDG) | ➖ Nicht erforderlich – die Seite setzt keine Cookies, nutzt kein Tracking und bindet keine Drittinhalte ein |
 | **Schriften** | ✅ Lokal gehostet, keine Verbindung zu Google-Servern, kein Drittlandtransfer |
 | **Barrierefreiheit** (BFSG) | ➖ Für eine reine Informations- und Anfrageseite an Geschäftskunden voraussichtlich nicht verpflichtend – umgesetzt ist trotzdem WCAG 2.1 AA als Grundlage |
-| **Urheberrecht** | ✅ Grafiken selbst erstellt, Schriften unter SIL OFL 1.1. Der HAARSCHARF-Screenshot zeigt eine eigene Arbeit; die darin enthaltenen Fotos stammen laut Projekt-README von Unsplash und sind unter der Unsplash-Lizenz auch kommerziell nutzbar |
+| **Urheberrecht** | ✅ Grafiken selbst erstellt, Schriften unter SIL OFL 1.1. Beide Screenshots zeigen eigene Arbeiten; die darin enthaltenen Fotos stammen laut den jeweiligen Projekt-READMEs von Unsplash (HAARSCHARF.) bzw. Pexels (Wenzel) und sind unter deren Lizenzen auch kommerziell nutzbar |
 | **Shop-/Widerrufspflichten** | ➖ Nicht relevant, es gibt keine Bestell- oder Zahlfunktion |
 
 **Sobald sich daran etwas ändert**, muss die Datenschutzerklärung mit:
