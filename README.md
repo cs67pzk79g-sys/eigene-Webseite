@@ -25,6 +25,9 @@ assets/
   projekt-haarscharf.jpg      Echter Screenshot des Demo-Projekts HAARSCHARF.
   projekt-wenzel.jpg          Echter Screenshot des Demo-Projekts Frisörsalon Wenzel
   projekt-sonnenwerk.jpg      Echter Screenshot des Demo-Projekts Sonnenwerk Solartechnik
+
+README.md                     diese Datei – Launch-Checkliste und rechtliche Einordnung
+DEMOS-VORBEREITEN.md          Anleitung für die drei Demo-Repositories (Pages, Rechtsseiten, Banner)
 ```
 
 ## Lokal anschauen
@@ -63,7 +66,7 @@ Der Reihe nach:
 | Domain / canonical / Open Graph | `index.html`, `<head>` |
 | Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
 | USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
-| Hosting-Anbieter + Speicherdauer der Logs | `datenschutz.html`, Abschnitt 2 |
+| Hosting-Anbieter + Speicherdauer der Logs | `datenschutz.html`, Abschnitt 2 – bei GitHub Pages ist das **GitHub Inc., USA**, inklusive Hinweis auf den Drittlandtransfer |
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 9 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 12 |
 | Links zu den Demo-Projekten | `index.html`, Abschnitt Referenzen – siehe Hinweis unten |
@@ -81,23 +84,29 @@ Der Reihe nach:
   ablegen und im `<head>` als `og:image` verlinken. Ohne das sieht der Link in
   WhatsApp und LinkedIn nackt aus.
 
-### 2b. Demo-Projekte verlinken
+### 2b. Demo-Projekte veröffentlichen
 
-Die Kacheln im Abschnitt Referenzen zeigen auf Platzhalter statt auf echte Adressen.
+Die drei „Projekt ansehen“-Links sind **bereits gesetzt** und zeigen auf die
+Adressen, unter denen die Demos nach dem Einschalten von GitHub Pages erreichbar
+sind. Sie öffnen sich in einem neuen Tab, damit dein Portfolio offen bleibt.
 
-Alle drei Kacheln zeigen echte Arbeiten, aber **keine ist bisher veröffentlicht** –
-die „Projekt ansehen“-Links führen deshalb noch auf Platzhalter. Das ist der letzte
-größere offene Punkt: Ohne funktionierende Links läuft die stärkste Sektion der
-Seite ins Leere. Der passende Hinweis steht als Kommentar direkt über jeder Kachel
-im HTML.
+Bis Pages eingeschaltet ist, laufen sie ins Leere. Die vollständige Anleitung dafür –
+Pages einschalten, Rechtsseiten füllen, Demo-Hinweis einbauen, `noindex` setzen –
+steht in **[`DEMOS-VORBEREITEN.md`](DEMOS-VORBEREITEN.md)**.
 
-| Kachel | Repository | Zu tun | Adresse danach |
-|---|---|---|---|
-| HAARSCHARF. | `cs67pzk79g-sys/Friseur` | *Pages* → Branch als Quelle wählen | `…github.io/Friseur/` |
-| Frisörsalon Wenzel | `cs67pzk79g-sys/Friseur-Vorzeige-2` | *Pages* → Branch als Quelle wählen | `…github.io/Friseur-Vorzeige-2/` |
-| Sonnenwerk Solartechnik | `cs67pzk79g-sys/Handwerker2000` | *Pages* → Quelle „GitHub Actions“; der Workflow `pages.yml` liegt schon bereit und veröffentlicht `test/` | `…github.io/Handwerker2000/solar-monteur/` |
+| Kachel | Repository | Adresse |
+|---|---|---|
+| HAARSCHARF. | `cs67pzk79g-sys/Friseur` | `…github.io/Friseur/` |
+| Frisörsalon Wenzel | `cs67pzk79g-sys/Friseur-Vorzeige-2` | `…github.io/Friseur-Vorzeige-2/` |
+| Sonnenwerk Solartechnik | `cs67pzk79g-sys/Handwerker2000` | `…github.io/Handwerker2000/solar-monteur/` |
 
-Basis ist jeweils `https://cs67pzk79g-sys.github.io`.
+Basis ist jeweils `https://cs67pzk79g-sys.github.io`. Groß- und Kleinschreibung
+im Pfad zählt.
+
+**Zum Verständnis:** Veröffentlichte Demos sind öffentlich abrufbar – jeder mit der
+Adresse kommt hinein. `noindex` hält nur Suchmaschinen fern, es macht die Seiten
+nicht privat. Genau deshalb braucht jede Demo dein Impressum. Das kostet dich keine
+zusätzlichen Angaben, weil du es für diese Seite ohnehin brauchst.
 
 Soll eine Kachel wieder verschwinden, den zugehörigen `<article class="projekt reveal">`-Block
 ersatzlos löschen – das Raster kommt auch mit einer oder zwei Kacheln zurecht.
