@@ -1060,8 +1060,14 @@ code {
 }
 .projekt:hover .projekt__mehr::after { transform: translateX(4px); }
 
+/* Das Raster passt sich der Anzahl der Kacheln an: eine Spalte am Handy,
+   zwei auf dem Tablet, drei ab Desktopbreite. Kacheln lassen sich damit
+   ergänzen oder entfernen, ohne dass hier etwas nachgezogen werden muss. */
 @media (min-width: 48rem) {
   .projekte { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 68rem) {
+  .projekte { grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
 }
 
 
