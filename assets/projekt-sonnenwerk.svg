@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600"
+     role="img" aria-label="Schematische Vorschau der Demo-Website Sonnenwerk Solartechnik">
+  <!-- Eigene, schematische Darstellung. VOR DEM LAUNCH durch einen echten
+       Screenshot des Projekts ersetzen (gleiches Seitenverhältnis 4:3). -->
+  <defs>
+    <linearGradient id="s-himmel" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#123A5C"/>
+      <stop offset="1" stop-color="#1E5F86"/>
+    </linearGradient>
+    <clipPath id="s-rahmen"><rect x="40" y="40" width="720" height="520" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="800" height="600" fill="#ECF1F5"/>
+
+  <g clip-path="url(#s-rahmen)">
+    <rect x="40" y="40" width="720" height="520" fill="#FFFFFF"/>
+
+    <!-- Kopfleiste des Browsers -->
+    <rect x="40" y="40" width="720" height="38" fill="#E3EAF0"/>
+    <circle cx="66" cy="59" r="5" fill="#B8C6D2"/>
+    <circle cx="84" cy="59" r="5" fill="#B8C6D2"/>
+    <circle cx="102" cy="59" r="5" fill="#B8C6D2"/>
+    <rect x="124" y="49" width="240" height="20" rx="10" fill="#FFFFFF"/>
+    <rect x="136" y="56" width="118" height="6" rx="3" fill="#AEBDCA"/>
+
+    <!-- Titelbereich mit Sonne und Modulfeld -->
+    <rect x="40" y="78" width="720" height="248" fill="url(#s-himmel)"/>
+    <circle cx="628" cy="150" r="46" fill="#F2B23C" opacity=".92"/>
+    <g stroke="#F2B23C" stroke-width="4" stroke-linecap="round" opacity=".55">
+      <line x1="628" y1="78" x2="628" y2="92"/>
+      <line x1="694" y1="150" x2="708" y2="150"/>
+      <line x1="676" y1="102" x2="686" y2="92"/>
+      <line x1="676" y1="198" x2="686" y2="208"/>
+      <line x1="580" y1="102" x2="570" y2="92"/>
+    </g>
+
+    <!-- Navigation der Website -->
+    <rect x="72" y="100" width="128" height="16" rx="4" fill="#FFFFFF"/>
+    <g fill="#9EC0D6">
+      <rect x="360" y="103" width="48" height="10" rx="5"/>
+      <rect x="424" y="103" width="62" height="10" rx="5"/>
+      <rect x="502" y="103" width="44" height="10" rx="5"/>
+    </g>
+
+    <rect x="72" y="164" width="296" height="22" rx="6" fill="#FFFFFF"/>
+    <rect x="72" y="198" width="228" height="22" rx="6" fill="#FFFFFF"/>
+    <rect x="72" y="240" width="264" height="11" rx="5" fill="#9EC0D6"/>
+    <rect x="72" y="274" width="164" height="34" rx="17" fill="#F2B23C"/>
+
+    <!-- Modulfeld auf dem Dach, angedeutet -->
+    <g transform="translate(520 226) skewX(-16)" opacity=".9">
+      <g fill="#2C7CA8" stroke="#8FCBE8" stroke-width="1.5">
+        <rect x="0"  y="0"  width="52" height="34" rx="2"/>
+        <rect x="58" y="0"  width="52" height="34" rx="2"/>
+        <rect x="116" y="0" width="52" height="34" rx="2"/>
+        <rect x="0"  y="40" width="52" height="34" rx="2"/>
+        <rect x="58" y="40" width="52" height="34" rx="2"/>
+        <rect x="116" y="40" width="52" height="34" rx="2"/>
+      </g>
+    </g>
+
+    <!-- Leistungs-Kacheln -->
+    <g>
+      <rect x="72" y="358" width="200" height="120" rx="10" fill="#F6F9FB" stroke="#DCE6EE" stroke-width="2"/>
+      <circle cx="104" cy="390" r="16" fill="#1E5F86"/>
+      <rect x="92" y="420" width="118" height="12" rx="6" fill="#3E6480"/>
+      <rect x="92" y="442" width="152" height="9" rx="4" fill="#C3D4E0"/>
+      <rect x="92" y="458" width="112" height="9" rx="4" fill="#C3D4E0"/>
+
+      <rect x="300" y="358" width="200" height="120" rx="10" fill="#F6F9FB" stroke="#DCE6EE" stroke-width="2"/>
+      <circle cx="332" cy="390" r="16" fill="#1E5F86"/>
+      <rect x="320" y="420" width="136" height="12" rx="6" fill="#3E6480"/>
+      <rect x="320" y="442" width="152" height="9" rx="4" fill="#C3D4E0"/>
+      <rect x="320" y="458" width="96" height="9" rx="4" fill="#C3D4E0"/>
+
+      <rect x="528" y="358" width="200" height="120" rx="10" fill="#F6F9FB" stroke="#DCE6EE" stroke-width="2"/>
+      <circle cx="560" cy="390" r="16" fill="#1E5F86"/>
+      <rect x="548" y="420" width="102" height="12" rx="6" fill="#3E6480"/>
+      <rect x="548" y="442" width="152" height="9" rx="4" fill="#C3D4E0"/>
+      <rect x="548" y="458" width="128" height="9" rx="4" fill="#C3D4E0"/>
+    </g>
+
+    <!-- Ablaufleiste -->
+    <g>
+      <line x1="104" y1="524" x2="696" y2="524" stroke="#DCE6EE" stroke-width="3"/>
+      <g fill="#1E5F86">
+        <circle cx="104" cy="524" r="12"/>
+        <circle cx="252" cy="524" r="12"/>
+        <circle cx="400" cy="524" r="12"/>
+        <circle cx="548" cy="524" r="12"/>
+        <circle cx="696" cy="524" r="12"/>
+      </g>
+      <circle cx="696" cy="524" r="12" fill="#F2B23C"/>
+    </g>
+  </g>
+
+  <rect x="40" y="40" width="720" height="520" rx="14" fill="none" stroke="#D5E0E9" stroke-width="2"/>
+</svg>

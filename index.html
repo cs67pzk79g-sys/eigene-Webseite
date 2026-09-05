@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<!-- ENTWURF – NICHT LIVE SCHALTEN VOR GEWERBEANMELDUNG UND AUSFÜLLEN VON IMPRESSUM/DATENSCHUTZ -->
+<html lang="de">
+<head>
+  <!-- ENTWURF – NICHT LIVE SCHALTEN VOR GEWERBEANMELDUNG UND AUSFÜLLEN VON IMPRESSUM/DATENSCHUTZ -->
+  <!--
+    Offene Platzhalter vor dem Launch: siehe README.md (Launch-Checkliste).
+    Alle Stellen im Quelltext sind mit [BITTE ERGÄNZEN: ...] markiert.
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO: Title unter ~60 Zeichen, Description unter ~155 Zeichen -->
+  <title>[BITTE ERGÄNZEN: Firmenname] – Webseiten für Handwerk, Salon &amp; Gastro</title>
+  <meta name="description" content="Individuelle Webseiten für kleine lokale Betriebe: von Hand geschriebener Code statt Baukasten, Festpreis ab 600 €, fertig in 1–2 Wochen.">
+  <meta name="author" content="[BITTE ERGÄNZEN: Vor- und Nachname]">
+  <link rel="canonical" href="[BITTE ERGÄNZEN: https://ihre-domain.de/]">
+
+  <!-- Solange die Seite Entwurf ist: nicht indexieren lassen.
+       VOR DEM LAUNCH diese Zeile entfernen, sonst taucht die Seite nie bei Google auf. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph: wie die Seite aussieht, wenn jemand den Link in WhatsApp o. Ä. teilt -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="[BITTE ERGÄNZEN: Firmenname] – Webseiten für Handwerk, Salon &amp; Gastro">
+  <meta property="og:description" content="Individuelle Webseiten für kleine lokale Betriebe: echter Code statt Baukasten, Festpreis, fertig in 1–2 Wochen.">
+  <meta property="og:url" content="[BITTE ERGÄNZEN: https://ihre-domain.de/]">
+  <!-- [BITTE ERGÄNZEN: og:image – Vorschaubild 1200×630 px unter assets/ ablegen und hier verlinken] -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#0d5c66" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1418" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Schriften zuerst vorladen: verhindert sichtbares Nachspringen des Textes -->
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Setzt das gespeicherte Farbschema, bevor die Seite gezeichnet wird (kein Aufblitzen).
+       Bewusst inline und synchron – das ist die einzige Stelle, an der das nötig ist. -->
+  <script>
+    try {
+      var gespeichert = localStorage.getItem('farbschema');
+      if (gespeichert) document.documentElement.dataset.theme = gespeichert;
+    } catch (e) { /* z. B. privater Modus mit gesperrtem Speicher – dann bleibt die Systemeinstellung */ }
+  </script>
+
+  <!--
+    STRUCTURED DATA (SEO) – erst aktivieren, wenn echte Firmendaten vorliegen.
+    Mit Platzhaltern ausgeliefert würde das Google falsche Daten melden.
+    Nach dem Ausfüllen: Kommentarzeichen entfernen und mit dem Rich-Results-Test prüfen.
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "[BITTE ERGÄNZEN: Firmenname]",
+      "description": "Individuelle Webseiten für kleine lokale Betriebe.",
+      "url": "[BITTE ERGÄNZEN: https://ihre-domain.de/]",
+      "email": "[BITTE ERGÄNZEN: E-Mail]",
+      "telephone": "[BITTE ERGÄNZEN: Telefon oder Zeile löschen]",
+      "areaServed": "[BITTE ERGÄNZEN: Stadt/Region]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[BITTE ERGÄNZEN]",
+        "postalCode": "[BITTE ERGÄNZEN]",
+        "addressLocality": "[BITTE ERGÄNZEN]",
+        "addressCountry": "DE"
+      }
+    }
+    </script>
+  -->
+</head>
+
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- ===================================================================
+       KOPFBEREICH / NAVIGATION
+       =================================================================== -->
+  <header class="site-header" id="kopf">
+    <div class="wrap site-header__inner">
+
+      <a class="logo" href="#kopf" aria-label="Zur Startseite">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32" focusable="false">
+            <rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor"></rect>
+            <path d="M11.5 11 8 16l3.5 5M20.5 11 24 16l-3.5 5M18.2 9.5l-4.4 13"
+                  fill="none" stroke="#fff" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="logo__text">[BITTE ERGÄNZEN: Firmenname]</span>
+      </a>
+
+      <button class="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="hauptnavigation">
+        <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="nav-toggle__label">Menü</span>
+      </button>
+
+      <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation">
+        <ul class="nav__list">
+          <li><a href="#leistungen">Leistungen &amp; Preise</a></li>
+          <li><a href="#referenzen">Referenzen</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#ueber">Über mich</a></li>
+          <li><a class="nav__cta" href="#kontakt">Projekt anfragen</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-pressed="false"
+              title="Zwischen hellem und dunklem Farbschema wechseln">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Dunkles Farbschema einschalten</span>
+      </button>
+
+    </div>
+  </header>
+
+  <main id="inhalt">
+
+    <!-- ===================================================================
+         1 – HERO
+         =================================================================== -->
+    <section class="hero" aria-labelledby="hero-titel">
+      <div class="wrap hero__grid">
+
+        <div class="hero__text">
+          <p class="eyebrow reveal">Webdesign für lokale Betriebe</p>
+
+          <h1 id="hero-titel" class="hero__title reveal">
+            Individuelle Webseiten für
+            <span class="hero__title-accent">Handwerk, Salon und Gastro.</span>
+          </h1>
+
+          <p class="hero__lead reveal">
+            Kein Baukasten, kein Fertig-Template – von Hand geschriebener Code.
+            Das Ergebnis: eine Seite, die auf dem Handy genauso schnell und sauber
+            aussieht wie am Rechner, und die zu Ihrem Betrieb passt statt zu einer Vorlage.
+          </p>
+
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary" href="#kontakt">Projekt anfragen</a>
+            <a class="btn btn--ghost" href="#referenzen">Referenzen ansehen</a>
+          </div>
+
+          <ul class="hero__facts reveal" aria-label="Das Wichtigste in Kürze">
+            <li><strong>Festpreis</strong> – vorher schriftlich, keine Stundenzettel</li>
+            <li><strong>1–2 Wochen</strong> bis zur fertigen Onepager-Seite</li>
+            <li><strong>Direkter Draht</strong> – Sie sprechen mit der Person, die baut</li>
+          </ul>
+        </div>
+
+        <!-- Signature-Element: eine kleine, echte Vorschau, die die Branche wechselt.
+             Kein Bild, sondern echtes HTML/CSS – zeigt direkt, was hier verkauft wird. -->
+        <div class="hero__preview reveal" aria-labelledby="vorschau-titel">
+          <h2 id="vorschau-titel" class="preview__heading">
+            So sieht das für Ihre Branche aus
+          </h2>
+
+          <div class="preview__controls">
+            <div class="preview__tabs" role="tablist" aria-label="Branche für die Vorschau wählen">
+              <button class="preview__tab is-active" role="tab" type="button"
+                      id="tab-handwerk" aria-selected="true" aria-controls="panel-handwerk">Handwerk</button>
+              <button class="preview__tab" role="tab" type="button" tabindex="-1"
+                      id="tab-salon" aria-selected="false" aria-controls="panel-salon">Salon</button>
+              <button class="preview__tab" role="tab" type="button" tabindex="-1"
+                      id="tab-gastro" aria-selected="false" aria-controls="panel-gastro">Gastro</button>
+            </div>
+
+            <!-- WCAG 2.2.2: automatisch wechselnde Inhalte müssen anhaltbar sein -->
+            <button class="preview__pause" type="button" aria-pressed="false">
+              <span class="preview__pause-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Automatischen Wechsel pausieren</span>
+            </button>
+          </div>
+
+          <!-- Zeigt an, wie lange die aktuelle Branche noch steht -->
+          <div class="preview__fortschritt" aria-hidden="true"><span></span></div>
+
+          <div class="browser">
+            <div class="browser__chrome" aria-hidden="true">
+              <span class="browser__dot"></span>
+              <span class="browser__dot"></span>
+              <span class="browser__dot"></span>
+              <span class="browser__url">ihr-betrieb.de</span>
+            </div>
+
+            <div class="browser__stage">
+
+              <div class="mini mini--handwerk" role="tabpanel" id="panel-handwerk"
+                   aria-labelledby="tab-handwerk" tabindex="0">
+                <div class="mini__nav" aria-hidden="true">
+                  <span class="mini__brand">Ihr Handwerksbetrieb</span>
+                  <span class="mini__links"><i></i><i></i><i></i></span>
+                </div>
+                <p class="mini__kicker">Elektro &amp; Sanitär</p>
+                <p class="mini__headline">Wenn's eilt, sind wir am selben Tag da.</p>
+                <ul class="mini__chips">
+                  <li>Notdienst</li><li>Festpreis</li><li>Meisterbetrieb</li>
+                </ul>
+                <span class="mini__btn">Termin anfragen</span>
+              </div>
+
+              <div class="mini mini--salon" role="tabpanel" id="panel-salon"
+                   aria-labelledby="tab-salon" tabindex="0" hidden>
+                <div class="mini__nav" aria-hidden="true">
+                  <span class="mini__brand">Ihr Salon</span>
+                  <span class="mini__links"><i></i><i></i><i></i></span>
+                </div>
+                <p class="mini__kicker">Schnitt, Farbe, Beratung</p>
+                <p class="mini__headline">Ihr Termin ist in 30 Sekunden gebucht.</p>
+                <ul class="mini__chips">
+                  <li>Preisliste</li><li>Öffnungszeiten</li><li>Team</li>
+                </ul>
+                <span class="mini__btn">Termin buchen</span>
+              </div>
+
+              <div class="mini mini--gastro" role="tabpanel" id="panel-gastro"
+                   aria-labelledby="tab-gastro" tabindex="0" hidden>
+                <div class="mini__nav" aria-hidden="true">
+                  <span class="mini__brand">Ihr Restaurant</span>
+                  <span class="mini__links"><i></i><i></i><i></i></span>
+                </div>
+                <p class="mini__kicker">Küche &amp; Tagesempfehlung</p>
+                <p class="mini__headline">Karte lesen, Tisch reservieren, fertig.</p>
+                <ul class="mini__chips">
+                  <li>Speisekarte</li><li>Mittagstisch</li><li>Anfahrt</li>
+                </ul>
+                <span class="mini__btn">Tisch reservieren</span>
+              </div>
+
+            </div>
+          </div>
+
+          <p class="preview__note">
+            Beispielhafte Darstellung – Farben, Texte und Aufbau richten sich später nach Ihrem Betrieb.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2 – LEISTUNGEN & PAKETE
+         =================================================================== -->
+    <section class="section section--tint" id="leistungen" aria-labelledby="leistungen-titel">
+      <div class="wrap">
+
+        <header class="section__head reveal">
+          <p class="eyebrow">Leistungen &amp; Preise</p>
+          <h2 id="leistungen-titel">Drei Pakete. Was drin ist, steht darunter.</h2>
+          <p class="section__lead">
+            Sie sehen den Preis, bevor Sie anfragen. Kein „auf Anfrage“, keine Stundensätze,
+            die am Ende überraschen. Wenn Ihr Projekt nicht in eines der Pakete passt,
+            sagen wir das im Erstgespräch und rechnen es passend.
+          </p>
+        </header>
+
+        <div class="pakete">
+
+          <!-- Paket 1: Starter -->
+          <article class="paket reveal">
+            <header class="paket__head">
+              <h3 class="paket__name">Starter</h3>
+              <p class="paket__typ">Onepager – alles auf einer Seite</p>
+              <p class="paket__preis"><span class="paket__betrag">600–900 €</span>
+                <span class="paket__einheit">Festpreis</span></p>
+            </header>
+            <p class="paket__text">
+              Für Betriebe, die im Netz erst einmal ordentlich auffindbar sein wollen:
+              Was Sie machen, warum man Sie anruft, und wie man Sie erreicht – auf einer Seite,
+              die man in zehn Sekunden erfasst.
+            </p>
+            <ul class="paket__liste">
+              <li>Eine Seite, mobil-zuerst gebaut</li>
+              <li>Kontaktformular mit Datenschutz-Häkchen</li>
+              <li>Impressum &amp; Datenschutzerklärung als vorbereiteter Baustein</li>
+              <li>Eine Korrekturschleife</li>
+              <li>Fertig in 1–2 Wochen</li>
+            </ul>
+            <a class="btn btn--outline paket__cta" href="#kontakt">Starter anfragen</a>
+          </article>
+
+          <!-- Paket 2: Business – hervorgehoben -->
+          <article class="paket paket--hervor reveal">
+            <p class="paket__badge">Für die meisten Betriebe die richtige Größe</p>
+            <header class="paket__head">
+              <h3 class="paket__name">Business</h3>
+              <p class="paket__typ">Mehrseitige Website</p>
+              <p class="paket__preis"><span class="paket__betrag">1.200–2.000 €</span>
+                <span class="paket__einheit">Festpreis</span></p>
+            </header>
+            <p class="paket__text">
+              Wenn eine Seite zu wenig ist: Platz für einzelne Leistungen, das Team,
+              Referenzen und alles, wonach Ihre Kundschaft tatsächlich sucht.
+            </p>
+            <ul class="paket__liste">
+              <li>4–6 Unterseiten, gemeinsam festgelegt</li>
+              <li>Basis-SEO: Seitentitel, Beschreibungen, saubere Struktur</li>
+              <li>Kontaktformular mit Datenschutz-Häkchen</li>
+              <li>Impressum &amp; Datenschutzerklärung als vorbereiteter Baustein</li>
+              <li>Zwei Korrekturschleifen</li>
+            </ul>
+            <a class="btn btn--primary paket__cta" href="#kontakt">Business anfragen</a>
+          </article>
+
+          <!-- Paket 3: Wartung – bewusst kein Buchbutton -->
+          <article class="paket paket--abo reveal">
+            <header class="paket__head">
+              <h3 class="paket__name">Wartung &amp; Pflege</h3>
+              <p class="paket__typ">Optionales Monatsabo</p>
+              <p class="paket__preis"><span class="paket__betrag">20–50 €</span>
+                <span class="paket__einheit">pro Monat</span></p>
+            </header>
+            <p class="paket__text">
+              Wenn die Seite steht, halte ich sie auf Wunsch am Laufen – damit Sie sich
+              um Technik gar nicht erst kümmern müssen.
+            </p>
+            <ul class="paket__liste">
+              <li>Betreuung von Hosting und Domain</li>
+              <li>Kleine Textanpassungen, z. B. neue Öffnungszeiten</li>
+              <li>Regelmäßige Backups</li>
+            </ul>
+            <p class="paket__hinweis">
+              <strong>Nicht vorab buchbar.</strong> Wartung besprechen wir erst,
+              wenn Ihre Seite fertig ist – und nur, wenn Sie das möchten.
+              Ohne Wartung läuft Ihre Seite selbstverständlich weiter.
+            </p>
+          </article>
+
+        </div>
+
+        <p class="preis-fussnote reveal">
+          <!-- [BITTE ERGÄNZEN/PRÜFEN: Preisangabe je nach Steuerstatus anpassen.
+               Kleinunternehmerregelung § 19 UStG → "Es wird keine Umsatzsteuer ausgewiesen."
+               Sonst → "Alle Preise zzgl. 19 % USt." Als Kleingewerbe mit Geschäftskunden
+               ist die Angabe netto/brutto ausdrücklich zu kennzeichnen. -->
+          <strong>[BITTE ERGÄNZEN: Steuerhinweis]</strong> –
+          z.&nbsp;B. „Als Kleinunternehmer nach § 19 UStG weise ich keine Umsatzsteuer aus.“
+          oder „Alle Preise zzgl. 19 % Umsatzsteuer.“
+          Hosting- und Domainkosten des jeweiligen Anbieters kommen separat hinzu.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3 – REFERENZEN / PORTFOLIO
+         =================================================================== -->
+    <section class="section" id="referenzen" aria-labelledby="referenzen-titel">
+      <div class="wrap">
+
+        <header class="section__head reveal">
+          <p class="eyebrow">Referenzen</p>
+          <h2 id="referenzen-titel">Zwei Projekte, an denen Sie meine Arbeit sehen</h2>
+          <p class="section__lead">
+            Beides sind <strong>Demo-Projekte</strong>: selbst gewählte Übungsstücke,
+            keine bezahlten Kundenaufträge. Das gehört dazugesagt – Sie sollen wissen,
+            woran Sie sind. Was Sie daran beurteilen können, ist trotzdem alles,
+            worauf es ankommt: Aufbau, Tempo, Handybedienung und Sorgfalt im Detail.
+          </p>
+        </header>
+
+        <div class="projekte">
+
+          <article class="projekt reveal">
+            <a class="projekt__link" href="[BITTE ERGÄNZEN: Link zum Demo-Projekt Bäckerei 2000]">
+              <div class="projekt__bild">
+                <img src="assets/projekt-baeckerei-2000.svg" width="800" height="600"
+                     loading="lazy" decoding="async"
+                     alt="Vorschau der Demo-Website „Bäckerei 2000“: Startseite mit großem Titelbereich, Sortiments-Kacheln und Öffnungszeiten.">
+                <span class="projekt__badge">Demo-Projekt</span>
+              </div>
+              <div class="projekt__text">
+                <h3 class="projekt__name">Bäckerei 2000</h3>
+                <p class="projekt__branche">Bäckerei · Onepager</p>
+                <p>
+                  Eine Seite für einen Handwerksbetrieb, bei dem es auf Alltagsfragen
+                  ankommt: Was gibt es, wann habt ihr auf, wo seid ihr? Sortiment,
+                  Öffnungszeiten und Standort so angeordnet, dass man sie am Handy
+                  ohne Suchen findet.
+                </p>
+                <span class="projekt__mehr">Projekt ansehen</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="projekt reveal">
+            <a class="projekt__link" href="[BITTE ERGÄNZEN: Link zum Demo-Projekt Sonnenwerk Solartechnik]">
+              <div class="projekt__bild">
+                <img src="assets/projekt-sonnenwerk.svg" width="800" height="600"
+                     loading="lazy" decoding="async"
+                     alt="Vorschau der Demo-Website „Sonnenwerk Solartechnik“: Startseite mit Leistungsübersicht, Ablaufdarstellung und Anfrageformular.">
+                <span class="projekt__badge">Demo-Projekt</span>
+              </div>
+              <div class="projekt__text">
+                <h3 class="projekt__name">Sonnenwerk Solartechnik</h3>
+                <p class="projekt__branche">Handwerk · Photovoltaik · Mehrseitig</p>
+                <p>
+                  Ein erklärungsbedürftiges Gewerk verständlich aufbereitet: Leistungen,
+                  der Ablauf einer Anlage von der Beratung bis zur Inbetriebnahme und
+                  ein Anfrageweg, der nicht abschreckt.
+                </p>
+                <span class="projekt__mehr">Projekt ansehen</span>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4 – ABLAUF
+         =================================================================== -->
+    <section class="section section--tint" id="ablauf" aria-labelledby="ablauf-titel">
+      <div class="wrap">
+
+        <header class="section__head reveal">
+          <p class="eyebrow">Ablauf</p>
+          <h2 id="ablauf-titel">Von der ersten Frage bis zur fertigen Seite</h2>
+          <p class="section__lead">
+            Fünf Schritte, mehr nicht. Sie wissen an jedem Punkt, was als Nächstes passiert
+            und was es kostet.
+          </p>
+        </header>
+
+        <!-- Geordnete Liste, weil die Reihenfolge inhaltlich zählt -->
+        <ol class="ablauf">
+
+          <li class="schritt reveal">
+            <span class="schritt__nr" aria-hidden="true">1</span>
+            <h3 class="schritt__titel">Erstgespräch</h3>
+            <p>
+              15 bis 30 Minuten am Telefon oder bei Ihnen im Betrieb. Sie erzählen,
+              was die Seite können soll, ich sage ehrlich, was sinnvoll ist und was nicht.
+              Kostenlos und unverbindlich.
+            </p>
+          </li>
+
+          <li class="schritt reveal">
+            <span class="schritt__nr" aria-hidden="true">2</span>
+            <h3 class="schritt__titel">Angebot</h3>
+            <p>
+              Sie bekommen schriftlich einen Festpreis, den Leistungsumfang und einen
+              Fertigstellungstermin. Erst wenn Sie zusagen, fange ich an.
+            </p>
+          </li>
+
+          <li class="schritt reveal">
+            <span class="schritt__nr" aria-hidden="true">3</span>
+            <h3 class="schritt__titel">Umsetzung</h3>
+            <p>
+              Ich baue die Seite und schicke Ihnen zwischendurch einen Link zum Anschauen –
+              Sie sehen den Fortschritt, statt auf eine Überraschung zu warten.
+              Texte und Bilder stimmen wir gemeinsam ab.
+            </p>
+          </li>
+
+          <li class="schritt reveal">
+            <span class="schritt__nr" aria-hidden="true">4</span>
+            <h3 class="schritt__titel">Übergabe &amp; Abnahme</h3>
+            <p>
+              Wir gehen die Seite gemeinsam durch, Korrekturen kommen rein, dann geht sie
+              online. Sie erhalten alle Zugangsdaten: Die Seite gehört Ihnen, ohne Bindung
+              an mich oder ein Baukastensystem.
+            </p>
+          </li>
+
+          <li class="schritt reveal">
+            <span class="schritt__nr" aria-hidden="true">5</span>
+            <h3 class="schritt__titel">Wartung – wenn Sie möchten</h3>
+            <p>
+              Auf Wunsch kümmere ich mich weiter um Hosting, Backups und kleine Änderungen.
+              Wenn nicht, ist das Projekt hier abgeschlossen und Ihre Seite läuft weiter.
+            </p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5 – ÜBER MICH / ÜBER UNS
+         Die Sektion funktioniert mit einer ODER zwei Personen:
+         Für „solo“ einfach den zweiten <article class="person"> löschen –
+         das Raster zentriert die verbleibende Karte automatisch.
+         =================================================================== -->
+    <section class="section" id="ueber" aria-labelledby="ueber-titel">
+      <div class="wrap">
+
+        <header class="section__head reveal">
+          <p class="eyebrow">Über mich</p>
+          <h2 id="ueber-titel">Wer Ihre Seite tatsächlich baut</h2>
+          <p class="section__lead">
+            Bei größeren Agenturen sprechen Sie mit dem Vertrieb, danach mit einem
+            Projektmanager, und irgendwo dahinter sitzt jemand am Code. Hier ist das
+            dieselbe Person.
+          </p>
+        </header>
+
+        <div class="personen" data-personen>
+
+          <article class="person reveal">
+            <div class="person__portrait">
+              <!-- [BITTE ERGÄNZEN: Foto unter assets/ ablegen und die folgende Zeile ersetzen durch:
+                   <img src="assets/portrait-1.jpg" width="480" height="480" loading="lazy"
+                        alt="Portraitfoto von [Name]"> -->
+              <span class="person__initialen" aria-hidden="true">?</span>
+              <span class="visually-hidden">Platzhalter für ein Portraitfoto</span>
+            </div>
+            <div class="person__text">
+              <h3 class="person__name">[BITTE ERGÄNZEN: Vor- und Nachname]</h3>
+              <p class="person__rolle">Konzept, Gestaltung und Umsetzung</p>
+              <p>
+                Ich bin Auszubildender im dualen Studium und habe mein Fachabitur im
+                wirtschaftlichen Bereich gemacht. Webseiten baue ich, weil mich der
+                Unterschied zwischen „irgendwie online“ und „funktioniert wirklich“
+                interessiert – und weil viele gute Betriebe im Netz schlechter aussehen,
+                als sie sind.
+              </p>
+              <p>
+                Dass ich am Anfang stehe, verschweige ich nicht. Es ist der Grund, warum
+                meine Preise so aussehen, wie sie aussehen, und warum Sie mich direkt
+                erreichen statt über drei Stationen.
+              </p>
+            </div>
+          </article>
+
+          <!--
+            [BITTE ERGÄNZEN: Solo oder zu zweit?]
+            → Zu zweit: Namen, Rolle und Text unten ausfüllen.
+            → Solo: diesen gesamten <article> löschen und in der Sektionsüberschrift
+              oben „Über mich“ beibehalten. Bei zwei Personen dort auf „Über uns“ ändern
+              (auch im Navigationspunkt und in der Augenbraue „Über mich“).
+          -->
+          <article class="person reveal">
+            <div class="person__portrait">
+              <span class="person__initialen" aria-hidden="true">?</span>
+              <span class="visually-hidden">Platzhalter für ein Portraitfoto</span>
+            </div>
+            <div class="person__text">
+              <h3 class="person__name">[BITTE ERGÄNZEN: Name der zweiten Person – oder Karte löschen]</h3>
+              <p class="person__rolle">[BITTE ERGÄNZEN: Rolle, z. B. Technik &amp; Betreuung]</p>
+              <p>
+                [BITTE ERGÄNZEN: Kurzer, ehrlicher Text in derselben Tonlage wie oben –
+                zwei bis vier Sätze reichen. Wenn Sie allein arbeiten, löschen Sie diese
+                gesamte Karte aus dem HTML.]
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <ul class="prinzipien reveal">
+          <li>
+            <h3>Echter Code statt Baukasten</h3>
+            <p>
+              HTML, CSS und JavaScript von Hand. Kein WordPress-Theme mit fünfzehn
+              Erweiterungen, die halbjährlich brechen – deshalb lädt die Seite schnell
+              und lässt sich später sauber erweitern.
+            </p>
+          </li>
+          <li>
+            <h3>Festpreis, vorher schriftlich</h3>
+            <p>
+              Sie erfahren den Preis vor dem Start, nicht auf der Schlussrechnung.
+              Kommen unterwegs neue Wünsche dazu, bespreche ich das vorher mit Ihnen.
+            </p>
+          </li>
+          <li>
+            <h3>Die Seite gehört Ihnen</h3>
+            <p>
+              Nach der Übergabe bekommen Sie alle Dateien und Zugänge. Sie sind an
+              niemanden gebunden – auch nicht an mich.
+            </p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6 – KONTAKT
+         =================================================================== -->
+    <section class="section section--tint" id="kontakt" aria-labelledby="kontakt-titel">
+      <div class="wrap">
+
+        <header class="section__head reveal">
+          <p class="eyebrow">Kontakt</p>
+          <h2 id="kontakt-titel">Erzählen Sie mir kurz von Ihrem Vorhaben</h2>
+          <p class="section__lead">
+            Ein paar Sätze genügen. Sie bekommen eine ehrliche Einschätzung, ob und wie
+            ich helfen kann – und was es kosten würde. Kostenlos und unverbindlich.
+          </p>
+        </header>
+
+        <div class="kontakt">
+
+          <!--
+            [BITTE ERGÄNZEN: Formularziel]
+            Das Formular hat bewusst KEIN funktionierendes Ziel, solange kein Anbieter
+            feststeht. Vor dem Launch das action-Attribut auf den eigenen Endpunkt setzen
+            (eigenes PHP-Skript beim Hoster oder ein Formulardienst) und den Dienst in
+            der Datenschutzerklärung als Empfänger nennen.
+            Bis dahin fängt script.js den Versand ab und weist darauf hin.
+          -->
+          <form class="formular reveal" id="anfrage-formular" novalidate
+                action="[BITTE ERGÄNZEN: Formular-Endpunkt]" method="post">
+
+            <div class="feld">
+              <label for="f-name">Name <span class="pflicht" aria-hidden="true">*</span></label>
+              <input type="text" id="f-name" name="name" autocomplete="name"
+                     required aria-describedby="fehler-name">
+              <p class="feld__fehler" id="fehler-name" role="alert"></p>
+            </div>
+
+            <div class="feld">
+              <label for="f-mail">E-Mail <span class="pflicht" aria-hidden="true">*</span></label>
+              <input type="email" id="f-mail" name="email" autocomplete="email"
+                     required aria-describedby="fehler-mail">
+              <p class="feld__fehler" id="fehler-mail" role="alert"></p>
+            </div>
+
+            <div class="feld">
+              <label for="f-projekt">Worum geht es? <span class="pflicht" aria-hidden="true">*</span></label>
+              <textarea id="f-projekt" name="projekt" rows="6" required
+                        aria-describedby="hilfe-projekt fehler-projekt"
+                        placeholder="Zum Beispiel: Wir sind ein Malerbetrieb mit vier Mitarbeitern und haben bisher nur einen Eintrag bei Google."></textarea>
+              <p class="feld__hilfe" id="hilfe-projekt">
+                Branche, Größe des Betriebs und was Ihnen gerade fehlt – das reicht völlig.
+              </p>
+              <p class="feld__fehler" id="fehler-projekt" role="alert"></p>
+            </div>
+
+            <div class="feld feld--check">
+              <input type="checkbox" id="f-dsgvo" name="datenschutz" value="ja"
+                     required aria-describedby="fehler-dsgvo">
+              <label for="f-dsgvo">
+                Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner
+                Anfrage gespeichert und verarbeitet werden. Die Einwilligung kann ich
+                jederzeit für die Zukunft widerrufen.
+                Näheres in der <a href="datenschutz.html">Datenschutzerklärung</a>.
+                <span class="pflicht" aria-hidden="true">*</span>
+              </label>
+              <p class="feld__fehler" id="fehler-dsgvo" role="alert"></p>
+            </div>
+
+            <!-- Einfache Spam-Falle: für Menschen unsichtbar, Bots füllen sie aus.
+                 Kein Tracking, keine Cookies, kein externer Dienst nötig. -->
+            <div class="honigtopf" aria-hidden="true">
+              <label for="f-website">Website (bitte frei lassen)</label>
+              <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <p class="formular__pflichtnote"><span aria-hidden="true">*</span> Pflichtfeld</p>
+
+            <button class="btn btn--primary formular__senden" type="submit">Anfrage senden</button>
+
+            <p class="formular__status" id="formular-status" role="status"></p>
+          </form>
+
+          <aside class="kontakt__direkt reveal" aria-labelledby="direkt-titel">
+            <h3 id="direkt-titel">Lieber direkt?</h3>
+            <p>Formulare sind nicht jedermanns Sache. Völlig in Ordnung:</p>
+
+            <dl class="kontakt__daten">
+              <dt>E-Mail</dt>
+              <dd>
+                <!-- [BITTE ERGÄNZEN: echte Adresse eintragen, auch im href="mailto:..." ] -->
+                <a href="mailto:[BITTE ERGÄNZEN: E-Mail-Adresse]">[BITTE ERGÄNZEN: E-Mail-Adresse]</a>
+              </dd>
+
+              <dt>Telefon</dt>
+              <dd>
+                <!-- [BITTE ERGÄNZEN: Nummer eintragen oder diesen dt/dd-Block ersatzlos löschen] -->
+                <a href="tel:[BITTE ERGÄNZEN]">[BITTE ERGÄNZEN: Telefonnummer – oder Zeile entfernen]</a>
+              </dd>
+
+              <dt>Erreichbarkeit</dt>
+              <dd>[BITTE ERGÄNZEN: z. B. „Mo–Fr ab 17 Uhr, samstags ganztägig“]</dd>
+
+              <dt>Einsatzgebiet</dt>
+              <dd>[BITTE ERGÄNZEN: z. B. „[Stadt] und Umkreis 50 km – auf Wunsch auch komplett per Telefon und E-Mail“]</dd>
+            </dl>
+
+            <p class="kontakt__antwort">
+              Ich melde mich innerhalb von
+              <strong>[BITTE ERGÄNZEN: z.&nbsp;B. 24 Stunden]</strong> zurück.
+            </p>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       7 – FUSSBEREICH
+       =================================================================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+
+      <!-- Entwurfs-Hinweis: VOR DEM LAUNCH ersatzlos löschen -->
+      <p class="entwurf-hinweis" role="note">
+        <strong>Entwurf – noch nicht veröffentlicht.</strong>
+        Diese Seite ist ein Arbeitsstand. Sie darf erst online gehen, wenn die
+        Gewerbeanmeldung vorliegt und Impressum sowie Datenschutzerklärung mit echten
+        Angaben ausgefüllt sind.
+      </p>
+
+      <div class="site-footer__grid">
+
+        <div class="site-footer__brand">
+          <p class="site-footer__name">[BITTE ERGÄNZEN: Firmenname]</p>
+          <p class="site-footer__claim">
+            Individuelle Webseiten für Handwerk, Salon und Gastro.
+          </p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Fußbereich">
+          <h2 class="site-footer__titel">Seite</h2>
+          <ul>
+            <li><a href="#leistungen">Leistungen &amp; Preise</a></li>
+            <li><a href="#referenzen">Referenzen</a></li>
+            <li><a href="#ablauf">Ablauf</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__nav" aria-label="Rechtliches">
+          <h2 class="site-footer__titel">Rechtliches</h2>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+          </ul>
+          <!-- Kein Cookie-Einstellungen-Link nötig: Die Seite setzt keine Cookies und
+               lädt keine externen Dienste. Das ändert sich, sobald Analytics, Karten
+               oder Videos dazukommen – dann wird ein Consent-Banner Pflicht. -->
+        </nav>
+
+        <!-- [BITTE ERGÄNZEN: Social-Profile – optional.
+             Wenn keine vorhanden sind, diesen gesamten <nav> löschen.
+        <nav class="site-footer__nav" aria-label="Soziale Netzwerke">
+          <h2 class="site-footer__titel">Folgen</h2>
+          <ul>
+            <li><a href="[URL]" rel="me">Instagram</a></li>
+            <li><a href="[URL]" rel="me">LinkedIn</a></li>
+          </ul>
+        </nav>
+        -->
+
+      </div>
+
+      <p class="site-footer__copy">
+        © <span id="jahr">2026</span> [BITTE ERGÄNZEN: Firmenname].
+        Von Hand gebaut – ohne Baukasten, ohne Framework.
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
