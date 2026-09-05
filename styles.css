@@ -36,8 +36,13 @@
   --petrol-100: #E4F0F1;
   --petrol-050: #F3F9F9;
 
-  --kupfer-700: #9C5410;   /* Akzent, sparsam */
+  --kupfer-700: #9C5410;   /* Fläche: Badge-Hintergrund, Pflichtstern */
   --kupfer-100: #FBEEDF;
+
+  /* Warmer Akzent auf hellem Grund. Die Markenfarbe bleibt Petrol und trägt
+     alles Handelnde – Buttons, Links, Preise. Kupfer wärmt nur die
+     begleitenden Details, damit die Seite nicht kühl wirkt. */
+  --kupfer-akzent: #9C5410;
 
   /* Flächen und Text */
   --bg:         #FBFCFC;
@@ -52,6 +57,12 @@
   --marke-hover:  var(--petrol-800);
   --auf-marke:    #FFFFFF;
   --fokus:        #0E6A78;
+
+  /* Rand von Bedienelementen (Eingabefelder, Kästchen, Outline-Buttons).
+     Bewusst kräftiger als --line-stark: WCAG 1.4.11 verlangt mindestens 3:1,
+     damit erkennbar bleibt, wo ein Feld anfängt und aufhört. Dekorative
+     Ränder bleiben davon unberührt und dürfen leise sein. */
+  --rand-bedien:  #74898D;
 
   /* Typografie */
   --schrift-titel: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
@@ -99,11 +110,13 @@
     --petrol-050: #0E2126;
     --petrol-200: #23474F;
     --kupfer-100: #2A1D0F;
+    --kupfer-akzent: #C98243;
 
     --marke:       #58C4D2;
     --marke-hover: #7FD6E1;
     --auf-marke:   #04262B;
     --fokus:       #7FD6E1;
+    --rand-bedien: #547E8A;
 
     --schatten-s: 0 1px 2px rgba(0, 0, 0, .4);
     --schatten-m: 0 2px 6px rgba(0, 0, 0, .38), 0 14px 34px rgba(0, 0, 0, .44);
@@ -126,11 +139,13 @@
   --petrol-050: #0E2126;
   --petrol-200: #23474F;
   --kupfer-100: #2A1D0F;
+  --kupfer-akzent: #C98243;
 
   --marke:       #58C4D2;
   --marke-hover: #7FD6E1;
   --auf-marke:   #04262B;
   --fokus:       #7FD6E1;
+  --rand-bedien: #547E8A;
 
   --schatten-s: 0 1px 2px rgba(0, 0, 0, .4);
   --schatten-m: 0 2px 6px rgba(0, 0, 0, .38), 0 14px 34px rgba(0, 0, 0, .44);
@@ -314,7 +329,7 @@ code {
 
 .btn--outline {
   background: transparent;
-  border-color: var(--line-stark);
+  border-color: var(--rand-bedien);
   color: var(--ink);
 }
 .btn--outline:hover {
@@ -607,7 +622,7 @@ code {
   top: .55em;
   width: .5rem;
   height: .8rem;
-  border: solid var(--marke);
+  border: solid var(--kupfer-akzent);
   border-width: 0 2px 2px 0;
   transform: rotate(42deg);
 }
@@ -952,7 +967,7 @@ code {
   top: .5em;
   width: .45rem;
   height: .75rem;
-  border: solid var(--marke);
+  border: solid var(--kupfer-akzent);
   border-width: 0 2px 2px 0;
   transform: rotate(42deg);
 }
@@ -1111,8 +1126,8 @@ code {
   height: 2.75rem;
   border-radius: 50%;
   background: var(--surface);
-  border: 2px solid var(--marke);
-  color: var(--marke);
+  border: 2px solid var(--kupfer-akzent);
+  color: var(--kupfer-akzent);
   font-family: var(--schrift-titel);
   font-weight: 700;
   font-size: 1.05rem;
@@ -1239,7 +1254,7 @@ code {
   min-height: 3rem;
   padding: .75rem .9rem;
   background: var(--bg);
-  border: 1.5px solid var(--line-stark);
+  border: 1.5px solid var(--rand-bedien);
   border-radius: var(--radius-m);
   color: var(--ink);
   font-family: inherit;
@@ -1280,12 +1295,51 @@ code {
   align-items: start;
   gap: .1rem .75rem;
 }
-.feld--check input {
+/* Eigenes Kästchen statt der Browser-Voreinstellung. Grund: Die Vorgabe
+   zeichnet im dunklen Schema ein graues Kästchen auf dunklem Grund – auf einem
+   Pflichtfeld, das die Einwilligung trägt, ist das zu wenig. Selbst gezeichnet
+   sitzt der Rand in beiden Schemata über 3:1. */
+.feld--check input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
   width: 1.35rem;
   height: 1.35rem;
   margin-top: .25rem;
-  accent-color: var(--marke);
   flex: none;
+  display: grid;
+  place-content: center;
+  border: 2px solid var(--rand-bedien);
+  border-radius: 5px;
+  background: var(--bg);
+  cursor: pointer;
+  transition: background-color var(--tempo) var(--kurve),
+              border-color var(--tempo) var(--kurve);
+}
+
+/* Der Haken selbst – als Form ausgeschnitten, kein Zeichen und kein Bild,
+   damit er in jeder Schrift und ohne zusätzlichen Request gleich aussieht. */
+.feld--check input[type="checkbox"]::before {
+  content: "";
+  width: .8rem;
+  height: .8rem;
+  background: var(--auf-marke);
+  transform: scale(0);
+  transition: transform 150ms var(--kurve);
+  clip-path: polygon(14% 44%, 0 60%, 40% 100%, 100% 18%, 84% 0, 38% 68%);
+}
+
+.feld--check input[type="checkbox"]:hover { border-color: var(--marke); }
+
+.feld--check input[type="checkbox"]:checked {
+  background: var(--marke);
+  border-color: var(--marke);
+}
+.feld--check input[type="checkbox"]:checked::before { transform: scale(1); }
+
+/* Im Kontrastmodus des Betriebssystems verschwinden selbst gezeichnete
+   Kästchen sonst spurlos – dort greift wieder die Browser-Voreinstellung. */
+@media (forced-colors: active) {
+  .feld--check input[type="checkbox"] { appearance: auto; -webkit-appearance: auto; }
 }
 .feld--check label { font-weight: 400; line-height: 1.55; }
 .feld--check .feld__fehler { grid-column: 1 / -1; }
