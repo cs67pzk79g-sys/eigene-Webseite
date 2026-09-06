@@ -384,6 +384,88 @@
           Hosting- und Domainkosten des jeweiligen Anbieters kommen separat hinzu.
         </p>
 
+        <!-- Paketberater: Hilfe fuer alle, die die beiden Karten gelesen haben und
+             trotzdem unsicher sind. Bewusst kurz, bewusst ohne Datenabfrage, und mit
+             einem dritten Ausgang fuer Faelle, die in kein Paket gehoeren. -->
+        <div class="berater reveal" id="berater">
+
+          <div class="berater__kopf">
+            <h3 class="berater__titel">Unsicher, was passt?</h3>
+            <p class="berater__lead">
+              Vier Fragen, dann sage ich Ihnen, welches Paket ich empfehlen würde.
+              Ihre Antworten bleiben in Ihrem Browser – nichts wird gespeichert oder
+              verschickt.
+            </p>
+          </div>
+
+          <form class="berater__form" id="berater-form" novalidate>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">1</span> Was soll die Seite vor allem leisten?</legend>
+              <label class="wahl">
+                <input type="radio" name="f1" value="starter">
+                <span>Überhaupt gefunden werden: wer ich bin, was ich mache, wie man mich erreicht</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f1" value="business">
+                <span>Meine Leistungen einzeln erklären, damit Kunden vorher verstehen, was sie bekommen</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">2</span> Wie viele Leistungen wollen Sie zeigen?</legend>
+              <label class="wahl">
+                <input type="radio" name="f2" value="starter">
+                <span>Ein bis zwei – in ein paar Sätzen erzählt</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f2" value="business">
+                <span>Mehrere, und jede verdient ihre eigene Erklärung</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">3</span> Wie wichtig ist Ihnen, bei Google gefunden zu werden?</legend>
+              <label class="wahl">
+                <input type="radio" name="f3" value="starter">
+                <span>Zweitrangig – meine Kundschaft kommt über Empfehlung</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f3" value="business">
+                <span>Wichtig – ich möchte auftauchen, wenn jemand in meiner Gegend sucht</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">4</span> Brauchen Sie eine dieser Funktionen?</legend>
+              <label class="wahl">
+                <input type="radio" name="f4" value="nein">
+                <span>Nein, nichts davon</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f4" value="ja">
+                <span>Online-Shop, Terminbuchung oder mehrere Sprachen</span>
+              </label>
+            </fieldset>
+
+            <div class="berater__aktion">
+              <button class="btn btn--primary" type="submit">Empfehlung anzeigen</button>
+              <p class="berater__fehler" id="berater-fehler" role="alert"></p>
+            </div>
+          </form>
+
+          <!-- Wird per JavaScript gefuellt und eingeblendet -->
+          <div class="berater__ergebnis" id="berater-ergebnis" role="status" tabindex="-1" hidden></div>
+
+          <noscript>
+            <p class="berater__ohne-js">
+              Diese Hilfe braucht JavaScript. Ohne geht es genauso gut:
+              <a href="#kontakt">Schreiben Sie mir zwei Sätze zu Ihrem Betrieb</a>,
+              dann sage ich Ihnen, was passt.
+            </p>
+          </noscript>
+        </div>
+
         <!-- Wartung steht bewusst AUSSERHALB des Paketrasters und sieht anders aus.
              Drei gleichrangige Karten hatten suggeriert, man könne alle drei einzeln
              buchen – genau das ist bei der Wartung nicht der Fall. -->

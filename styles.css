@@ -935,6 +935,149 @@ code {
   font-style: italic;
 }
 
+/* --- Paketberater ----------------------------------------------------------
+   Kein weiterer Kartenstapel: ein zusammenhaengender getoenter Block, damit er
+   sich sichtbar von den beiden Paketkarten darueber unterscheidet. */
+
+.berater {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  /* Weiss auf dem getoenten Abschnitt: so liest sich der Block als eigener
+     Bereich. Ein zweiter Ton nah am Abschnittsgrund waere unsichtbar geblieben. */
+  background: var(--surface);
+  border: 1px solid var(--line-stark);
+  border-radius: var(--radius-l);
+}
+
+.berater__kopf { max-width: 40rem; margin-bottom: clamp(1.75rem, 4vw, 2.25rem); }
+.berater__titel { font-size: clamp(1.2rem, 1.05rem + .7vw, 1.6rem); margin-bottom: .5em; }
+.berater__lead { font-size: var(--t-klein); color: var(--ink-muted); margin: 0; }
+
+.berater__form { display: grid; gap: clamp(1.5rem, 3vw, 2rem); }
+
+.frage { border: 0; margin: 0; padding: 0; min-width: 0; }
+.frage legend {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: 0 0 .85rem;
+  font-size: var(--t-body);
+  font-weight: 600;
+  color: var(--ink);
+}
+.frage__nr {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--marke);
+  color: var(--auf-marke);
+  font-family: var(--schrift-titel);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+/* Ganze Zeile ist Klickflaeche – am Handy zaehlt jede Trefferflaeche */
+.wahl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: .8rem;
+  padding: .85rem 1rem;
+  margin-bottom: .5rem;
+  background: var(--petrol-050);
+  border: 1.5px solid var(--rand-bedien);
+  border-radius: var(--radius-m);
+  font-size: var(--t-klein);
+  cursor: pointer;
+  transition: border-color var(--tempo) var(--kurve), background-color var(--tempo) var(--kurve);
+}
+.wahl:last-child { margin-bottom: 0; }
+.wahl:hover { border-color: var(--marke); }
+.wahl:has(input:checked) {
+  border-color: var(--marke);
+  border-width: 2px;
+  background: var(--petrol-100);
+}
+.wahl:has(input:focus-visible) { outline: 3px solid var(--fokus); outline-offset: 3px; }
+
+/* Eigener Auswahlpunkt, damit er in jedem Browser gleich aussieht */
+.wahl input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: .15rem 0 0;
+  flex: none;
+  display: grid;
+  place-content: center;
+  border: 2px solid var(--rand-bedien);
+  border-radius: 50%;
+  background: var(--surface);
+  cursor: pointer;
+}
+.wahl input[type="radio"]::before {
+  content: "";
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: var(--auf-marke);
+  transform: scale(0);
+  transition: transform 150ms var(--kurve);
+}
+.wahl input[type="radio"]:checked { background: var(--marke); border-color: var(--marke); }
+.wahl input[type="radio"]:checked::before { transform: scale(1); }
+@media (forced-colors: active) {
+  .wahl input[type="radio"] { appearance: auto; -webkit-appearance: auto; }
+}
+
+.berater__aktion { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.berater__fehler {
+  margin: 0;
+  font-size: var(--t-klein);
+  font-weight: 600;
+  color: #A3231B;
+}
+.berater__fehler:empty { display: none; }
+
+.berater__ergebnis {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--surface);
+  border: 2px solid var(--marke);
+  border-radius: var(--radius-m);
+}
+.berater__ergebnis:focus-visible { outline: 3px solid var(--fokus); outline-offset: 3px; }
+.berater__ergebnis-titel {
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 1.05rem + .5vw, 1.4rem);
+  letter-spacing: -0.02em;
+  color: var(--marke);
+  margin-bottom: .5em;
+}
+.berater__ergebnis-text { font-size: var(--t-klein); margin-bottom: 1em; }
+.berater__ergebnis-hinweis {
+  font-size: var(--t-mini);
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-bottom: 1.25em;
+}
+.berater__ergebnis-aktion { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+.berater__ohne-js {
+  margin: 1.5rem 0 0;
+  font-size: var(--t-klein);
+  color: var(--ink-muted);
+}
+
+@media (min-width: 56rem) {
+  .berater__form { grid-template-columns: repeat(2, 1fr); }
+  .berater__aktion { grid-column: 1 / -1; }
+}
+
 /* --- Wartung: bewusst kein Paket ------------------------------------------
    Steht ausserhalb des Rasters und sieht anders aus als eine Paketkarte,
    damit gar nicht erst der Eindruck entsteht, man koenne sie einzeln buchen. */
