@@ -234,6 +234,24 @@ Getestet in Chromium über einen lokalen Server:
 
 ### Bewusste Entscheidungen
 
+- **Drei Branchen als Beispiele, nicht als Liste.** Der Fokus auf Handwerk, Salon und
+  Gastro bleibt – er macht die Seite für diese Betriebe glaubwürdig, und eine Seite „für
+  alle“ überzeugt niemanden. Weil drei Reiter sich aber schnell wie eine abschließende
+  Aufzählung lesen, steht direkt unter der Branchen-Vorschau ein Satz, der die Tür
+  offen hält. Er kostet den Fokus nichts und fängt genau die Besucher ab, die sonst
+  ohne Anfrage weiterklicken.
+
+  **Vorsicht bei reglementierten Berufen.** Anfragen aus Heilberufen (Arztpraxis,
+  Physiotherapie, Heilpraktik, Apotheke) oder aus Rechts- und Steuerberatung sind
+  fachlich machbar, rechtlich aber kein normaler Auftrag: Es gelten das
+  **Heilmittelwerbegesetz** (§ 11 HWG schränkt zum Beispiel Vorher-Nachher-Bilder und
+  Patientenstimmen stark ein), die **Berufsordnung der jeweiligen Kammer** und – sobald
+  Gesundheitsdaten ins Spiel kommen, etwa über Terminbuchung oder ein Kontaktformular
+  mit Beschwerdefeld – **Art. 9 DSGVO** mit deutlich höheren Anforderungen als bei einem
+  Handwerksbetrieb. Vor der Zusage klären, wer für die Einhaltung geradesteht, und die
+  Verantwortung schriftlich festhalten. Eine Seite, die den Kunden eine Abmahnung
+  einbringt, ist teurer als der ganze Auftrag.
+
 - **Initialen statt Portraitfotos.** Es gibt keine Pflicht, Fotos von sich zu
   veröffentlichen – § 5 DDG verlangt Name, Anschrift und Kontaktmöglichkeit, kein Bild.
   Datenschutzrechtlich ist der Verzicht sogar die ruhigere Variante: Ein Portrait ist ein

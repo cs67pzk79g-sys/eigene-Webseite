@@ -768,6 +768,19 @@ code {
   color: var(--ink-muted);
 }
 
+/* Ruhig, aber nicht zu uebersehen: wer hier landet, hat gerade gedacht
+   „fuer mich ist das nichts“ und soll nicht weiterscrollen muessen. */
+.preview__offen {
+  margin-top: 1.1rem;
+  padding: .9rem 1.1rem;
+  border-left: 3px solid var(--marke);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  background: var(--petrol-100);
+  font-size: var(--t-klein);
+  color: var(--ink);
+}
+.preview__offen strong { color: var(--marke); }
+
 /* Ab hier zweispaltig: Text links, Vorschau rechts */
 @media (min-width: 62rem) {
   .hero__grid {
