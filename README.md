@@ -214,8 +214,8 @@ Getestet in Chromium über einen lokalen Server:
 
 - **Kontraste:** 36 Farbkombinationen geprüft, alle über WCAG-AA (4,5:1), hell wie dunkel.
 - **Funktion:** 37 automatisierte Prüfungen bestanden – Branchen-Tabs inklusive
-  Pfeiltasten-Bedienung, Farbschema-Umschalter samt Speicherung, Formularprüfung,
-  mobile Navigation mit Escape-Taste und Fokusrückgabe, Spamfalle.
+  Pfeiltasten-Bedienung, Formularprüfung, mobile Navigation mit Escape-Taste und
+  Fokusrückgabe, Spamfalle.
 - **Kein horizontaler Überlauf** bei 320 px, 390 px und 1440 px Breite.
 - **Keine Konsolenfehler**, keine fehlgeschlagenen Anfragen.
 - **Ladegewicht:** 215 KB unkomprimiert über 7 Anfragen, davon 122 KB Schriften.
@@ -226,6 +226,14 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **Nur ein helles Farbschema, kein Umschalter.** Zwei Schemata bedeuten, dass jede
+  Änderung doppelt geprüft werden muss – eine Dauerlast für einen Ein-Personen-Betrieb.
+  Der Umschalter saß außerdem direkt neben „Projekt anfragen" und konkurrierte dort mit
+  der einzigen Handlung, auf die die Seite hinarbeitet. Wer sein System auf dunkel
+  gestellt hat, sieht eine helle Seite; das ist bei Firmenseiten der Normalfall.
+  `color-scheme: light` sorgt dafür, dass auch Formularfelder und Scrollbalken hell
+  bleiben.
 
 - **Schriften lokal statt über `fonts.googleapis.com`.** Beim Direkteinbinden
   geht die IP-Adresse jedes Besuchers an Google – in Deutschland vielfacher

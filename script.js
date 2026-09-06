@@ -7,12 +7,11 @@
 
    Inhalt:
      1  Grundlagen (Bewegungseinstellung, Jahreszahl)
-     2  Farbschema-Umschalter
-     3  Kopfbereich: Schatten beim Scrollen
-     4  Mobile Navigation
-     5  Branchen-Vorschau im Hero (Tabs + automatischer Wechsel)
-     6  Scroll-Einblendungen (IntersectionObserver)
-     7  Kontaktformular: Prüfung und Rückmeldung
+     2  Kopfbereich: Schatten beim Scrollen
+     3  Mobile Navigation
+     4  Branchen-Vorschau im Hero (Tabs + automatischer Wechsel)
+     5  Scroll-Einblendungen (IntersectionObserver)
+     6  Kontaktformular: Prüfung und Rückmeldung
    =========================================================================== */
 
 (function () {
@@ -32,60 +31,10 @@
   if (jahr) jahr.textContent = String(new Date().getFullYear());
 
 
-  /* =========================================================================
-     2 – FARBSCHEMA-UMSCHALTER
-     Das gespeicherte Schema wird bereits im <head> gesetzt, damit die Seite
-     nicht kurz hell aufblitzt. Hier geht es nur noch ums Umschalten.
-     ========================================================================= */
-
-  (function farbschema() {
-    var schalter = document.querySelector('.theme-toggle');
-    if (!schalter) return;
-
-    var wurzel = document.documentElement;
-    var systemDunkel = window.matchMedia('(prefers-color-scheme: dark)');
-
-    function istDunkel() {
-      var gewaehlt = wurzel.dataset.theme;
-      if (gewaehlt === 'dark') return true;
-      if (gewaehlt === 'light') return false;
-      return systemDunkel.matches;
-    }
-
-    function beschriftungAktualisieren() {
-      var dunkel = istDunkel();
-      schalter.setAttribute('aria-pressed', String(dunkel));
-      var text = schalter.querySelector('.visually-hidden');
-      if (text) {
-        text.textContent = dunkel
-          ? 'Helles Farbschema einschalten'
-          : 'Dunkles Farbschema einschalten';
-      }
-    }
-
-    schalter.addEventListener('click', function () {
-      var neu = istDunkel() ? 'light' : 'dark';
-      wurzel.dataset.theme = neu;
-      try {
-        localStorage.setItem('farbschema', neu);
-      } catch (e) {
-        // Privater Modus o. Ä. – die Wahl gilt dann nur für diesen Besuch.
-      }
-      beschriftungAktualisieren();
-    });
-
-    // Ändert der Nutzer die Systemeinstellung und hat hier nichts gewählt,
-    // soll die Beschriftung mitziehen.
-    if (typeof systemDunkel.addEventListener === 'function') {
-      systemDunkel.addEventListener('change', beschriftungAktualisieren);
-    }
-
-    beschriftungAktualisieren();
-  })();
 
 
   /* =========================================================================
-     3 – KOPFBEREICH: SCHATTEN BEIM SCROLLEN
+     2 – KOPFBEREICH: SCHATTEN BEIM SCROLLEN
      ========================================================================= */
 
   (function kopfbereich() {
@@ -111,7 +60,7 @@
 
 
   /* =========================================================================
-     4 – MOBILE NAVIGATION
+     3 – MOBILE NAVIGATION
      ========================================================================= */
 
   (function navigation() {
@@ -158,7 +107,7 @@
 
 
   /* =========================================================================
-     5 – BRANCHEN-VORSCHAU IM HERO
+     4 – BRANCHEN-VORSCHAU IM HERO
      Umgesetzt nach dem ARIA-Muster für Tabs: Pfeiltasten wechseln, Pos1/Ende
      springen an den Rand, immer nur ein Tab ist im Tab-Ablauf erreichbar.
      ========================================================================= */
@@ -286,7 +235,7 @@
 
 
   /* =========================================================================
-     6 – SCROLL-EINBLENDUNGEN
+     5 – SCROLL-EINBLENDUNGEN
      Bewusst zurückhaltend: einmal einblenden, nicht wieder ausblenden, und
      nur, wenn der Browser IntersectionObserver kann. Ohne JavaScript oder bei
      reduzierter Bewegung ist ohnehin alles sofort sichtbar (siehe styles.css).
@@ -331,7 +280,7 @@
 
 
   /* =========================================================================
-     7 – KONTAKTFORMULAR
+     6 – KONTAKTFORMULAR
      ========================================================================= */
 
   (function formular() {

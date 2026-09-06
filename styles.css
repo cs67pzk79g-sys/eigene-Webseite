@@ -2,7 +2,7 @@
    [BITTE ERGÄNZEN: Firmenname] – Stylesheet
    ---------------------------------------------------------------------------
    Aufbau dieser Datei:
-     1  Design-Tokens (Farben, Typo, Abstände) – hell und dunkel
+     1  Design-Tokens (Farben, Typo, Abstände)
      2  Reset und Grundlagen
      3  Hilfsklassen und wiederkehrende Bausteine
      4  Kopfbereich und Navigation
@@ -90,69 +90,12 @@
   --tempo: 240ms;
   --kurve: cubic-bezier(.32, .72, .3, 1);
 
+  /* Sagt dem Browser, dass die Seite hell ist: Formularfelder, Scrollbalken
+     und Auswahlmenues werden dann auch bei dunkler Systemeinstellung hell
+     gezeichnet. Ohne diese Zeile mischt sich beides. */
   color-scheme: light;
 }
 
-/* Dunkles Farbschema – zweifach angebunden:
-   [data-theme="dark"]  = bewusste Wahl über die Schaltfläche
-   prefers-color-scheme = Systemeinstellung, solange nichts gewählt wurde */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg:        #0A1417;
-    --surface:   #101F24;
-    --tint:      #0D1B1F;
-    --ink:       #E8F1F2;
-    --ink-muted: #A2B7BB;
-    --line:      #1F343A;
-    --line-stark: #2C464D;
-
-    --petrol-100: #12282E;
-    --petrol-050: #0E2126;
-    --petrol-200: #23474F;
-    --kupfer-100: #2A1D0F;
-    --kupfer-akzent: #C98243;
-
-    --marke:       #58C4D2;
-    --marke-hover: #7FD6E1;
-    --auf-marke:   #04262B;
-    --fokus:       #7FD6E1;
-    --rand-bedien: #547E8A;
-
-    --schatten-s: 0 1px 2px rgba(0, 0, 0, .4);
-    --schatten-m: 0 2px 6px rgba(0, 0, 0, .38), 0 14px 34px rgba(0, 0, 0, .44);
-    --schatten-l: 0 4px 12px rgba(0, 0, 0, .4), 0 28px 60px rgba(0, 0, 0, .5);
-
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg:        #0A1417;
-  --surface:   #101F24;
-  --tint:      #0D1B1F;
-  --ink:       #E8F1F2;
-  --ink-muted: #A2B7BB;
-  --line:      #1F343A;
-  --line-stark: #2C464D;
-
-  --petrol-100: #12282E;
-  --petrol-050: #0E2126;
-  --petrol-200: #23474F;
-  --kupfer-100: #2A1D0F;
-  --kupfer-akzent: #C98243;
-
-  --marke:       #58C4D2;
-  --marke-hover: #7FD6E1;
-  --auf-marke:   #04262B;
-  --fokus:       #7FD6E1;
-  --rand-bedien: #547E8A;
-
-  --schatten-s: 0 1px 2px rgba(0, 0, 0, .4);
-  --schatten-m: 0 2px 6px rgba(0, 0, 0, .38), 0 14px 34px rgba(0, 0, 0, .44);
-  --schatten-l: 0 4px 12px rgba(0, 0, 0, .4), 0 28px 60px rgba(0, 0, 0, .5);
-
-  color-scheme: dark;
-}
 
 
 /* ===========================================================================
@@ -373,8 +316,6 @@ code {
   background: var(--kupfer-100);
   border-left-color: var(--kupfer-700);
 }
-:root[data-theme="dark"] .hinweisbox--warnung p,
-:root[data-theme="dark"] .hinweisbox--warnung h2 { color: var(--ink); }
 
 
 /* ===========================================================================
@@ -491,35 +432,6 @@ code {
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-.theme-toggle {
-  display: inline-grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  flex: none;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--ink);
-  cursor: pointer;
-}
-.theme-toggle:hover { border-color: var(--petrol-200); color: var(--marke); }
-/* Sonne im hellen, Mond im dunklen Schema – rein aus CSS gebaut */
-.theme-toggle__icon {
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px currentColor;
-  transform: scale(.62);
-  transition: box-shadow var(--tempo) var(--kurve), transform var(--tempo) var(--kurve);
-}
-:root[data-theme="dark"] .theme-toggle__icon,
-.theme-toggle[aria-pressed="true"] .theme-toggle__icon {
-  box-shadow: inset -5px -3px 0 0 currentColor;
-  background: transparent;
-  border: 2px solid currentColor;
-  transform: scale(1) rotate(-24deg);
-}
 
 /* Mobile Navigation: Klapppanel unter dem Kopfbereich */
 @media (max-width: 899px) {
@@ -779,15 +691,6 @@ code {
 .mini--salon    { --demo: #8A4B7D; }
 .mini--gastro   { --demo: #A8552A; }
 
-/* Im dunklen Schema hellere Töne, sonst reicht der Kontrast nicht */
-:root[data-theme="dark"] .mini--handwerk { --demo: #6FA8E8; }
-:root[data-theme="dark"] .mini--salon    { --demo: #D294C6; }
-:root[data-theme="dark"] .mini--gastro   { --demo: #E39769; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .mini--handwerk { --demo: #6FA8E8; }
-  :root:not([data-theme="light"]) .mini--salon    { --demo: #D294C6; }
-  :root:not([data-theme="light"]) .mini--gastro   { --demo: #E39769; }
-}
 
 .mini__nav {
   display: flex;
@@ -857,10 +760,6 @@ code {
   color: #fff;
   font-size: var(--t-klein);
   font-weight: 600;
-}
-:root[data-theme="dark"] .mini__btn { color: #0A1417; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .mini__btn { color: #0A1417; }
 }
 
 .preview__note {
@@ -1282,13 +1181,8 @@ code {
   min-height: 0;
 }
 .feld__fehler:empty { display: none; }
-:root[data-theme="dark"] .feld__fehler { color: #FF9E95; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .feld__fehler { color: #FF9E95; }
-}
 
 .feld [aria-invalid="true"] { border-color: #A3231B; }
-:root[data-theme="dark"] .feld [aria-invalid="true"] { border-color: #FF9E95; }
 
 .feld--check {
   grid-template-columns: auto 1fr;
@@ -1409,7 +1303,7 @@ code {
    =========================================================================== */
 
 .site-footer {
-  /* Dunkler Abschluss in beiden Farbschemata – gibt der Seite ein klares Ende */
+  /* Dunkler Abschluss – gibt der Seite ein klares Ende */
   background: var(--petrol-900);
   color: #C9DEE1;
   padding-block: clamp(2.5rem, 6vw, 4rem);
@@ -1554,7 +1448,7 @@ code {
    =========================================================================== */
 
 @media print {
-  .site-header, .site-footer__nav, .skip-link, .theme-toggle,
+  .site-header, .site-footer__nav, .skip-link,
   .nav, .nav-toggle, .preview__controls, .preview__fortschritt { display: none !important; }
 
   body { background: #fff; color: #000; font-size: 11pt; }
