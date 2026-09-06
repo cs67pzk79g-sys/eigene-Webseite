@@ -912,7 +912,8 @@ code {
 .paket__mehr summary:focus-visible { outline: 3px solid var(--fokus); outline-offset: 3px; }
 
 /* Pfeil aus zwei Rahmenkanten – dreht sich beim Aufklappen */
-.paket__pfeil {
+.paket__pfeil,
+.faq__pfeil {
   flex: none;
   width: .55rem;
   height: .55rem;
@@ -921,7 +922,8 @@ code {
   transform: rotate(45deg) translate(-2px, -2px);
   transition: transform var(--tempo) var(--kurve);
 }
-.paket__mehr[open] .paket__pfeil { transform: rotate(-135deg) translate(-2px, -2px); }
+.paket__mehr[open] .paket__pfeil,
+.faq__eintrag[open] .faq__pfeil { transform: rotate(-135deg) translate(-2px, -2px); }
 
 .paket__detail { padding-bottom: .5rem; }
 .paket__detail h4 {
@@ -1337,6 +1339,80 @@ code {
     width: auto;
     height: 2px;
   }
+}
+
+
+/* ===========================================================================
+   8b – HAEUFIGE FRAGEN
+   =========================================================================== */
+
+/* Dieselbe Mechanik wie bei den Paketen: das HTML-eigene details-Element.
+   Die Eintraege liegen als Liste mit Trennlinien uebereinander - kein Rahmen
+   um jeden Eintrag, sonst konkurriert die FAQ optisch mit den Paketkarten. */
+.faq {
+  border-top: 1px solid var(--line);
+}
+
+.faq__eintrag {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__eintrag summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink);
+  list-style: none;                 /* Standarddreieck weg, eigener Pfeil */
+}
+.faq__eintrag summary::-webkit-details-marker { display: none; }
+.faq__eintrag summary:hover { color: var(--marke); }
+.faq__eintrag summary:focus-visible { outline: 3px solid var(--fokus); outline-offset: 3px; }
+.faq__eintrag[open] summary { color: var(--marke); }
+
+/* Der Pfeil sitzt auf der Grundlinie der ersten Textzeile, damit er bei
+   zweizeiligen Fragen nicht in der Mitte haengt. */
+.faq__pfeil { transform: rotate(45deg) translate(-2px, -4px); }
+
+.faq__antwort { padding: 0 0 1.25rem; }
+.faq__antwort p {
+  margin: 0 0 .8em;
+  font-size: var(--t-klein);
+  color: var(--ink-muted);
+}
+.faq__antwort p:last-child { margin-bottom: 0; }
+
+
+/* ===========================================================================
+   8c – FEHLERSEITE (404)
+   =========================================================================== */
+
+.fehler__lead { font-size: var(--t-lead); }
+
+.fehler__aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: 1.75rem 0 .5rem;
+}
+
+.fehler__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .6rem;
+}
+.fehler__liste li { margin: 0; }
+
+.fehler__hinweis {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--t-klein);
 }
 
 

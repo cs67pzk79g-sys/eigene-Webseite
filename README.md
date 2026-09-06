@@ -13,7 +13,8 @@ kein Build-Schritt, keine Abhängigkeiten.
 ## Dateien
 
 ```
-index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über, Kontakt)
+index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über uns, FAQ, Kontakt)
+404.html                      Fehlerseite – wird vom Hoster bei unbekannter Adresse ausgeliefert
 impressum.html                Impressum-Gerüst nach § 5 DDG
 datenschutz.html              Datenschutzerklärung nach Art. 13 DSGVO
 styles.css                    Gesamtes Styling, in 13 nummerierte Abschnitte gegliedert
@@ -174,11 +175,13 @@ Zum Aktivieren:
 
 ### 4. Entwurfs-Kennzeichnung entfernen
 
-- Den `<!-- ENTWURF – NICHT LIVE SCHALTEN … -->`-Kommentar oben in allen drei
+- Den `<!-- ENTWURF – NICHT LIVE SCHALTEN … -->`-Kommentar oben in allen vier
   HTML-Dateien (jeweils zweimal: vor `<html>` und im `<head>`).
-- Den Absatz `<p class="entwurf-hinweis">` im Fußbereich aller drei Seiten.
-- **Wichtig:** `<meta name="robots" content="noindex, nofollow">` aus allen drei
-  Dateien entfernen. Bleibt die Zeile stehen, taucht die Seite nie bei Google auf.
+- Den Absatz `<p class="entwurf-hinweis">` im Fußbereich aller vier Seiten.
+- **Wichtig:** `<meta name="robots" content="noindex, nofollow">` aus `index.html`,
+  `impressum.html` und `datenschutz.html` entfernen. Bleibt die Zeile stehen, taucht
+  die Seite nie bei Google auf. In `404.html` bleibt sie stehen – eine Fehlerseite
+  gehört nicht in den Index.
 
 ### 5. SEO scharf schalten
 
@@ -188,6 +191,13 @@ Zum Aktivieren:
   ausfüllen und aktivieren. Danach mit dem Rich-Results-Test von Google prüfen.
 - `canonical` und die Open-Graph-URLs auf die echte Domain setzen.
 - Eine `sitemap.xml` und eine `robots.txt` ergänzen, sobald die Domain steht.
+  Solange `noindex` gesetzt ist, wäre beides widersprüchlich – deshalb erst hier.
+- **Absolute Pfade in `404.html` prüfen.** Die Datei verlinkt Stylesheet, Schriften
+  und Skript mit führendem `/`, weil der Hoster sie für *jede* unbekannte Adresse
+  ausliefert – auch für `/tief/verschachtelt/`. Relative Pfade würden von dort ins
+  Leere zeigen. Liegt die Seite später **nicht** unter einer eigenen Domain, sondern
+  in einem Unterordner (`benutzername.github.io/projektname/`), müssen diese Pfade
+  den Ordnernamen enthalten.
 
 ---
 
@@ -233,6 +243,23 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **Kein Google Analytics, keine Karte, keine Testimonials.** Alle drei stehen auf
+  gängigen Launch-Checklisten und fehlen hier mit Absicht. Analytics und eine
+  eingebettete Google-Karte würden nach § 25 TDDDG einen echten Cookie-Banner
+  erzwingen, dazu einen Auftragsverarbeitungsvertrag und einen Abschnitt zum
+  Drittlandtransfer – und damit genau das kaputt machen, was die Seite gerade
+  auszeichnet: Sie braucht keine Einwilligung. Wenn später Zahlen nötig sind, sind
+  einwilligungsfreie Werkzeuge wie Plausible oder die Server-Logs der richtige Weg.
+  Bewertungen fehlen, weil es noch keine echten gibt; erfundene wären nach
+  § 5b Abs. 3 UWG abmahnfähig, der ausdrücklich eine Prüfung der Echtheit verlangt.
+
+- **FAQ mit FAQPage-Schema, aber ohne Erwartung an Rich Snippets.** Der Abschnitt
+  steht direkt vor dem Formular, weil dort die letzten Einwände sitzen. Die
+  Auszeichnung im `<head>` ist gültig und hilft beim maschinellen Verstehen der
+  Seite; die früher üblichen aufgeklappten FAQ-Ergebnisse zeigt Google seit August
+  2023 aber nur noch für Behörden- und Gesundheitsseiten. **Achtung:** Die Texte
+  stehen doppelt – im Schema und in der Sektion. Änderungen immer an beiden Stellen.
 
 - **Drei Branchen als Beispiele, nicht als Liste.** Der Fokus auf Handwerk, Salon und
   Gastro bleibt – er macht die Seite für diese Betriebe glaubwürdig, und eine Seite „für

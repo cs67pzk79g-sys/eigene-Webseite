@@ -39,6 +39,72 @@
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
 
+  <!--
+    FAQ-Schema: enthaelt ausschliesslich echte Angaben und ist deshalb aktiv,
+    anders als das LocalBusiness-Schema oben. Google zeigt FAQ-Rich-Snippets
+    seit August 2023 nur noch fuer Behoerden- und Gesundheitsseiten an; die
+    Auszeichnung hilft also beim Verstehen der Seite, bringt aber keine
+    erweiterte Darstellung in den Suchergebnissen.
+    ACHTUNG: Diese Texte stehen doppelt - hier und in der FAQ-Sektion im Body.
+    Wird dort etwas geaendert, hier mitaendern, sonst widersprechen sich beide.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was kostet mich das am Ende wirklich?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Den Festpreis aus dem Angebot – sonst nichts. Wir halten ihn vor dem Start schriftlich fest, zusammen mit dem Leistungsumfang und dem Fertigstellungstermin. Kommen unterwegs neue Wünsche dazu, besprechen wir das vorher mit Ihnen; nichts erscheint ungefragt auf der Rechnung. Getrennt davon laufen Domain und Hosting. Die buchen Sie auf Ihren Namen und zahlen sie direkt an den Anbieter, nicht an uns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie viel Zeit muss ich selbst investieren?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wenig. Ein Erstgespräch von 15 bis 30 Minuten, danach ein paar Rückfragen per Telefon oder E-Mail, und am Ende gehen wir die fertige Seite gemeinsam durch. Zwischendurch bekommen Sie einen Link zum Anschauen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ich habe keine fertigen Texte und keine guten Fotos. Geht das trotzdem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das ist der Normalfall. Stichpunkte genügen uns – daraus formulieren wir die Seitentexte. Nicht im Festpreis enthalten sind Fotoaufnahmen und das Schreiben längerer Texte. Fehlen Fotos ganz, besprechen wir im Erstgespräch, wie wir das lösen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist, wenn ich später etwas ändern will?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sie haben zwei Wege. Entweder Sie ändern selbst – Sie bekommen alle Dateien und Zugänge, und es gibt kein Baukasten-Abo. Oder Sie geben es an uns: Für kleine Anpassungen wie neue Öffnungszeiten gibt es die Wartung für 20 bis 50 € im Monat. Die ist freiwillig und kommt erst zur Sprache, wenn Ihre Seite steht."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bin ich nach der Übergabe an Sie gebunden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Nach der Abnahme erhalten Sie alle Dateien und Zugangsdaten. Die Seite besteht aus normalem HTML, CSS und JavaScript – jede andere Webdesignerin und jeder andere Entwickler kann damit weiterarbeiten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Warum kostet das bei Ihnen weniger als bei einer Agentur?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dafür gibt es zwei Gründe. Erstens gibt es bei uns keine Kette aus Vertrieb, Projektleitung und Umsetzung – Sie sprechen direkt mit denen, die bauen. Zweitens stehen wir am Anfang und rechnen entsprechend. Nicht enthalten sind Fotoproduktion, Werbekampagnen oder ein Online-Shop."
+        }
+      }
+    ]
+  }
+  </script>
+
 
   <!--
     STRUCTURED DATA (SEO) – erst aktivieren, wenn echte Firmendaten vorliegen.
@@ -100,6 +166,7 @@
           <li><a href="#referenzen">Referenzen</a></li>
           <li><a href="#ablauf">Ablauf</a></li>
           <li><a href="#ueber">Über uns</a></li>
+          <li><a href="#faq">Fragen</a></li>
           <li><a class="nav__cta" href="#kontakt">Projekt anfragen</a></li>
         </ul>
       </nav>
@@ -760,8 +827,139 @@
       </div>
     </section>
 
+
     <!-- ===================================================================
-         6 – KONTAKT
+         6 – HAEUFIGE FRAGEN
+         Steht bewusst direkt vor dem Formular: Wer bis hierher gelesen hat,
+         traegt meist noch ein, zwei Einwaende mit sich - die sollen geklaert
+         sein, bevor das Formular kommt.
+         Wieder <details> wie bei den Paketen: laeuft ohne JavaScript, ist per
+         Tastatur bedienbar und wird von Screenreadern als aufklappbar angesagt.
+         ACHTUNG: Die Antworten stehen zusaetzlich als FAQPage-Schema im <head>.
+         Wird hier ein Text geaendert, muss er dort mitgeaendert werden.
+         =================================================================== -->
+    <section class="section" id="faq" aria-labelledby="faq-titel">
+      <div class="wrap wrap--schmal">
+
+        <header class="section__head reveal">
+          <p class="eyebrow">Häufige Fragen</p>
+          <h2 id="faq-titel">Was Kunden uns vorher fragen</h2>
+        </header>
+
+        <div class="faq reveal">
+
+          <details class="faq__eintrag">
+            <summary>
+              <span>Was kostet mich das am Ende wirklich?</span>
+              <span class="faq__pfeil" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__antwort">
+              <p>
+                Den Festpreis aus dem Angebot – sonst nichts. Wir halten ihn vor dem Start
+                schriftlich fest, zusammen mit dem Leistungsumfang und dem
+                Fertigstellungstermin. Kommen unterwegs neue Wünsche dazu, besprechen wir
+                das vorher mit Ihnen; nichts erscheint ungefragt auf der Rechnung.
+              </p>
+              <p>
+                Getrennt davon laufen Domain und Hosting. Die buchen Sie auf Ihren Namen
+                und zahlen sie direkt an den Anbieter, nicht an uns – damit die Seite auch
+                dann Ihnen gehört, wenn wir irgendwann nicht mehr im Spiel sind.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__eintrag">
+            <summary>
+              <span>Wie viel Zeit muss ich selbst investieren?</span>
+              <span class="faq__pfeil" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__antwort">
+              <p>
+                Wenig. Ein Erstgespräch von 15 bis 30 Minuten, danach ein paar Rückfragen
+                per Telefon oder E-Mail, und am Ende gehen wir die fertige Seite gemeinsam
+                durch. Zwischendurch bekommen Sie einen Link zum Anschauen – Sie sehen den
+                Fortschritt, ohne nachfragen zu müssen.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__eintrag">
+            <summary>
+              <span>Ich habe keine fertigen Texte und keine guten Fotos. Geht das trotzdem?</span>
+              <span class="faq__pfeil" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__antwort">
+              <p>
+                Das ist der Normalfall. Stichpunkte genügen uns – daraus formulieren wir die
+                Seitentexte. Was nicht im Festpreis steckt, sind Fotoaufnahmen und das
+                Schreiben längerer Texte, etwa eines ausführlichen Firmenporträts.
+              </p>
+              <p>
+                Fehlen Fotos ganz, besprechen wir im Erstgespräch, wie wir das lösen.
+                Wir sagen Ihnen dabei ehrlich, wann eigene Bilder nötig sind und wann
+                die Seite auch ohne funktioniert.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__eintrag">
+            <summary>
+              <span>Was ist, wenn ich später etwas ändern will?</span>
+              <span class="faq__pfeil" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__antwort">
+              <p>
+                Sie haben zwei Wege. Entweder Sie ändern selbst – Sie bekommen alle Dateien
+                und Zugänge, und es gibt kein Baukasten-Abo, das mitlaufen müsste.
+              </p>
+              <p>
+                Oder Sie geben es an uns: Für kleine Anpassungen wie neue Öffnungszeiten
+                gibt es die Wartung für 20 bis 50 € im Monat. Die ist freiwillig und kommt
+                erst zur Sprache, wenn Ihre Seite steht.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__eintrag">
+            <summary>
+              <span>Bin ich nach der Übergabe an Sie gebunden?</span>
+              <span class="faq__pfeil" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__antwort">
+              <p>
+                Nein. Nach der Abnahme erhalten Sie alle Dateien und Zugangsdaten. Die Seite
+                besteht aus normalem HTML, CSS und JavaScript – jede andere Webdesignerin
+                und jeder andere Entwickler kann damit weiterarbeiten. Es gibt kein System,
+                das Sie nur bei uns weiterbetreiben könnten.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__eintrag">
+            <summary>
+              <span>Warum kostet das bei Ihnen weniger als bei einer Agentur?</span>
+              <span class="faq__pfeil" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__antwort">
+              <p>
+                Dafür gibt es zwei Gründe, und wir nennen beide. Erstens gibt es bei uns
+                keine Kette aus Vertrieb, Projektleitung und Umsetzung – Sie sprechen direkt
+                mit denen, die bauen. Zweitens stehen wir am Anfang und rechnen entsprechend.
+              </p>
+              <p>
+                Was Sie dafür nicht bekommen, sind Fotoproduktion, Werbekampagnen oder ein
+                Online-Shop. Was Sie bekommen, ist eine sauber gebaute Seite zum vorher
+                vereinbarten Preis.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7 – KONTAKT
          =================================================================== -->
     <section class="section section--tint" id="kontakt" aria-labelledby="kontakt-titel">
       <div class="wrap">
