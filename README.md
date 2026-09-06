@@ -58,7 +58,8 @@ ausführlichen Checkliste.
 
 **Geht jederzeit, auch schon vorher:**
 
-- [ ] Entscheiden: solo oder zu zweit → [1](#1-platzhalter-ausfüllen)
+- [ ] **Rechtsform klären: GbR oder Einzelgewerbe?** Die Seite tritt als „wir“ auf;
+      davon hängt ab, wer im Impressum steht → [1](#1-platzhalter-ausfüllen)
 - [ ] Portraitfoto einsetzen → [2](#2-bilder-ersetzen)
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
 - [ ] **Kontaktformular scharf schalten** – Endpunkt einrichten und in der
@@ -95,7 +96,7 @@ Der Reihe nach:
 | Was | Wo |
 |---|---|
 | Firmenname / Marke | alle drei HTML-Dateien, im Kopfbereich und Fußbereich |
-| Vor- und Nachname | `index.html` (Über mich), `impressum.html`, `datenschutz.html` |
+| Vor- und Nachname **beider Personen** | `index.html` (Über uns), `impressum.html`, `datenschutz.html` |
 | Ladungsfähige Anschrift | `impressum.html`, `datenschutz.html` |
 | E-Mail-Adresse (auch im `mailto:`) | `index.html` (Kontakt), beide Rechtsseiten |
 | Telefonnummer (auch im `tel:`) | `index.html`, beide Rechtsseiten – oder Zeilen löschen |
@@ -106,7 +107,8 @@ Der Reihe nach:
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 9 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 12 |
 | Links zu den Demo-Projekten | `index.html`, Abschnitt Referenzen – siehe Hinweis unten |
-| Solo oder zu zweit | `index.html`, Abschnitt „Über mich“ – siehe Kommentar dort |
+| Rechtsform (GbR oder Einzelgewerbe) | `impressum.html` – siehe den ausführlichen Kommentar über den Pflichtangaben |
+| Kurztexte der beiden Personen | `index.html`, Abschnitt „Über uns“ |
 | Erreichbarkeit, Einsatzgebiet, Antwortzeit | `index.html`, Kasten „Lieber direkt?“ |
 
 ### 2. Bilder ersetzen
@@ -114,8 +116,9 @@ Der Reihe nach:
 - **Projektvorschauen**: alle drei sind echte Screenshots, aufgenommen bei 1200 × 900
   (4:3, passt ohne Beschnitt in die Kachel). Kommt ein weiteres Projekt dazu, im selben
   Format aufnehmen, damit die Kacheln zusammenpassen.
-- **Portraits**: In der Sektion „Über mich“ steht statt eines Fotos ein
-  Platzhalterkreis. Der auszutauschende `<img>`-Tag steht als Kommentar daneben.
+- **Portraits**: In der Sektion „Über uns“ steht bei beiden Personen statt eines
+  Fotos ein Platzhalterkreis. Der auszutauschende `<img>`-Tag steht als Kommentar
+  daneben. Beide Fotos im selben Zuschnitt aufnehmen, sonst wirken die Karten ungleich.
 - **Vorschaubild fürs Teilen** (Open Graph, 1200 × 630 px): unter `assets/`
   ablegen und im `<head>` als `og:image` verlinken. Ohne das sieht der Link in
   WhatsApp und LinkedIn nackt aus.
@@ -227,8 +230,21 @@ Getestet in Chromium über einen lokalen Server:
 
 ### Bewusste Entscheidungen
 
+- **Die Seite spricht durchgängig als „wir“, und beide Personen tragen dieselbe
+  Rollenzeile.** Das ist die sichtbare Umsetzung des gemeinsamen Auftritts: Es gibt
+  keine Aufteilung in „der eine gestaltet, der andere programmiert“, weil es sie im
+  Betrieb nicht gibt. Die Kundenstimme bleibt davon unberührt – im Beispielsatz zur
+  Kleinunternehmerregelung, in den Antworten des Paketberaters und in der
+  Einwilligungserklärung des Formulars spricht weiterhin der Besucher in der Ich-Form.
+
+- **Keine Angaben zu Ausbildung, Schule oder Alter.** Dazu besteht keine Pflicht, und
+  die frühere Formulierung war zudem sachlich falsch. Was bleibt, ist der ehrliche Satz,
+  dass der Betrieb am Anfang steht – er erklärt die Preise, ohne die Kompetenz in Frage
+  zu stellen. Wichtig: Was an fachlicher Qualifikation behauptet wird, muss stimmen;
+  erfundene Abschlüsse wären eine irreführende geschäftliche Handlung nach § 5 UWG.
+
 - **Nur ein helles Farbschema, kein Umschalter.** Zwei Schemata bedeuten, dass jede
-  Änderung doppelt geprüft werden muss – eine Dauerlast für einen Ein-Personen-Betrieb.
+  Änderung doppelt geprüft werden muss – eine Dauerlast für einen Betrieb dieser Größe.
   Der Umschalter saß außerdem direkt neben „Projekt anfragen" und konkurrierte dort mit
   der einzigen Handlung, auf die die Seite hinarbeitet. Wer sein System auf dunkel
   gestellt hat, sieht eine helle Seite; das ist bei Firmenseiten der Normalfall.
