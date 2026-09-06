@@ -66,6 +66,7 @@ ausführlichen Checkliste.
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
 - [ ] **Kontaktformular scharf schalten** – Endpunkt einrichten und in der
       Datenschutzerklärung als Empfänger eintragen → [3](#3-kontaktformular-scharf-schalten)
+- [ ] **Optionales Telefonfeld im Kontaktformular** entscheiden → [3](#3-kontaktformular-scharf-schalten)
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
 
@@ -115,9 +116,11 @@ Der Reihe nach:
 
 ### 2. Bilder ersetzen
 
-- **Projektvorschauen**: alle drei sind echte Screenshots, aufgenommen bei 1200 × 900
-  (4:3, passt ohne Beschnitt in die Kachel). Kommt ein weiteres Projekt dazu, im selben
-  Format aufnehmen, damit die Kacheln zusammenpassen.
+- **Projektvorschauen**: alle drei sind echte Screenshots im Format **800 × 600**
+  (4:3, passt ohne Beschnitt in die Kachel). Dargestellt werden sie mit 350 px Breite –
+  800 px decken damit auch Displays mit doppelter Pixeldichte ab. Größer aufzunehmen
+  bringt nichts Sichtbares, kostet aber Ladezeit. Kommt ein weiteres Projekt dazu, im
+  selben Format aufnehmen, damit die Kacheln zusammenpassen.
 - **Portraits**: In der Sektion „Über uns“ tragen beide Karten einen Kreis mit den
   Initialen. Das ist eine Entscheidung, kein offener Platzhalter – die Seite ist damit
   fertig. Wer später doch Fotos möchte, ersetzt den `span` durch den `<img>`-Tag, der
@@ -172,6 +175,15 @@ Zum Aktivieren:
 3. Serverseitig noch einmal prüfen: Die Prüfung in `script.js` ist reine
    Bequemlichkeit für den Nutzer, kein Schutz. Das Honeypot-Feld `website` muss
    auch auf dem Server ausgewertet werden.
+
+**Offene Entscheidung: optionales Telefonfeld.** Das Formular fragt Name, E-Mail und
+Projektbeschreibung ab. Die Zielgruppe – Betriebsinhaber zwischen 40 und 60, tagsüber auf
+der Baustelle oder im Salon – ruft häufig lieber zurück, als eine E-Mail zu tippen. Ein
+**freiwilliges** Feld „Telefon (wenn Ihnen ein Rückruf lieber ist)" kostet keine Hürde und
+kann Anfragen retten, die sonst nicht abgeschickt werden. Datenschutzrechtlich
+unproblematisch, solange es wirklich optional ist – dann aber auch in Abschnitt 4 der
+Datenschutzerklärung bei den erhobenen Daten mitnennen. Noch nicht umgesetzt, weil es eine
+Geschäftsentscheidung ist.
 
 ### 4. Entwurfs-Kennzeichnung entfernen
 
@@ -243,6 +255,12 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **Alle Sektionsüberschriften teilen dieselbe linke Kante.** Die FAQ lief anfangs in einer
+  schmaleren Spalte und begann dadurch 224 px weiter rechts als jede andere Sektion – beim
+  Scrollen eine sichtbar gebrochene Kante. Jetzt läuft die Fragezeile über die volle
+  Spaltenbreite, und nur der Antworttext ist auf 44 rem begrenzt, damit die Zeilen lesbar
+  bleiben. Wer hier etwas ergänzt: `wrap--schmal` gehört nicht um eine ganze Sektion.
 
 - **Kein Google Analytics, keine Karte, keine Testimonials.** Alle drei stehen auf
   gängigen Launch-Checklisten und fehlen hier mit Absicht. Analytics und eine

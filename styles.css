@@ -569,7 +569,7 @@ code {
 }
 
 .preview__tab {
-  min-height: 2.25rem;
+  min-height: 2.75rem;              /* 44 px: sichere Trefferflaeche am Handy */
   padding: .35rem .9rem;
   border: 0;
   border-radius: 999px;
@@ -590,8 +590,8 @@ code {
 .preview__pause {
   display: inline-grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.75rem;                   /* 44 px, wie die Reiter daneben */
+  height: 2.75rem;
   flex: none;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1379,6 +1379,10 @@ code {
 
 .faq__antwort { padding: 0 0 1.25rem; }
 .faq__antwort p {
+  /* Die Fragezeile laeuft ueber die volle Spalte, damit die Sektion dieselbe
+     linke Kante hat wie alle anderen. Der Antworttext bekommt trotzdem eine
+     lesbare Zeilenlaenge - sonst waeren es auf dem Desktop ueber 100 Zeichen. */
+  max-width: 42rem;                 /* gemessen: 74 Zeichen pro Zeile */
   margin: 0 0 .8em;
   font-size: var(--t-klein);
   color: var(--ink-muted);
