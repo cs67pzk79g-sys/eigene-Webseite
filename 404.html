@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- ENTWURF – NICHT LIVE SCHALTEN VOR GEWERBEANMELDUNG UND AUSFÜLLEN VON IMPRESSUM/DATENSCHUTZ -->
+<html lang="de">
+<head>
+  <!-- ENTWURF – NICHT LIVE SCHALTEN VOR GEWERBEANMELDUNG UND AUSFÜLLEN VON IMPRESSUM/DATENSCHUTZ -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seite nicht gefunden – [BITTE ERGÄNZEN: Firmenname]</title>
+  <meta name="description" content="Die aufgerufene Seite existiert nicht. Hier geht es zurück zur Startseite und zu den wichtigsten Bereichen.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!--
+    WICHTIG – absolute Pfade, kein "assets/…":
+    Diese Datei wird vom Hoster für JEDE nicht gefundene Adresse ausgeliefert,
+    also auch für etwas wie /leistungen/preise/. Relative Pfade würden von
+    dort aus ins Leere zeigen; die Seite käme dann ohne Schrift und Gestaltung.
+
+    Nur relevant, falls die Seite später NICHT unter einer eigenen Domain,
+    sondern in einem Unterordner liegt (z. B. github.io/projektname/):
+    dann müssen die vier Pfade unten den Ordnernamen enthalten.
+  -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="rechtsseite">
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="/" aria-label="Zur Startseite">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32" focusable="false">
+            <rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor"></rect>
+            <path d="M11.5 11 8 16l3.5 5M20.5 11 24 16l-3.5 5M18.2 9.5l-4.4 13"
+                  fill="none" stroke="#fff" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="logo__text">[BITTE ERGÄNZEN: Firmenname]</span>
+      </a>
+      <nav class="nav nav--schlank" aria-label="Hauptnavigation">
+        <ul class="nav__list">
+          <li><a href="/">Startseite</a></li>
+          <li><a href="/impressum.html">Impressum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal fehler" id="inhalt">
+    <div class="wrap wrap--schmal">
+
+      <p class="eyebrow">Fehler 404</p>
+      <h1>Diese Seite gibt es nicht.</h1>
+      <p class="fehler__lead">
+        Vermutlich ist der Link veraltet oder es hat sich ein Tippfehler in die Adresse
+        geschlichen. Der Rest der Seite funktioniert – hier kommen Sie weiter:
+      </p>
+
+      <div class="fehler__aktionen">
+        <a class="btn btn--primary" href="/">Zur Startseite</a>
+        <a class="btn btn--ghost" href="/#kontakt">Kontakt aufnehmen</a>
+      </div>
+
+      <h2>Die wichtigsten Bereiche</h2>
+      <ul class="fehler__liste">
+        <li><a href="/#leistungen">Leistungen &amp; Preise</a> – zwei Pakete mit Festpreis</li>
+        <li><a href="/#referenzen">Referenzen</a> – Beispielprojekte zum Anschauen</li>
+        <li><a href="/#ablauf">Ablauf</a> – vom Erstgespräch bis zur Übergabe</li>
+        <li><a href="/#faq">Häufige Fragen</a> – was Kunden vorher wissen wollen</li>
+        <li><a href="/#ueber">Über uns</a> – wer Ihre Seite baut</li>
+      </ul>
+
+      <p class="fehler__hinweis">
+        Sie sind über einen Link von uns hier gelandet?
+        <a href="/#kontakt">Sagen Sie uns kurz Bescheid</a> – dann reparieren wir ihn.
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="entwurf-hinweis" role="note">
+        <strong>Entwurf – noch nicht veröffentlicht.</strong>
+        Diese Seite ist ein Arbeitsstand. Sie darf erst online gehen, wenn die
+        Gewerbeanmeldung vorliegt und Impressum sowie Datenschutzerklärung mit echten
+        Angaben ausgefüllt sind.
+      </p>
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="site-footer__name">[BITTE ERGÄNZEN: Firmenname]</p>
+          <p class="site-footer__claim">Individuelle Webseiten für Handwerk, Salon, Gastro – und andere lokale Betriebe.</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Rechtliches">
+          <h2 class="site-footer__titel">Rechtliches</h2>
+          <ul>
+            <li><a href="/impressum.html">Impressum</a></li>
+            <li><a href="/datenschutz.html">Datenschutzerklärung</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__copy">
+        © <span id="jahr">2026</span> [BITTE ERGÄNZEN: Firmenname].
+        Individuell gebaut – ohne Baukasten, ohne Framework.
+      </p>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>
