@@ -792,7 +792,9 @@ code {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* Bewusst KEINE feste Hoehe: Klappt ein Paket auf, soll nur dieses wachsen.
+     Mit height:100% haetten beide Karten dieselbe Hoehe und in der
+     geschlossenen entstuende eine grosse Luecke vor dem Knopf. */
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
@@ -822,8 +824,6 @@ code {
   font-weight: 600;
   line-height: 1.4;
 }
-
-.paket--abo { background: var(--petrol-050); }
 
 .paket__head { margin-bottom: 1rem; }
 .paket__name { margin-bottom: .15em; }
@@ -871,17 +871,139 @@ code {
   transform: rotate(42deg);
 }
 
-.paket__hinweis {
-  margin-top: auto;
-  padding: .9rem 1rem;
-  background: var(--surface);
-  border: 1px dashed var(--line-stark);
-  border-radius: var(--radius-m);
-  font-size: var(--t-mini);
-  color: var(--ink-muted);
+.paket__cta { margin-top: auto; width: 100%; }
+
+/* --- Aufklappbare Zusatzinformation je Paket -------------------------------
+   Bewusst das HTML-eigene details-Element: laeuft ohne JavaScript, ist per
+   Tastatur bedienbar und wird von Screenreadern als aufklappbar angesagt. */
+
+.paket__mehr {
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
-.paket__cta { margin-top: auto; width: 100%; }
+.paket__mehr summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .9rem 0;
+  cursor: pointer;
+  font-size: var(--t-klein);
+  font-weight: 600;
+  color: var(--marke);
+  list-style: none;                 /* Standarddreieck weg, eigener Pfeil */
+}
+.paket__mehr summary::-webkit-details-marker { display: none; }
+.paket__mehr summary:hover { color: var(--marke-hover); }
+.paket__mehr summary:focus-visible { outline: 3px solid var(--fokus); outline-offset: 3px; }
+
+/* Pfeil aus zwei Rahmenkanten – dreht sich beim Aufklappen */
+.paket__pfeil {
+  flex: none;
+  width: .55rem;
+  height: .55rem;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--tempo) var(--kurve);
+}
+.paket__mehr[open] .paket__pfeil { transform: rotate(-135deg) translate(-2px, -2px); }
+
+.paket__detail { padding-bottom: .5rem; }
+.paket__detail h4 {
+  font-family: var(--schrift-text);
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 1.25rem 0 .5rem;
+}
+.paket__detail h4:first-child { margin-top: .25rem; }
+.paket__detail ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: .35rem;
+}
+.paket__detail li { font-size: var(--t-klein); color: var(--ink-muted); margin: 0; }
+.paket__detail-note {
+  margin: .7rem 0 0;
+  font-size: var(--t-mini);
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* --- Wartung: bewusst kein Paket ------------------------------------------
+   Steht ausserhalb des Rasters und sieht anders aus als eine Paketkarte,
+   damit gar nicht erst der Eindruck entsteht, man koenne sie einzeln buchen. */
+
+.wartung {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--kupfer-akzent);
+  border-radius: var(--radius-m);   /* flacher als die Karten – andere Gattung */
+}
+
+.wartung__kicker {
+  margin: 0 0 .5rem;
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--kupfer-akzent);
+}
+.wartung__titel { font-size: clamp(1.2rem, 1.05rem + .6vw, 1.5rem); margin-bottom: .6em; }
+.wartung__satz { font-size: var(--t-klein); color: var(--ink-muted); margin: 0; }
+.wartung__satz strong { color: var(--ink); }
+
+.wartung__preis { display: flex; align-items: baseline; gap: .45rem; margin: 0 0 1rem; }
+.wartung__betrag {
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.wartung__einheit { font-size: var(--t-klein); color: var(--ink-muted); }
+
+.wartung__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+.wartung__liste li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: var(--t-klein);
+  color: var(--ink-muted);
+}
+.wartung__liste li::before {
+  content: "";
+  position: absolute;
+  left: .2rem;
+  top: .5em;
+  width: .45rem;
+  height: .75rem;
+  border: solid var(--kupfer-akzent);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg);
+}
+
+@media (min-width: 52rem) {
+  .wartung { grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
+  .wartung__inhalt { border-left: 1px solid var(--line); padding-left: 2.5rem; }
+}
 
 .preis-fussnote {
   margin-top: 1.75rem;
@@ -890,11 +1012,12 @@ code {
   color: var(--ink-muted);
 }
 
+/* Zwei Pakete nebeneinander. Wartung steht bewusst ausserhalb dieses Rasters. */
 @media (min-width: 48rem) {
-  .pakete { grid-template-columns: repeat(2, 1fr); }
+  .pakete { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 @media (min-width: 68rem) {
-  .pakete { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pakete { max-width: 60rem; margin-inline: auto; }
 }
 
 
