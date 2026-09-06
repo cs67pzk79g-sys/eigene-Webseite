@@ -297,17 +297,17 @@
 
     var EMPFEHLUNGEN = {
       starter: {
-        titel: 'Starter passt zu Ihnen.',
-        text: 'Sie wollen vor allem gefunden und erreichbar sein. Dafür genügt eine ' +
-              'gut gebaute Seite – fertig in ein bis zwei Wochen, zum Festpreis von ' +
-              '600 bis 900 €.',
+        titel: 'Empfehlung: Starter',
+        text: 'Ihr Schwerpunkt liegt auf Auffindbarkeit und Erreichbarkeit. Dafür ' +
+              'genügt eine sorgfältig gebaute Seite: fertig in ein bis zwei Wochen, ' +
+              'Festpreis 600 bis 900 €.',
         knopf: 'Starter anfragen'
       },
       business: {
-        titel: 'Business passt zu Ihnen.',
-        text: 'Sie haben mehrere Leistungen, die je eine eigene Seite verdienen, und ' +
-              'wollen gefunden werden. Dafür ist ein Onepager zu klein. Business kostet ' +
-              '1.200 bis 2.000 € als Festpreis.',
+        titel: 'Empfehlung: Business',
+        text: 'Sie haben mehrere Leistungsbereiche, die jeweils eine eigene Seite ' +
+              'brauchen, und wollen über die Suche gefunden werden. Dafür ist ein ' +
+              'Onepager zu klein. Festpreis 1.200 bis 2.000 €.',
         knopf: 'Business anfragen'
       }
     };
@@ -334,8 +334,9 @@
 
       var hinweis = document.createElement('p');
       hinweis.className = 'berater__ergebnis-hinweis';
-      hinweis.textContent = 'Das ist ein Vorschlag, keine Festlegung. Im Erstgespräch ' +
-        'schauen wir gemeinsam, ob es wirklich passt – und wenn nicht, sage ich das.';
+      hinweis.textContent = 'Diese Einschätzung beruht auf drei Fragen und ist ' +
+        'unverbindlich. Im Erstgespräch prüfen wir, ob das Paket zu Ihrem Vorhaben ' +
+        'passt – falls nicht, sage ich Ihnen das.';
 
       var reihe = document.createElement('div');
       reihe.className = 'berater__ergebnis-aktion';
