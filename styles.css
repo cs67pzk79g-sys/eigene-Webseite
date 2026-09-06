@@ -1352,6 +1352,10 @@ code {
   box-shadow: var(--schatten-s);
 }
 
+/* Der Kreis traegt Initialen, kein Foto – das ist eine Entscheidung, keine
+   Luecke. Deshalb kein gestrichelter Rand mehr: der wuerde ihn wieder wie
+   einen Platzhalter aussehen lassen. Die Flaeche allein genuegt.
+   Kommt spaeter ein Foto hinein, greift die img-Regel darunter. */
 .person__portrait {
   display: grid;
   place-items: center;
@@ -1361,14 +1365,16 @@ code {
   border-radius: 50%;
   overflow: hidden;
   background: var(--petrol-100);
-  border: 1px dashed var(--line-stark);
 }
 .person__portrait img { width: 100%; height: 100%; object-fit: cover; }
 .person__initialen {
   font-family: var(--schrift-titel);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--marke);
+  letter-spacing: .04em;
+  /* Optischer Ausgleich: die Sperrung schiebt den Satz nach rechts. */
+  text-indent: .04em;
+  color: var(--marke);   /* 7,25:1 auf --petrol-100 */
 }
 
 .person__name { margin-bottom: .1em; }

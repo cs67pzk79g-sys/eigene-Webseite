@@ -60,7 +60,8 @@ ausführlichen Checkliste.
 
 - [ ] **Rechtsform klären: GbR oder Einzelgewerbe?** Die Seite tritt als „wir“ auf;
       davon hängt ab, wer im Impressum steht → [1](#1-platzhalter-ausfüllen)
-- [ ] Portraitfoto einsetzen → [2](#2-bilder-ersetzen)
+- [ ] *(optional)* Portraitfotos einsetzen – die Karten tragen bewusst Initialen,
+      Fotos sind keine Pflicht → [2](#2-bilder-ersetzen)
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
 - [ ] **Kontaktformular scharf schalten** – Endpunkt einrichten und in der
       Datenschutzerklärung als Empfänger eintragen → [3](#3-kontaktformular-scharf-schalten)
@@ -116,9 +117,12 @@ Der Reihe nach:
 - **Projektvorschauen**: alle drei sind echte Screenshots, aufgenommen bei 1200 × 900
   (4:3, passt ohne Beschnitt in die Kachel). Kommt ein weiteres Projekt dazu, im selben
   Format aufnehmen, damit die Kacheln zusammenpassen.
-- **Portraits**: In der Sektion „Über uns“ steht bei beiden Personen statt eines
-  Fotos ein Platzhalterkreis. Der auszutauschende `<img>`-Tag steht als Kommentar
-  daneben. Beide Fotos im selben Zuschnitt aufnehmen, sonst wirken die Karten ungleich.
+- **Portraits**: In der Sektion „Über uns“ tragen beide Karten einen Kreis mit den
+  Initialen. Das ist eine Entscheidung, kein offener Platzhalter – die Seite ist damit
+  fertig. Wer später doch Fotos möchte, ersetzt den `span` durch den `<img>`-Tag, der
+  als Kommentar daneben steht, und nimmt beide Bilder im selben Zuschnitt auf, sonst
+  wirken die Karten ungleich. **Wichtig:** Werden die Namen geändert, müssen die
+  Initialen mitgeändert werden.
 - **Vorschaubild fürs Teilen** (Open Graph, 1200 × 630 px): unter `assets/`
   ablegen und im `<head>` als `og:image` verlinken. Ohne das sieht der Link in
   WhatsApp und LinkedIn nackt aus.
@@ -229,6 +233,16 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **Initialen statt Portraitfotos.** Es gibt keine Pflicht, Fotos von sich zu
+  veröffentlichen – § 5 DDG verlangt Name, Anschrift und Kontaktmöglichkeit, kein Bild.
+  Datenschutzrechtlich ist der Verzicht sogar die ruhigere Variante: Ein Portrait ist ein
+  personenbezogenes Datum und fällt zusätzlich unter das Recht am eigenen Bild; einmal
+  veröffentlicht, wird es indexiert und lässt sich praktisch nicht zurückholen. Anonym
+  ist die Seite deshalb nicht – die vollen Namen stehen im Impressum, wie es Pflicht ist.
+  Vertrauen entsteht bei dieser Zielgruppe ohnehin über sichtbare Arbeitsproben, den
+  Festpreis vorab, eine Telefonnummer und ein benanntes Einsatzgebiet. Fotos lassen sich
+  jederzeit nachrüsten.
 
 - **Die Seite spricht durchgängig als „wir“, und beide Personen tragen dieselbe
   Rollenzeile.** Das ist die sichtbare Umsetzung des gemeinsamen Auftritts: Es gibt
