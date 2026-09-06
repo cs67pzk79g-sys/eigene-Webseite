@@ -1075,7 +1075,19 @@ code {
 
 @media (min-width: 56rem) {
   .berater__form { grid-template-columns: repeat(2, 1fr); }
+  /* Bei drei Fragen bliebe die letzte allein in ihrer Zeile stehen. Sie laeuft
+     deshalb ueber beide Spalten, und ihre beiden Antworten stehen nebeneinander –
+     das liest sich als Absicht statt als Rest. */
+  .frage:last-of-type { grid-column: 1 / -1; }
+  .frage:last-of-type .wahl { margin-bottom: 0; }
+  .frage:last-of-type .wahl + .wahl { margin-top: .5rem; }
   .berater__aktion { grid-column: 1 / -1; }
+}
+
+@media (min-width: 72rem) {
+  /* Genug Platz: die beiden Antworten der letzten Frage nebeneinander */
+  .frage:last-of-type .wahlen { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .frage:last-of-type .wahlen .wahl { margin: 0; }
 }
 
 /* --- Wartung: bewusst kein Paket ------------------------------------------

@@ -392,7 +392,7 @@
           <div class="berater__kopf">
             <h3 class="berater__titel">Unsicher, was passt?</h3>
             <p class="berater__lead">
-              Vier Fragen, dann sage ich Ihnen, welches Paket ich empfehlen würde.
+              Drei Fragen, dann sage ich Ihnen, welches Paket ich empfehlen würde.
               Ihre Antworten bleiben in Ihrem Browser – nichts wird gespeichert oder
               verschickt.
             </p>
@@ -426,27 +426,18 @@
 
             <fieldset class="frage">
               <legend><span class="frage__nr">3</span> Wie wichtig ist Ihnen, bei Google gefunden zu werden?</legend>
-              <label class="wahl">
-                <input type="radio" name="f3" value="starter">
-                <span>Zweitrangig – meine Kundschaft kommt über Empfehlung</span>
-              </label>
-              <label class="wahl">
-                <input type="radio" name="f3" value="business">
-                <span>Wichtig – ich möchte auftauchen, wenn jemand in meiner Gegend sucht</span>
-              </label>
+              <div class="wahlen">
+                <label class="wahl">
+                  <input type="radio" name="f3" value="starter">
+                  <span>Zweitrangig – meine Kundschaft kommt über Empfehlung</span>
+                </label>
+                <label class="wahl">
+                  <input type="radio" name="f3" value="business">
+                  <span>Wichtig – ich möchte auftauchen, wenn jemand in meiner Gegend sucht</span>
+                </label>
+              </div>
             </fieldset>
 
-            <fieldset class="frage">
-              <legend><span class="frage__nr">4</span> Brauchen Sie eine dieser Funktionen?</legend>
-              <label class="wahl">
-                <input type="radio" name="f4" value="nein">
-                <span>Nein, nichts davon</span>
-              </label>
-              <label class="wahl">
-                <input type="radio" name="f4" value="ja">
-                <span>Online-Shop, Terminbuchung oder mehrere Sprachen</span>
-              </label>
-            </fieldset>
 
             <div class="berater__aktion">
               <button class="btn btn--primary" type="submit">Empfehlung anzeigen</button>

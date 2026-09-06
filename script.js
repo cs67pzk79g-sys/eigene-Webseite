@@ -11,7 +11,7 @@
      3  Mobile Navigation
      4  Branchen-Vorschau im Hero (Tabs + automatischer Wechsel)
      5  Scroll-Einblendungen (IntersectionObserver)
-     6  Paketberater: vier Fragen, eine Empfehlung
+     6  Paketberater: drei Fragen, eine Empfehlung
      7  Kontaktformular: Prüfung und Rückmeldung
    =========================================================================== */
 
@@ -282,8 +282,9 @@
 
   /* =========================================================================
      6 – PAKETBERATER
-     Vier Fragen, drei moegliche Ergebnisse. Die Auswertung passiert
-     ausschliesslich hier im Browser: nichts wird gespeichert, nichts gesendet.
+     Drei Fragen, zwei moegliche Ergebnisse – es kommt immer ein Paket heraus.
+     Die Auswertung passiert ausschliesslich hier im Browser: nichts wird
+     gespeichert, nichts gesendet.
      ========================================================================= */
 
   (function berater() {
@@ -291,6 +292,8 @@
     var ausgabe = document.getElementById('berater-ergebnis');
     var fehler = document.getElementById('berater-fehler');
     if (!form || !ausgabe) return;
+
+    var FRAGEN = ['f1', 'f2', 'f3'];
 
     var EMPFEHLUNGEN = {
       starter: {
@@ -306,20 +309,12 @@
               'wollen gefunden werden. Dafür ist ein Onepager zu klein. Business kostet ' +
               '1.200 bis 2.000 € als Festpreis.',
         knopf: 'Business anfragen'
-      },
-      gespraech: {
-        titel: 'Da passt kein Standardpaket.',
-        text: 'Online-Shop, Terminbuchung oder mehrere Sprachen sprengen den Festpreis. ' +
-              'Das rechne ich Ihnen lieber ehrlich einzeln aus, als es in ein Paket zu ' +
-              'quetschen, in das es nicht gehört.',
-        knopf: 'Erstgespräch vereinbaren'
       }
     };
 
+    // Mehrheit entscheidet: zwei von drei Antworten geben das Paket vor.
     function auswerten(daten) {
-      // Sonderfunktionen schlagen alles andere: dafuer gibt es kein Paket.
-      if (daten.f4 === 'ja') return 'gespraech';
-      var fuerBusiness = ['f1', 'f2', 'f3'].filter(function (feld) {
+      var fuerBusiness = FRAGEN.filter(function (feld) {
         return daten[feld] === 'business';
       }).length;
       return fuerBusiness >= 2 ? 'business' : 'starter';
@@ -377,12 +372,12 @@
       ereignis.preventDefault();
 
       var daten = {};
-      ['f1', 'f2', 'f3', 'f4'].forEach(function (feld) {
+      FRAGEN.forEach(function (feld) {
         var gewaehlt = form.querySelector('input[name="' + feld + '"]:checked');
         if (gewaehlt) daten[feld] = gewaehlt.value;
       });
 
-      var offen = ['f1', 'f2', 'f3', 'f4'].filter(function (f) { return !daten[f]; });
+      var offen = FRAGEN.filter(function (f) { return !daten[f]; });
       if (offen.length) {
         fehler.textContent = offen.length === 1
           ? 'Eine Frage ist noch offen.'
