@@ -240,7 +240,7 @@
 
         <header class="section__head reveal">
           <p class="eyebrow">Leistungen &amp; Preise</p>
-          <h2 id="leistungen-titel">Drei Pakete. Was drin ist, steht darunter.</h2>
+          <h2 id="leistungen-titel">Zwei Pakete. Was drin ist, steht darunter.</h2>
           <p class="section__lead">
             Sie sehen den Preis, bevor Sie anfragen. Kein „auf Anfrage“, keine Stundensätze,
             die am Ende überraschen. Wenn Ihr Projekt nicht in eines der Pakete passt,
@@ -270,6 +270,44 @@
               <li>Eine Korrekturschleife</li>
               <li>Fertig in 1–2 Wochen</li>
             </ul>
+
+            <!-- Aufklappbar mit dem HTML-eigenen details-Element: funktioniert ohne
+                 JavaScript, ist per Tastatur bedienbar und wird von Screenreadern
+                 von Haus aus richtig angesagt. -->
+            <details class="paket__mehr">
+              <summary>
+                <span>Mehr zu diesem Paket</span>
+                <span class="paket__pfeil" aria-hidden="true"></span>
+              </summary>
+              <div class="paket__detail">
+                <h4>Passt, wenn</h4>
+                <ul>
+                  <li>Sie bisher gar nicht im Netz sind oder nur einen Google-Eintrag haben</li>
+                  <li>Ihre Kundschaft vor allem wissen muss, was Sie machen und wie man Sie erreicht</li>
+                  <li>Sie schnell etwas Vorzeigbares brauchen</li>
+                </ul>
+                <h4>Passt eher nicht, wenn</h4>
+                <ul>
+                  <li>Sie mehrere Leistungen ausführlich erklären wollen – dann ist Business die
+                    richtige Größe</li>
+                </ul>
+                <h4>Was Sie beisteuern</h4>
+                <ul>
+                  <li>Texte oder Stichpunkte zu Ihren Leistungen</li>
+                  <li>Fotos von Betrieb, Team oder Arbeiten</li>
+                  <li>Ihr Logo, falls vorhanden</li>
+                </ul>
+                <p class="paket__detail-note">
+                  Fehlen Fotos oder Texte, besprechen wir im Erstgespräch, wie wir das lösen.
+                </p>
+                <h4>Nicht enthalten</h4>
+                <ul>
+                  <li>Hosting und Domain – die laufen über Ihren Anbieter und werden dort abgerechnet</li>
+                  <li>Fotoaufnahmen und das Verfassen längerer Texte</li>
+                </ul>
+              </div>
+            </details>
+
             <a class="btn btn--outline paket__cta" href="#kontakt">Starter anfragen</a>
           </article>
 
@@ -293,31 +331,44 @@
               <li>Impressum &amp; Datenschutzerklärung als vorbereiteter Baustein</li>
               <li>Zwei Korrekturschleifen</li>
             </ul>
-            <a class="btn btn--primary paket__cta" href="#kontakt">Business anfragen</a>
-          </article>
 
-          <!-- Paket 3: Wartung – bewusst kein Buchbutton -->
-          <article class="paket paket--abo reveal">
-            <header class="paket__head">
-              <h3 class="paket__name">Wartung &amp; Pflege</h3>
-              <p class="paket__typ">Optionales Monatsabo</p>
-              <p class="paket__preis"><span class="paket__betrag">20–50 €</span>
-                <span class="paket__einheit">pro Monat</span></p>
-            </header>
-            <p class="paket__text">
-              Wenn die Seite steht, halte ich sie auf Wunsch am Laufen – damit Sie sich
-              um Technik gar nicht erst kümmern müssen.
-            </p>
-            <ul class="paket__liste">
-              <li>Betreuung von Hosting und Domain</li>
-              <li>Kleine Textanpassungen, z. B. neue Öffnungszeiten</li>
-              <li>Regelmäßige Backups</li>
-            </ul>
-            <p class="paket__hinweis">
-              <strong>Nicht vorab buchbar.</strong> Wartung besprechen wir erst,
-              wenn Ihre Seite fertig ist – und nur, wenn Sie das möchten.
-              Ohne Wartung läuft Ihre Seite selbstverständlich weiter.
-            </p>
+            <details class="paket__mehr">
+              <summary>
+                <span>Mehr zu diesem Paket</span>
+                <span class="paket__pfeil" aria-hidden="true"></span>
+              </summary>
+              <div class="paket__detail">
+                <h4>Passt, wenn</h4>
+                <ul>
+                  <li>Sie mehrere Leistungen anbieten, die je eine eigene Seite verdienen</li>
+                  <li>Sie über Google gefunden werden wollen</li>
+                  <li>Sie Referenzen, Team oder Ablauf zeigen möchten</li>
+                </ul>
+                <h4>Was die Unterseiten üblicherweise sind</h4>
+                <ul>
+                  <li>Startseite, eine Seite je Leistung, Über uns, Kontakt</li>
+                  <li>Welche es genau werden, legen wir im Erstgespräch gemeinsam fest</li>
+                </ul>
+                <h4>Was Sie beisteuern</h4>
+                <ul>
+                  <li>Texte oder Stichpunkte zu jeder Leistung</li>
+                  <li>Fotos von Betrieb, Team oder Arbeiten</li>
+                  <li>Ihr Logo, falls vorhanden</li>
+                </ul>
+                <p class="paket__detail-note">
+                  Fehlen Fotos oder Texte, besprechen wir im Erstgespräch, wie wir das lösen.
+                </p>
+                <h4>Nicht enthalten</h4>
+                <ul>
+                  <li>Hosting und Domain – die laufen über Ihren Anbieter und werden dort abgerechnet</li>
+                  <li>Fotoaufnahmen und das Verfassen längerer Texte</li>
+                  <li>Online-Shop, Buchungssystem oder Mehrsprachigkeit – das sprengt den
+                    Festpreis. Sagen Sie im Erstgespräch Bescheid, dann rechne ich es passend.</li>
+                </ul>
+              </div>
+            </details>
+
+            <a class="btn btn--primary paket__cta" href="#kontakt">Business anfragen</a>
           </article>
 
         </div>
@@ -332,6 +383,113 @@
           oder „Alle Preise zzgl. 19 % Umsatzsteuer.“
           Hosting- und Domainkosten des jeweiligen Anbieters kommen separat hinzu.
         </p>
+
+        <!-- Paketberater: Hilfe fuer alle, die die beiden Karten gelesen haben und
+             trotzdem unsicher sind. Bewusst kurz, bewusst ohne Datenabfrage, und mit
+             einem dritten Ausgang fuer Faelle, die in kein Paket gehoeren. -->
+        <div class="berater reveal" id="berater">
+
+          <div class="berater__kopf">
+            <h3 class="berater__titel">Unsicher, was passt?</h3>
+            <p class="berater__lead">
+              Vier Fragen, dann sage ich Ihnen, welches Paket ich empfehlen würde.
+              Ihre Antworten bleiben in Ihrem Browser – nichts wird gespeichert oder
+              verschickt.
+            </p>
+          </div>
+
+          <form class="berater__form" id="berater-form" novalidate>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">1</span> Was soll die Seite vor allem leisten?</legend>
+              <label class="wahl">
+                <input type="radio" name="f1" value="starter">
+                <span>Überhaupt gefunden werden: wer ich bin, was ich mache, wie man mich erreicht</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f1" value="business">
+                <span>Meine Leistungen einzeln erklären, damit Kunden vorher verstehen, was sie bekommen</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">2</span> Wie viele Leistungen wollen Sie zeigen?</legend>
+              <label class="wahl">
+                <input type="radio" name="f2" value="starter">
+                <span>Ein bis zwei – in ein paar Sätzen erzählt</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f2" value="business">
+                <span>Mehrere, und jede verdient ihre eigene Erklärung</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">3</span> Wie wichtig ist Ihnen, bei Google gefunden zu werden?</legend>
+              <label class="wahl">
+                <input type="radio" name="f3" value="starter">
+                <span>Zweitrangig – meine Kundschaft kommt über Empfehlung</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f3" value="business">
+                <span>Wichtig – ich möchte auftauchen, wenn jemand in meiner Gegend sucht</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="frage">
+              <legend><span class="frage__nr">4</span> Brauchen Sie eine dieser Funktionen?</legend>
+              <label class="wahl">
+                <input type="radio" name="f4" value="nein">
+                <span>Nein, nichts davon</span>
+              </label>
+              <label class="wahl">
+                <input type="radio" name="f4" value="ja">
+                <span>Online-Shop, Terminbuchung oder mehrere Sprachen</span>
+              </label>
+            </fieldset>
+
+            <div class="berater__aktion">
+              <button class="btn btn--primary" type="submit">Empfehlung anzeigen</button>
+              <p class="berater__fehler" id="berater-fehler" role="alert"></p>
+            </div>
+          </form>
+
+          <!-- Wird per JavaScript gefuellt und eingeblendet -->
+          <div class="berater__ergebnis" id="berater-ergebnis" role="status" tabindex="-1" hidden></div>
+
+          <noscript>
+            <p class="berater__ohne-js">
+              Diese Hilfe braucht JavaScript. Ohne geht es genauso gut:
+              <a href="#kontakt">Schreiben Sie mir zwei Sätze zu Ihrem Betrieb</a>,
+              dann sage ich Ihnen, was passt.
+            </p>
+          </noscript>
+        </div>
+
+        <!-- Wartung steht bewusst AUSSERHALB des Paketrasters und sieht anders aus.
+             Drei gleichrangige Karten hatten suggeriert, man könne alle drei einzeln
+             buchen – genau das ist bei der Wartung nicht der Fall. -->
+        <aside class="wartung reveal" aria-labelledby="wartung-titel">
+          <div class="wartung__text">
+            <p class="wartung__kicker">Kein Paket – eine Möglichkeit danach</p>
+            <h3 class="wartung__titel" id="wartung-titel">Wartung &amp; Pflege</h3>
+            <p class="wartung__satz">
+              <strong>Wartung können Sie nicht einzeln buchen.</strong> Sie setzt eine
+              fertige Seite voraus – deshalb steht sie hier abseits der beiden Pakete.
+              Wir sprechen darüber erst, wenn Ihre Seite steht, und nur, wenn Sie möchten.
+              Ohne Wartung läuft Ihre Seite selbstverständlich weiter.
+            </p>
+          </div>
+          <div class="wartung__inhalt">
+            <p class="wartung__preis"><span class="wartung__betrag">20–50 €</span>
+              <span class="wartung__einheit">pro Monat</span></p>
+            <ul class="wartung__liste">
+              <li>Betreuung von Hosting und Domain</li>
+              <li>Kleine Textanpassungen, z.&nbsp;B. neue Öffnungszeiten</li>
+              <li>Regelmäßige Backups</li>
+            </ul>
+          </div>
+        </aside>
 
       </div>
     </section>

@@ -11,7 +11,8 @@
      3  Mobile Navigation
      4  Branchen-Vorschau im Hero (Tabs + automatischer Wechsel)
      5  Scroll-Einblendungen (IntersectionObserver)
-     6  Kontaktformular: Prüfung und Rückmeldung
+     6  Paketberater: vier Fragen, eine Empfehlung
+     7  Kontaktformular: Prüfung und Rückmeldung
    =========================================================================== */
 
 (function () {
@@ -280,7 +281,126 @@
 
 
   /* =========================================================================
-     6 – KONTAKTFORMULAR
+     6 – PAKETBERATER
+     Vier Fragen, drei moegliche Ergebnisse. Die Auswertung passiert
+     ausschliesslich hier im Browser: nichts wird gespeichert, nichts gesendet.
+     ========================================================================= */
+
+  (function berater() {
+    var form = document.getElementById('berater-form');
+    var ausgabe = document.getElementById('berater-ergebnis');
+    var fehler = document.getElementById('berater-fehler');
+    if (!form || !ausgabe) return;
+
+    var EMPFEHLUNGEN = {
+      starter: {
+        titel: 'Starter passt zu Ihnen.',
+        text: 'Sie wollen vor allem gefunden und erreichbar sein. Dafür genügt eine ' +
+              'gut gebaute Seite – fertig in ein bis zwei Wochen, zum Festpreis von ' +
+              '600 bis 900 €.',
+        knopf: 'Starter anfragen'
+      },
+      business: {
+        titel: 'Business passt zu Ihnen.',
+        text: 'Sie haben mehrere Leistungen, die je eine eigene Seite verdienen, und ' +
+              'wollen gefunden werden. Dafür ist ein Onepager zu klein. Business kostet ' +
+              '1.200 bis 2.000 € als Festpreis.',
+        knopf: 'Business anfragen'
+      },
+      gespraech: {
+        titel: 'Da passt kein Standardpaket.',
+        text: 'Online-Shop, Terminbuchung oder mehrere Sprachen sprengen den Festpreis. ' +
+              'Das rechne ich Ihnen lieber ehrlich einzeln aus, als es in ein Paket zu ' +
+              'quetschen, in das es nicht gehört.',
+        knopf: 'Erstgespräch vereinbaren'
+      }
+    };
+
+    function auswerten(daten) {
+      // Sonderfunktionen schlagen alles andere: dafuer gibt es kein Paket.
+      if (daten.f4 === 'ja') return 'gespraech';
+      var fuerBusiness = ['f1', 'f2', 'f3'].filter(function (feld) {
+        return daten[feld] === 'business';
+      }).length;
+      return fuerBusiness >= 2 ? 'business' : 'starter';
+    }
+
+    function anzeigen(schluessel) {
+      var e = EMPFEHLUNGEN[schluessel];
+      ausgabe.innerHTML = '';
+
+      var titel = document.createElement('p');
+      titel.className = 'berater__ergebnis-titel';
+      titel.textContent = e.titel;
+
+      var text = document.createElement('p');
+      text.className = 'berater__ergebnis-text';
+      text.textContent = e.text;
+
+      var hinweis = document.createElement('p');
+      hinweis.className = 'berater__ergebnis-hinweis';
+      hinweis.textContent = 'Das ist ein Vorschlag, keine Festlegung. Im Erstgespräch ' +
+        'schauen wir gemeinsam, ob es wirklich passt – und wenn nicht, sage ich das.';
+
+      var reihe = document.createElement('div');
+      reihe.className = 'berater__ergebnis-aktion';
+
+      var link = document.createElement('a');
+      link.className = 'btn btn--primary';
+      link.href = '#kontakt';
+      link.textContent = e.knopf;
+
+      var neu = document.createElement('button');
+      neu.className = 'btn btn--outline';
+      neu.type = 'button';
+      neu.textContent = 'Antworten zurücksetzen';
+      neu.addEventListener('click', function () {
+        form.reset();
+        ausgabe.hidden = true;
+        ausgabe.innerHTML = '';
+        fehler.textContent = '';
+        form.querySelector('input').focus();
+      });
+
+      reihe.appendChild(link);
+      reihe.appendChild(neu);
+      ausgabe.appendChild(titel);
+      ausgabe.appendChild(text);
+      ausgabe.appendChild(hinweis);
+      ausgabe.appendChild(reihe);
+
+      ausgabe.hidden = false;
+      ausgabe.focus();   // Screenreader landen direkt auf der Empfehlung
+    }
+
+    form.addEventListener('submit', function (ereignis) {
+      ereignis.preventDefault();
+
+      var daten = {};
+      ['f1', 'f2', 'f3', 'f4'].forEach(function (feld) {
+        var gewaehlt = form.querySelector('input[name="' + feld + '"]:checked');
+        if (gewaehlt) daten[feld] = gewaehlt.value;
+      });
+
+      var offen = ['f1', 'f2', 'f3', 'f4'].filter(function (f) { return !daten[f]; });
+      if (offen.length) {
+        fehler.textContent = offen.length === 1
+          ? 'Eine Frage ist noch offen.'
+          : 'Es sind noch ' + offen.length + ' Fragen offen.';
+        var ersteOffene = form.querySelector('input[name="' + offen[0] + '"]');
+        if (ersteOffene) ersteOffene.focus();
+        ausgabe.hidden = true;
+        return;
+      }
+
+      fehler.textContent = '';
+      anzeigen(auswerten(daten));
+    });
+  })();
+
+
+  /* =========================================================================
+     7 – KONTAKTFORMULAR
      ========================================================================= */
 
   (function formular() {
