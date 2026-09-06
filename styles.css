@@ -1328,11 +1328,11 @@ code {
 
 
 /* ===========================================================================
-   9 – ÜBER MICH
+   9 – ÜBER UNS
    =========================================================================== */
 
-/* Das Raster funktioniert bewusst mit einer ODER zwei Karten:
-   bei einer Person füllt sie die Reihe, bei zweien stehen sie nebeneinander. */
+/* Das Raster traegt zwei gleichwertige Karten nebeneinander und faellt unter
+   der Mindestbreite auf eine Spalte zurueck. */
 .personen {
   display: grid;
   gap: 1.5rem;
@@ -1381,6 +1381,17 @@ code {
   color: var(--ink-muted);
 }
 .person__text p { font-size: var(--t-klein); color: var(--ink-muted); }
+
+/* Gemeinsame Aussage unter den beiden Karten: gehoert keiner Person allein,
+   deshalb steht sie ausserhalb des Rasters und etwas groesser. */
+.ueber__gemeinsam {
+  max-width: 46rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+  font-size: var(--t-lead);
+  color: var(--ink-muted);
+  text-wrap: balance;
+}
 
 @media (min-width: 34rem) {
   .person { grid-template-columns: auto 1fr; }
