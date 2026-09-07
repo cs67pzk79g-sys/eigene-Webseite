@@ -1158,6 +1158,12 @@ code {
   font-size: var(--t-klein);
   color: var(--ink-muted);
 }
+.wartung__grenze {
+  margin: .9rem 0 0;
+  font-size: var(--t-mini);
+  color: var(--ink-muted);
+}
+
 .wartung__liste li::before {
   content: "";
   position: absolute;
