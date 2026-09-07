@@ -213,6 +213,30 @@ Geschäftsentscheidung ist.
 
 ---
 
+## Preise – wo sie überall stehen
+
+Die Paketpreise stehen an **sechs** Stellen in zwei Dateien. Wer einen Preis ändert,
+muss alle sechs anfassen, sonst widerspricht sich die Seite:
+
+| Stelle | Datei |
+|---|---|
+| Paketkarte Starter | `index.html`, `.paket__betrag` |
+| Paketkarte Business | `index.html`, `.paket__betrag` |
+| Hero-Fakt „Festpreis ab …" | `index.html`, `.hero__facts` |
+| Meta-Beschreibung im `<head>` | `index.html` |
+| Empfehlungstext Starter | `script.js`, `EMPFEHLUNGEN.starter` |
+| Empfehlungstext Business | `script.js`, `EMPFEHLUNGEN.business` |
+
+Der Wartungspreis und sein Umfang stehen an **vier** Stellen: im Wartungsblock
+(`index.html`, `.wartung__preis` und `.wartung__grenze`), in Schritt 5 des Ablaufs,
+in der FAQ-Antwort „Was ist, wenn ich später etwas ändern will?" – und dieselbe
+Antwort noch einmal im FAQPage-Schema im `<head>`. Die letzten beiden müssen
+wortgleich bleiben.
+
+**Aktueller Stand:** Starter 900–1.300 €, Business 1.800–2.800 €, Wartung
+20–50 €/Monat mit bis zu zwei Textänderungen; alles darüber nach Aufwand.
+
+
 ## Rechtliche Einordnung (Stand des Entwurfs)
 
 | Punkt | Status |

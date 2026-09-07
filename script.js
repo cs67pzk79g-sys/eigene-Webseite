@@ -300,14 +300,14 @@
         titel: 'Empfehlung: Starter',
         text: 'Ihr Schwerpunkt liegt auf Auffindbarkeit und Erreichbarkeit. Dafür ' +
               'genügt eine sorgfältig gebaute Seite: fertig in ein bis zwei Wochen, ' +
-              'Festpreis 600 bis 900 €.',
+              'Festpreis 900 bis 1.300 €.',
         knopf: 'Starter anfragen'
       },
       business: {
         titel: 'Empfehlung: Business',
         text: 'Sie haben mehrere Leistungsbereiche, die jeweils eine eigene Seite ' +
               'brauchen, und wollen über die Suche gefunden werden. Dafür ist ein ' +
-              'Onepager zu klein. Festpreis 1.200 bis 2.000 €.',
+              'Onepager zu klein. Festpreis 1.800 bis 2.800 €.',
         knopf: 'Business anfragen'
       }
     };
