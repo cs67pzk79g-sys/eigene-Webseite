@@ -308,6 +308,12 @@ Getestet in Chromium über einen lokalen Server:
   alle“ überzeugt niemanden. Weil drei Reiter sich aber schnell wie eine abschließende
   Aufzählung lesen, sagt es die Überschrift darüber direkt: „So könnte Ihre Seite
   aussehen – **zum Beispiel für:**“ bildet zusammen mit dem aktiven Reiter einen Satz.
+  Dieselbe Klarstellung steht in der Hauptüberschrift: „Individuelle Webseiten –
+  **unter anderem für** Handwerk, Salon und Gastro.“ Bewusst eine andere Wendung als
+  bei den Reitern – zweimal „zum Beispiel“ im selben Bildausschnitt läse sich wie ein
+  Echo, und „unter anderem“ sagt zusätzlich, dass es mehr gibt. „unter anderem“ und der
+  Gedankenstrich hängen per `&nbsp;` an ihren Nachbarn, damit die Zeile nicht mitten in
+  der Wendung oder vor dem Strich umbricht.
   Darunter hält ein zweiter Hinweis die Tür für alle anderen Branchen offen. Beides
   kostet den Fokus nichts und fängt genau die Besucher ab, die sonst ohne Anfrage
   weiterklicken. Die Wörter „Beispiel“ und „beispielhaft“ stehen deshalb bewusst nur
