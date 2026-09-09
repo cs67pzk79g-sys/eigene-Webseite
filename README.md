@@ -306,9 +306,12 @@ Getestet in Chromium über einen lokalen Server:
 - **Drei Branchen als Beispiele, nicht als Liste.** Der Fokus auf Handwerk, Salon und
   Gastro bleibt – er macht die Seite für diese Betriebe glaubwürdig, und eine Seite „für
   alle“ überzeugt niemanden. Weil drei Reiter sich aber schnell wie eine abschließende
-  Aufzählung lesen, steht direkt unter der Branchen-Vorschau ein Satz, der die Tür
-  offen hält. Er kostet den Fokus nichts und fängt genau die Besucher ab, die sonst
-  ohne Anfrage weiterklicken.
+  Aufzählung lesen, sagt es die Überschrift darüber direkt: „So könnte Ihre Seite
+  aussehen – **zum Beispiel für:**“ bildet zusammen mit dem aktiven Reiter einen Satz.
+  Darunter hält ein zweiter Hinweis die Tür für alle anderen Branchen offen. Beides
+  kostet den Fokus nichts und fängt genau die Besucher ab, die sonst ohne Anfrage
+  weiterklicken. Die Wörter „Beispiel“ und „beispielhaft“ stehen deshalb bewusst nur
+  einmal in diesem Bereich – wer hier etwas ergänzt, sollte sie nicht erneut aufgreifen.
 
   **Vorsicht bei reglementierten Berufen.** Anfragen aus Heilberufen (Arztpraxis,
   Physiotherapie, Heilpraktik, Apotheke) oder aus Rechts- und Steuerberatung sind
