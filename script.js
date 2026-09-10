@@ -336,7 +336,7 @@
       hinweis.className = 'berater__ergebnis-hinweis';
       hinweis.textContent = 'Diese Einschätzung beruht auf drei Fragen und ist ' +
         'unverbindlich. Im Erstgespräch prüfen wir, ob das Paket zu Ihrem Vorhaben ' +
-        'passt – falls nicht, sagen wir Ihnen das.';
+        'passt – falls nicht, sage ich Ihnen das.';
 
       var reihe = document.createElement('div');
       reihe.className = 'berater__ergebnis-aktion';
@@ -421,7 +421,7 @@
         feld: form.querySelector('#f-mail'),
         fehler: document.getElementById('fehler-mail'),
         pruefen: function (wert) {
-          if (wert.trim().length === 0) return 'Ohne E-Mail-Adresse können wir nicht antworten.';
+          if (wert.trim().length === 0) return 'Ohne E-Mail-Adresse kann ich nicht antworten.';
           // Bewusst großzügig: strengere Muster sperren gültige Adressen aus.
           if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(wert.trim())) {
             return 'Diese E-Mail-Adresse sieht nicht vollständig aus.';
@@ -434,7 +434,7 @@
         fehler: document.getElementById('fehler-projekt'),
         pruefen: function (wert) {
           if (wert.trim().length === 0) return 'Bitte beschreiben Sie kurz Ihr Vorhaben.';
-          if (wert.trim().length < 10) return 'Ein bis zwei Sätze mehr helfen uns sehr weiter.';
+          if (wert.trim().length < 10) return 'Ein bis zwei Sätze mehr helfen mir sehr weiter.';
           return '';
         }
       },
@@ -443,7 +443,7 @@
         fehler: document.getElementById('fehler-dsgvo'),
         istHaken: true,
         pruefen: function (_wert, angehakt) {
-          return angehakt ? '' : 'Ohne diese Einwilligung dürfen wir Ihre Anfrage nicht verarbeiten.';
+          return angehakt ? '' : 'Ohne diese Einwilligung darf ich Ihre Anfrage nicht verarbeiten.';
         }
       }
     ].filter(function (regel) { return regel.feld && regel.fehler; });
@@ -503,7 +503,7 @@
           status.textContent =
             'Ihre Angaben sind vollständig – abgeschickt wurde aber noch nichts: ' +
             'Diese Seite ist ein Entwurf und hat noch kein Ziel für das Formular. ' +
-            'Bitte schreiben Sie uns bis dahin direkt per E-Mail.';
+            'Bitte schreiben Sie mir bis dahin direkt per E-Mail.';
           status.focus && status.focus();
         }
         return;
