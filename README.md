@@ -30,6 +30,7 @@ assets/
   projekt-sonnenwerk.jpg      Echter Screenshot des Demo-Projekts Sonnenwerk Solartechnik
 
 README.md                     diese Datei – Launch-Checkliste und rechtliche Einordnung
+ARBEITSABLAUF.md              Hosting, Kundenprojekte, Veröffentlichen – alles außerhalb der Website
 DEMOS-VORBEREITEN.md          Anleitung für die drei Demo-Repositories (Pages, Rechtsseiten, Banner)
 ```
 
