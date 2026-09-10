@@ -1,0 +1,486 @@
+(function () {
+  "use strict";
+
+  // ---------- Mobile navigation ----------
+  var navToggle = document.getElementById("navToggle");
+  var mainNav = document.getElementById("mainNav");
+
+  if (navToggle && mainNav) {
+    var closeMobileNav = function (opts) {
+      mainNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      if (opts && opts.returnFocus) navToggle.focus();
+    };
+
+    navToggle.addEventListener("click", function () {
+      var isOpen = mainNav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () { closeMobileNav(); });
+    });
+
+    // Standard Verhalten fuer aufklappbare Menues: Escape schliesst und
+    // gibt den Fokus zurueck an den Toggle-Button; ein Klick ausserhalb
+    // schliesst ebenfalls.
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && mainNav.classList.contains("is-open")) {
+        closeMobileNav({ returnFocus: true });
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (
+        mainNav.classList.contains("is-open") &&
+        !mainNav.contains(event.target) &&
+        !navToggle.contains(event.target)
+      ) {
+        closeMobileNav();
+      }
+    });
+  }
+
+  // ---------- Scroll-spy: highlight the current section's nav link ----------
+  // Covers both the one-page main nav on index.html (#leistungen, #ablauf, …)
+  // and the in-page Sprungmarken-Leiste on the Leistungen-Detailseiten
+  // (#wissenswertes, #ablauf, …). Links whose hash has no matching section
+  // on this page simply never get observed — harmless no-op.
+  function setupScrollSpy(navSelector) {
+    var links = document.querySelectorAll(navSelector);
+    if (!links.length || !("IntersectionObserver" in window)) return;
+
+    var linkByHash = {};
+    links.forEach(function (link) {
+      var hash = (link.getAttribute("href") || "").split("#")[1];
+      if (hash) linkByHash[hash] = link;
+    });
+
+    var sections = Object.keys(linkByHash)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(function (el) { return el; });
+    if (!sections.length) return;
+
+    var spyObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var link = linkByHash[entry.target.id];
+          if (!link) return;
+          links.forEach(function (l) { l.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach(function (section) { spyObserver.observe(section); });
+  }
+
+  setupScrollSpy(".main-nav a[href^=\"#\"]:not(.btn)");
+  setupScrollSpy(".detail-quicknav a[href^=\"#\"]");
+
+  // ---------- Theme-Toggle (hell/dunkel/System) ----------
+  // Die Startpraeferenz wird bereits per Inline-Skript im <head> gesetzt, um
+  // ein Aufblitzen des falschen Themes beim Laden zu vermeiden. Hier folgt
+  // nur noch die Umschalt-Interaktion inkl. Persistenz in localStorage.
+  var themeToggle = document.getElementById("themeToggle");
+
+  function getEffectiveTheme() {
+    var explicit = document.documentElement.getAttribute("data-theme");
+    if (explicit === "light" || explicit === "dark") return explicit;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  function updateThemeToggleLabel() {
+    if (!themeToggle) return;
+    var effective = getEffectiveTheme();
+    themeToggle.setAttribute(
+      "aria-label",
+      effective === "dark" ? "Helles Design aktivieren" : "Dunkles Design aktivieren"
+    );
+  }
+
+  if (themeToggle) {
+    updateThemeToggleLabel();
+    themeToggle.addEventListener("click", function () {
+      var next = getEffectiveTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+      updateThemeToggleLabel();
+    });
+  }
+
+  // ---------- Sticky header shadow ----------
+  var header = document.getElementById("siteHeader");
+  if (header) {
+    window.addEventListener("scroll", function () {
+      header.classList.toggle("scrolled", window.scrollY > 8);
+    });
+  }
+
+  // ---------- Scroll reveal ----------
+  var revealEls = document.querySelectorAll(".reveal");
+
+  // Stagger siblings that reveal together (e.g. cards in a grid) so they
+  // cascade in rather than all popping in at once.
+  var staggerParent = null;
+  var staggerIndex = 0;
+  revealEls.forEach(function (el) {
+    // Explizite Verzoegerung (z.B. damit ein Element erst nach einer
+    // Kaskade in einem Nachbar-Container einsetzt) hat Vorrang vor der
+    // automatischen Geschwister-Staffelung.
+    if (el.hasAttribute("data-reveal-delay")) {
+      el.style.transitionDelay = el.getAttribute("data-reveal-delay") + "ms";
+      return;
+    }
+    if (el.parentElement !== staggerParent) {
+      staggerParent = el.parentElement;
+      staggerIndex = 0;
+    }
+    el.style.transitionDelay = (Math.min(staggerIndex, 6) * 55) + "ms";
+    staggerIndex++;
+  });
+
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  var prefersReducedMotion = window.matchMedia
+    ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    : false;
+
+  // ---------- Kennzahlen-Leiste: Count-up beim Scrollen ins Bild ----------
+  var statNumEls = document.querySelectorAll(".stat-num[data-count-target]");
+  if (statNumEls.length) {
+    var formatStatValue = function (value, decimals) {
+      return value.toLocaleString("de-DE", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      });
+    };
+
+    var animateStatCount = function (el) {
+      var target = parseFloat(el.getAttribute("data-count-target"));
+      var decimals = parseInt(el.getAttribute("data-count-decimals") || "0", 10);
+      var suffix = el.getAttribute("data-count-suffix") || "";
+
+      if (prefersReducedMotion) {
+        el.textContent = formatStatValue(target, decimals) + suffix;
+        return;
+      }
+
+      var duration = 1400;
+      var startTime = null;
+
+      function step(timestamp) {
+        if (startTime === null) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = formatStatValue(target * eased, decimals) + suffix;
+        if (progress < 1) window.requestAnimationFrame(step);
+      }
+      window.requestAnimationFrame(step);
+    };
+
+    if ("IntersectionObserver" in window) {
+      var statObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animateStatCount(entry.target);
+              statObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      statNumEls.forEach(function (el) { statObserver.observe(el); });
+    }
+  }
+
+  // ---------- FAQ: smooth accordion ----------
+  document.querySelectorAll(".faq-item").forEach(function (details) {
+    var summary = details.querySelector("summary");
+    var panel = details.querySelector("p");
+    if (!summary || !panel || prefersReducedMotion) return;
+
+    summary.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (details.hasAttribute("open")) {
+        collapseFaq(details, panel);
+      } else {
+        expandFaq(details, panel);
+      }
+    });
+  });
+
+  function expandFaq(details, panel) {
+    details.setAttribute("open", "");
+    var targetHeight = panel.scrollHeight;
+    panel.style.height = "0px";
+    panel.style.opacity = "0";
+    requestAnimationFrame(function () {
+      panel.style.transition = "height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease";
+      panel.style.height = targetHeight + "px";
+      panel.style.opacity = "1";
+    });
+    panel.addEventListener("transitionend", function handler(e) {
+      if (e.propertyName !== "height") return;
+      panel.style.height = "auto";
+      panel.removeEventListener("transitionend", handler);
+    });
+  }
+
+  function collapseFaq(details, panel) {
+    var startHeight = panel.scrollHeight;
+    panel.style.height = startHeight + "px";
+    requestAnimationFrame(function () {
+      panel.style.transition = "height 0.3s cubic-bezier(0.4,0,1,1), opacity 0.2s ease";
+      panel.style.height = "0px";
+      panel.style.opacity = "0";
+    });
+    panel.addEventListener("transitionend", function handler(e) {
+      if (e.propertyName !== "height") return;
+      details.removeAttribute("open");
+      panel.removeEventListener("transitionend", handler);
+    });
+  }
+
+  // ---------- Ersparnis-Rechner ----------
+  var roofArea = document.getElementById("roofArea");
+  var consumption = document.getElementById("consumption");
+  var price = document.getElementById("price");
+
+  var roofAreaOut = document.getElementById("roofAreaOut");
+  var consumptionOut = document.getElementById("consumptionOut");
+  var priceOut = document.getElementById("priceOut");
+
+  var outKwp = document.getElementById("outKwp");
+  var outSavings = document.getElementById("outSavings");
+  var outPayback = document.getElementById("outPayback");
+  var paybackRingFill = document.getElementById("paybackRingFill");
+  var paybackRingLabel = document.getElementById("paybackRingLabel");
+
+  var M2_PER_KWP = 6;
+  var YIELD_PER_KWP = 950;
+  var SELF_CONSUMPTION_SHARE = 0.3;
+  var FEED_IN_TARIFF = 0.08;
+  var COST_PER_KWP = 1500;
+  var SYSTEM_LIFETIME_YEARS = 25;
+  var RING_CIRCUMFERENCE = 2 * Math.PI * 26;
+
+  function formatNumber(value, decimals) {
+    return value.toLocaleString("de-DE", {
+      minimumFractionDigits: decimals || 0,
+      maximumFractionDigits: decimals || 0,
+    });
+  }
+
+  // Keeps the custom filled track in sync 1:1 with the thumb, every input event.
+  function updateRangeFill(input) {
+    if (!input || !input.parentElement) return;
+    var min = Number(input.min) || 0;
+    var max = Number(input.max) || 100;
+    var fraction = (Number(input.value) - min) / (max - min);
+    input.parentElement.style.setProperty("--val", fraction);
+  }
+
+  function updateCalculator() {
+    if (!roofArea || !consumption || !price) return;
+
+    var area = Number(roofArea.value);
+    var yearlyConsumption = Number(consumption.value);
+    var pricePerKwh = Number(price.value) / 100;
+
+    roofAreaOut.textContent = formatNumber(area) + " m²";
+    consumptionOut.textContent = formatNumber(yearlyConsumption) + " kWh";
+    priceOut.textContent = Number(price.value) + " ct";
+
+    updateRangeFill(roofArea);
+    updateRangeFill(consumption);
+    updateRangeFill(price);
+
+    var kwp = Math.min(area / M2_PER_KWP, yearlyConsumption / YIELD_PER_KWP * 1.6);
+    kwp = Math.max(kwp, 1);
+
+    var yearlyProduction = kwp * YIELD_PER_KWP;
+    var selfConsumed = Math.min(yearlyProduction * SELF_CONSUMPTION_SHARE, yearlyConsumption);
+    var fedIn = Math.max(yearlyProduction - selfConsumed, 0);
+
+    var yearlySavings = selfConsumed * pricePerKwh + fedIn * FEED_IN_TARIFF;
+    var systemCost = kwp * COST_PER_KWP;
+    var paybackYears = yearlySavings > 0 ? systemCost / yearlySavings : 0;
+
+    outKwp.textContent = "≈ " + formatNumber(kwp, 1) + " kWp";
+    outSavings.textContent = "≈ " + formatNumber(yearlySavings) + " € / Jahr";
+    outPayback.textContent = "≈ " + formatNumber(paybackYears, 1) + " Jahre";
+
+    if (paybackRingFill && paybackRingLabel) {
+      var ringFraction = Math.min(Math.max(paybackYears / SYSTEM_LIFETIME_YEARS, 0), 1);
+      paybackRingFill.style.strokeDashoffset = String(RING_CIRCUMFERENCE * (1 - ringFraction));
+      paybackRingLabel.textContent = formatNumber(paybackYears, 1);
+    }
+  }
+
+  [roofArea, consumption, price].forEach(function (input) {
+    if (input) input.addEventListener("input", updateCalculator);
+  });
+
+  updateCalculator();
+
+  // ---------- Hero-Mini-Rechner ----------
+  // Vereinfachte Vorschau des Ersparnis-Rechners direkt im Hero: ein Regler
+  // (Stromverbrauch), Dachfläche und Strompreis auf typische Werte fixiert.
+  // Nutzt dieselben Konstanten/Formeln wie oben, damit die Zahlen zum
+  // vollständigen Rechner weiter unten passen.
+  var heroConsumption = document.getElementById("heroConsumption");
+  var heroConsumptionOut = document.getElementById("heroConsumptionOut");
+  var heroOutKwp = document.getElementById("heroOutKwp");
+  var heroOutSavings = document.getElementById("heroOutSavings");
+  var heroModuleIcons = document.querySelectorAll("#heroModuleGauge .module-icon");
+  var HERO_DEFAULT_PRICE = 0.32;
+
+  // Modul-Gauge-Grenzen aus den Regler-Grenzen ableiten, damit sie automatisch
+  // mitwandern, falls min/max am Regler jemals angepasst werden.
+  var heroKwpMin = heroConsumption
+    ? Number(heroConsumption.min) / YIELD_PER_KWP * 1.6
+    : 0;
+  var heroKwpMax = heroConsumption
+    ? Number(heroConsumption.max) / YIELD_PER_KWP * 1.6
+    : 1;
+
+  function updateHeroCalculator() {
+    if (!heroConsumption) return;
+
+    var yearlyConsumption = Number(heroConsumption.value);
+    heroConsumptionOut.textContent = formatNumber(yearlyConsumption) + " kWh";
+    updateRangeFill(heroConsumption);
+
+    var kwp = Math.max(yearlyConsumption / YIELD_PER_KWP * 1.6, 1);
+    var yearlyProduction = kwp * YIELD_PER_KWP;
+    var selfConsumed = Math.min(yearlyProduction * SELF_CONSUMPTION_SHARE, yearlyConsumption);
+    var fedIn = Math.max(yearlyProduction - selfConsumed, 0);
+    var yearlySavings = selfConsumed * HERO_DEFAULT_PRICE + fedIn * FEED_IN_TARIFF;
+
+    heroOutKwp.textContent = "≈ " + formatNumber(kwp, 1) + " kWp";
+    heroOutSavings.textContent = "≈ " + formatNumber(yearlySavings) + " €";
+
+    if (heroModuleIcons.length) {
+      var ratio = (kwp - heroKwpMin) / (heroKwpMax - heroKwpMin);
+      var activeCount = Math.max(1, Math.round(ratio * heroModuleIcons.length));
+      heroModuleIcons.forEach(function (icon, i) {
+        icon.classList.toggle("is-active", i < activeCount);
+      });
+    }
+  }
+
+  if (heroConsumption) {
+    heroConsumption.addEventListener("input", updateHeroCalculator);
+    updateHeroCalculator();
+  }
+
+  // ---------- Kontaktformular (Netlify Forms) ----------
+  var form = document.getElementById("kontaktForm");
+
+  // Eigene, freundliche Inline-Fehlermeldungen statt der Browser-Standard-
+  // Validierungs-Sprechblasen (das Formular traegt dafuer "novalidate").
+  var FIELD_MESSAGES = {
+    name: "Bitte geben Sie Ihren Namen ein.",
+    email: {
+      typeMismatch: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      valueMissing: "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+    },
+    datenschutz: "Bitte bestätigen Sie die Datenschutzhinweise.",
+  };
+
+  function fieldMessage(input) {
+    var msgs = FIELD_MESSAGES[input.name];
+    if (typeof msgs === "string") return msgs;
+    if (msgs && input.validity.typeMismatch) return msgs.typeMismatch;
+    if (msgs && input.validity.valueMissing) return msgs.valueMissing;
+    return "Bitte überprüfen Sie dieses Feld.";
+  }
+
+  function validateField(input) {
+    var errorEl = document.getElementById(input.id + "Error");
+    var wrapper = input.closest(".field");
+    var valid = input.validity.valid;
+    if (wrapper) wrapper.classList.toggle("is-invalid", !valid);
+    if (errorEl) {
+      errorEl.textContent = valid ? "" : fieldMessage(input);
+      errorEl.hidden = valid;
+    }
+    return valid;
+  }
+
+  if (form) {
+    var formError = document.getElementById("kontaktFormError");
+    var requiredFields = [
+      document.getElementById("name"),
+      document.getElementById("email"),
+      document.getElementById("datenschutz"),
+    ].filter(Boolean);
+
+    requiredFields.forEach(function (input) {
+      input.addEventListener("input", function () { validateField(input); });
+      input.addEventListener("change", function () { validateField(input); });
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var firstInvalid = null;
+      requiredFields.forEach(function (input) {
+        var valid = validateField(input);
+        if (!valid && !firstInvalid) firstInvalid = input;
+      });
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      if (formError) formError.hidden = true;
+
+      var submitButton = form.querySelector("button[type=submit]");
+      if (submitButton) submitButton.disabled = true;
+
+      // Demo-Seite: Es wird bewusst nichts uebertragen. Die Pruefung oben
+      // laeuft vollstaendig durch und die Bestaetigungsseite erscheint --
+      // nur der Versand fehlt, damit hier niemals echte Daten eines
+      // Besuchers irgendwo ankommen.
+      window.location.href = "danke.html";
+    });
+  }
+
+  // ---------- Footer year ----------
+  var yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
+
+  // ---------- Entfernt: Google Analytics und Google-Maps-Einbettung ----------
+  // Diese Demo lag urspruenglich unter einer eigenen Adresse. Dort war ein
+  // einwilligungsgesteuerter Analytics-Loader samt Cookie-Banner ein sinnvolles
+  // Vorzeigestueck. Seit die Demo unter der Firmendomain liegt, gilt fuer sie
+  // dasselbe wie fuer die Firmenseite: keine externen Dienste, keine Cookies,
+  // kein Einwilligungsbanner. Beides ist deshalb ausgebaut worden -- der
+  // Anfahrtsbereich verweist stattdessen per Link auf die Kartenanwendung.
+})();

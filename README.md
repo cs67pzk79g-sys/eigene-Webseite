@@ -29,9 +29,15 @@ assets/
   projekt-wenzel.jpg          Echter Screenshot des Demo-Projekts Frisörsalon Wenzel
   projekt-sonnenwerk.jpg      Echter Screenshot des Demo-Projekts Sonnenwerk Solartechnik
 
+demo/
+  demo-hinweis.css            Hinweisleiste, die jede Demo-Seite als Schaustück kennzeichnet
+  haarscharf/                 Demo-Projekt Friseursalon – Onepager
+  wenzel/                     Demo-Projekt Friseursalon – Familienbetrieb
+  sonnenwerk/                 Demo-Projekt Photovoltaik – 16 Seiten
+
 README.md                     diese Datei – Launch-Checkliste und rechtliche Einordnung
 ARBEITSABLAUF.md              Hosting, Kundenprojekte, Veröffentlichen – alles außerhalb der Website
-DEMOS-VORBEREITEN.md          Anleitung für die drei Demo-Repositories (Pages, Rechtsseiten, Banner)
+DEMOS.md                      Die drei Demo-Projekte unter demo/ – was sie sind, was beim Umzug geändert wurde
 ```
 
 ## Lokal anschauen
@@ -77,8 +83,8 @@ ausführlichen Checkliste.
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
 
-- [ ] Demos veröffentlichen, damit die Referenz-Links funktionieren →
-      [DEMOS-VORBEREITEN.md](DEMOS-VORBEREITEN.md)
+- [ ] Domain- und Firmenname-Platzhalter in den Demos ersetzen →
+      [DEMOS.md](DEMOS.md)
 - [ ] Entwurfs-Hinweise und Kommentare entfernen → [4](#4-entwurfs-kennzeichnung-entfernen)
 - [ ] `noindex` entfernen – sonst findet Google die Seite nie → [4](#4-entwurfs-kennzeichnung-entfernen)
 - [ ] Strukturierte Daten aktivieren, canonical und Open Graph setzen → [5](#5-seo-scharf-schalten)
@@ -114,9 +120,10 @@ Der Reihe nach:
 | Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
 | USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
 | Speicherdauer der Logs + Anschrift des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **Netlify, Inc., USA**; Anschrift gegen deren Impressum abgleichen |
-| Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 9 |
-| Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 12 |
-| Links zu den Demo-Projekten | `index.html`, Abschnitt Referenzen – siehe Hinweis unten |
+| Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 10 |
+| Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 13 |
+| Domain in den Demos | `demo/haarscharf/`, `demo/sonnenwerk/` – 110 Stellen, Befehl in [`DEMOS.md`](DEMOS.md) |
+| Firmenname in der Demo-Hinweisleiste | `demo/*/*.html` – 18 Stellen, HTML-Schreibweise `ERG&Auml;NZEN` |
 | Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
 | Erreichbarkeit, Einsatzgebiet, Antwortzeit | `index.html`, Kasten „Lieber direkt?“ |
 
@@ -136,32 +143,26 @@ Der Reihe nach:
   ablegen und im `<head>` als `og:image` verlinken. Ohne das sieht der Link in
   WhatsApp und LinkedIn nackt aus.
 
-### 2b. Demo-Projekte veröffentlichen
+### 2b. Demo-Projekte
 
-Die drei „Projekt ansehen“-Links sind **bereits gesetzt** und zeigen auf die
-Adressen, unter denen die Demos nach dem Einschalten von GitHub Pages erreichbar
-sind. Sie öffnen sich in einem neuen Tab, damit dein Portfolio offen bleibt.
+Die drei „Projekt ansehen“-Links zeigen auf `demo/haarscharf/`, `demo/wenzel/` und
+`demo/sonnenwerk/` — also auf Unterordner dieser Seite. Sie öffnen sich in einem
+neuen Tab, damit dein Portfolio offen bleibt.
 
-Bis Pages eingeschaltet ist, laufen sie ins Leere. Die vollständige Anleitung dafür –
-Pages einschalten, Rechtsseiten füllen, Demo-Hinweis einbauen, `noindex` setzen –
-steht in **[`DEMOS-VORBEREITEN.md`](DEMOS-VORBEREITEN.md)**.
+Damit gelten für die Demos dein Impressum und deine Datenschutzerklärung; du
+brauchst weder weitere Domains noch weitere Rechtsseiten. Jede Demo-Seite trägt
+oben eine Leiste, die sie als Schaustück kennzeichnet, zurückführt und das
+Impressum verlinkt.
 
-| Kachel | Repository | Adresse |
-|---|---|---|
-| HAARSCHARF. | `cs67pzk79g-sys/Friseur` | `…github.io/Friseur/` |
-| Frisörsalon Wenzel | `cs67pzk79g-sys/Friseur-Vorzeige-2` | `…github.io/Friseur-Vorzeige-2/` |
-| Sonnenwerk Solartechnik | `cs67pzk79g-sys/Handwerker2000` | `…github.io/Handwerker2000/solar-monteur/` |
+**Zu tun bleibt:** Zwei Platzhalter ersetzen — die Domain (110 Stellen) und den
+Firmennamen in der Hinweisleiste (18 Stellen). Beides steht mit dem passenden
+Befehl in **[`DEMOS.md`](DEMOS.md)**, zusammen mit dem, was beim Umzug an den
+Demos geändert wurde und was zu beachten ist, wenn eine vierte dazukommt.
 
-Basis ist jeweils `https://cs67pzk79g-sys.github.io`. Groß- und Kleinschreibung
-im Pfad zählt.
-
-**Zum Verständnis:** Veröffentlichte Demos sind öffentlich abrufbar – jeder mit der
-Adresse kommt hinein. `noindex` hält nur Suchmaschinen fern, es macht die Seiten
-nicht privat. Genau deshalb braucht jede Demo dein Impressum. Das kostet dich keine
-zusätzlichen Angaben, weil du es für diese Seite ohnehin brauchst.
-
-Soll eine Kachel wieder verschwinden, den zugehörigen `<article class="projekt reveal">`-Block
-ersatzlos löschen – das Raster kommt auch mit einer oder zwei Kacheln zurecht.
+**Zum Verständnis:** Die Demos sind öffentlich abrufbar — jeder mit der Adresse
+kommt hinein. Das `noindex` in ihnen hält nur Suchmaschinen fern, es macht die
+Seiten nicht privat. Genau deshalb ist die Hinweisleiste kein Schmuck: Wer auf
+einer der Seiten landet, muss sofort sehen, dass der Betrieb nicht existiert.
 
 ### 3. Kontaktformular scharf schalten
 
@@ -351,6 +352,25 @@ Getestet in Chromium über einen lokalen Server:
   Scrollen eine sichtbar gebrochene Kante. Jetzt läuft die Fragezeile über die volle
   Spaltenbreite, und nur der Antworttext ist auf 44 rem begrenzt, damit die Zeilen lesbar
   bleiben. Wer hier etwas ergänzt: `wrap--schmal` gehört nicht um eine ganze Sektion.
+
+- **Die drei Demos liegen unter `demo/` auf dieser Seite, nicht bei GitHub Pages.**
+  Vorher sollten sie aus drei eigenen Repositories veröffentlicht werden. Das hätte
+  drei Impressen, drei Datenschutzerklärungen und drei Veröffentlichungswege
+  bedeutet — und Adressen wie `…github.io/Handwerker2000/solar-monteur/`, die man
+  einem Kunden nicht zeigen möchte. Als Unterordner gilt für sie das Impressum
+  dieser Seite, weil Diensteanbieter nach § 5 DDG ohnehin nicht der erfundene
+  Betrieb ist, sondern der Betreiber. Der Preis dafür: 4,1 MB mehr im Repository
+  und die Pflicht, jede Demo genauso sauber zu halten wie die Firmenseite. Details
+  in [`DEMOS.md`](DEMOS.md).
+
+- **Analytics und die Karteneinbettung sind aus der Sonnenwerk-Demo ausgebaut.**
+  Unter eigener Adresse war der einwilligungsgesteuerte Analytics-Loader ein gutes
+  Vorzeigestück — die meisten Baukastenseiten machen genau das falsch. Unter dieser
+  Domain hätte er die Aussage „keine Cookies, kein Tracking, keine Drittinhalte"
+  unwahr gemacht, und die ist ein Verkaufsargument. Am ernstesten war ein
+  `preconnect` auf `google.com`: Der baut die Verbindung beim Seitenaufruf auf, also
+  bevor jemand etwas anklickt. Ebenfalls stillgelegt: das Kontaktformular der Demo,
+  das über Netlify Forms lief und hier echte Einsendungen erzeugt hätte.
 
 - **Kein Google Analytics, keine Karte, keine Testimonials.** Alle drei stehen auf
   gängigen Launch-Checklisten und fehlen hier mit Absicht. Analytics und eine

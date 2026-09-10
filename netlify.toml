@@ -40,10 +40,34 @@
   force = true
 
 [[redirects]]
-  from = "/DEMOS-VORBEREITEN.md"
+  from = "/DEMOS.md"
   to = "/404.html"
   status = 404
   force = true
+
+
+# -----------------------------------------------------------------------------
+# EIGENE 404-SEITEN DER DEMOS
+#
+# Zwei der drei Demos bringen eine gestaltete 404-Seite mit. Ohne diese Regeln
+# bekaeme ein Besucher, der sich unter demo/haarscharf/ vertippt, die 404-Seite
+# der Firmenseite zu sehen -- mitten im Schaustueck ein Bruch im Erscheinungsbild.
+#
+# Ohne force greifen die Regeln nur, wenn keine Datei passt: Alles, was es
+# wirklich gibt, wird weiterhin normal ausgeliefert.
+#
+# demo/wenzel/ hat keine eigene 404-Seite; dort bleibt es bei der allgemeinen.
+# -----------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/demo/haarscharf/*"
+  to = "/demo/haarscharf/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/demo/sonnenwerk/*"
+  to = "/demo/sonnenwerk/404.html"
+  status = 404
 
 
 # -----------------------------------------------------------------------------
@@ -75,5 +99,24 @@
 # Zwischenspeicher spart bei jedem Wiederbesuch zwei Ladevorgaenge.
 [[headers]]
   for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Dasselbe fuer die Schriften der drei Demos. Bewusst je Ordner aufgezaehlt
+# statt als ein Muster ueber /demo/*: Ein Jahr Zwischenspeicher darf nur auf
+# Dateien liegen, die sich nie aendern -- auf den HTML-Seiten der Demos waere
+# er ein Fehler, weil eine Korrektur dort monatelang niemanden erreichte.
+[[headers]]
+  for = "/demo/haarscharf/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/demo/wenzel/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/demo/sonnenwerk/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
