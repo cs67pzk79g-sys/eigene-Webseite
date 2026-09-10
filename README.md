@@ -83,7 +83,7 @@ ausführlichen Checkliste.
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 - [x] ~~Ort, Einsatzgebiet, Erreichbarkeit, Antwortzeit~~ – eingesetzt:
       Göttingen und Umkreis, Rückruf abends und am Wochenende, Antwort in 24 Stunden
-- [x] ~~Geschäftsbezeichnung festlegen~~ – **Morbe Webdesign**, an 40 Stellen eingesetzt;
+- [x] ~~Geschäftsbezeichnung und Name~~ – **Morbe Webdesign**, Inhaber **Jannik Morbe**;
       Titel und Beschreibung tragen jetzt „Göttingen“
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
@@ -116,7 +116,6 @@ Der Reihe nach:
 
 | Was | Wo |
 |---|---|
-| **Vorname** (Nachname steht schon) | `index.html` (Über mich, `author`), `impressum.html`, `datenschutz.html` |
 | Ladungsfähige Anschrift | `impressum.html`, `datenschutz.html` |
 | E-Mail-Adresse (auch im `mailto:`) | `index.html` (Kontakt), beide Rechtsseiten |
 | Telefonnummer (auch im `tel:`) | `index.html`, beide Rechtsseiten – oder Zeilen löschen |
@@ -354,6 +353,14 @@ Getestet in Chromium über einen lokalen Server:
   Scrollen eine sichtbar gebrochene Kante. Jetzt läuft die Fragezeile über die volle
   Spaltenbreite, und nur der Antworttext ist auf 44 rem begrenzt, damit die Zeilen lesbar
   bleiben. Wer hier etwas ergänzt: `wrap--schmal` gehört nicht um eine ganze Sektion.
+
+- **Im Kopfbereich steht nur „Morbe", überall sonst „Morbe Webdesign".** Die
+  Wortmarke im Logo ist die Kurzform; der volle Name steht im Seitentitel, im
+  Fußbereich, in beiden Rechtsseiten und in den strukturierten Daten. Das ist
+  unproblematisch, weil das Impressum den vollständigen Namen samt Inhaber
+  trägt — und im Kopfbereich erklärt die Zeile direkt darunter ohnehin, worum
+  es geht („Webdesign für lokale Betriebe"). Ein Logo muss nicht buchstabieren,
+  was die Überschrift eine Zeile später sagt.
 
 - **Die drei Demos liegen unter `demo/` auf dieser Seite, nicht bei GitHub Pages.**
   Vorher sollten sie aus drei eigenen Repositories veröffentlicht werden. Das hätte
