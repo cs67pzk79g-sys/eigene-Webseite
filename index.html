@@ -968,23 +968,16 @@
 
         <div class="kontakt">
 
-          <!--
-            [BITTE ERGÄNZEN: Formularziel]
-            Das Formular hat bewusst KEIN funktionierendes Ziel, solange kein Anbieter
-            feststeht. Vor dem Launch das action-Attribut auf den eigenen Endpunkt setzen
-            (eigenes PHP-Skript beim Hoster oder ein Formulardienst) und den Dienst in
-            der Datenschutzerklärung als Empfänger nennen.
-            Bis dahin fängt script.js den Versand ab und weist darauf hin.
-          -->
           <!-- ==========================================================
-               Das Formular wird von kontakt.php entgegengenommen. Das Skript
-               prueft die Angaben noch einmal, schickt sie an das eigene
-               Postfach und leitet danach auf danke.html weiter. Es braucht
-               nur PHP - jedes gaengige Webhosting-Paket kann das, ein
-               Fremddienst ist nicht noetig.
+               NETLIFY FORMS - fertig vorbereitet, aber noch abgeschaltet.
 
-               Das unsichtbare Feld "website" weiter unten ist die Spamfalle;
-               kontakt.php wertet sie ebenfalls aus.
+               name + data-netlify: Netlify liest beim Deploy das HTML, erkennt
+                 daran das Formular und richtet es selbst ein. Kein PHP, kein
+                 externer Formulardienst noetig.
+               data-netlify-honeypot: zeigt auf das unsichtbare Feld unten. Wer
+                 es ausfuellt, ist ein Bot. Das Feld gab es hier schon, bevor
+                 Netlify feststand - es passt zufaellig genau.
+               action: die Seite, auf der der Besucher nach dem Absenden landet.
 
                ZUM SCHARFSCHALTEN: data-entwurf="true" entfernen. Solange es da
                ist, blockiert script.js das Absenden und sagt das dem Besucher.
@@ -993,7 +986,8 @@
                Entwurfs-Kennzeichen (Schritt 4 der Launch-Checkliste).
                ========================================================== -->
           <form class="formular reveal" id="anfrage-formular" novalidate
-                method="post" action="kontakt.php"
+                name="anfrage" method="post" action="/danke.html"
+                data-netlify="true" data-netlify-honeypot="website"
                 data-entwurf="true">
 
             <div class="feld">
