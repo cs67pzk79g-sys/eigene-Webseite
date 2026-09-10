@@ -28,6 +28,7 @@ assets/
   projekt-haarscharf.jpg      Echter Screenshot des Demo-Projekts HAARSCHARF.
   projekt-wenzel.jpg          Echter Screenshot des Demo-Projekts Frisörsalon Wenzel
   projekt-sonnenwerk.jpg      Echter Screenshot des Demo-Projekts Sonnenwerk Solartechnik
+  og-vorschau.jpg             Vorschaubild fürs Teilen, 1200 × 630 px
 
 demo/
   demo-hinweis.css            Hinweisleiste, die jede Demo-Seite als Schaustück kennzeichnet
@@ -71,7 +72,7 @@ ausführlichen Checkliste.
 - [ ] Gewerbeanmeldung als Einzelunternehmen → danach Impressum ausfüllen
 - [ ] *(optional)* Portraitfoto einsetzen – die Karte trägt bewusst Initialen,
       ein Foto ist keine Pflicht → [2](#2-bilder-ersetzen)
-- [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
+- [x] ~~Vorschaubild fürs Teilen anlegen~~ – `assets/og-vorschau.jpg`, im `<head>` verlinkt
 - [ ] **Kontaktformular scharf schalten** – `data-entwurf` am Formular entfernen
       → [3](#3-kontaktformular-scharf-schalten)
 - [ ] Auftragsverarbeitungsvertrag mit Netlify abschließen (gilt **nicht** automatisch
@@ -82,6 +83,8 @@ ausführlichen Checkliste.
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 - [x] ~~Ort, Einsatzgebiet, Erreichbarkeit, Antwortzeit~~ – eingesetzt:
       Göttingen und Umkreis, Rückruf abends und am Wochenende, Antwort in 24 Stunden
+- [x] ~~Geschäftsbezeichnung festlegen~~ – **Morbe Webdesign**, an 40 Stellen eingesetzt;
+      Titel und Beschreibung tragen jetzt „Göttingen“
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
 
@@ -113,19 +116,17 @@ Der Reihe nach:
 
 | Was | Wo |
 |---|---|
-| Firmenname / Marke | alle drei HTML-Dateien, im Kopfbereich und Fußbereich |
-| Vor- und Nachname | `index.html` (Über mich), `impressum.html`, `datenschutz.html` |
+| **Vorname** (Nachname steht schon) | `index.html` (Über mich, `author`), `impressum.html`, `datenschutz.html` |
 | Ladungsfähige Anschrift | `impressum.html`, `datenschutz.html` |
 | E-Mail-Adresse (auch im `mailto:`) | `index.html` (Kontakt), beide Rechtsseiten |
 | Telefonnummer (auch im `tel:`) | `index.html`, beide Rechtsseiten – oder Zeilen löschen |
-| Domain / canonical / Open Graph | `index.html`, `<head>` |
+| Domain / canonical / Open Graph / og:image | `index.html`, `<head>` – 4 Stellen |
 | Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
 | USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
 | Speicherdauer der Logs + Anschrift des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **Netlify, Inc., USA**; Anschrift gegen deren Impressum abgleichen |
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 10 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 13 |
 | Domain in den Demos | `demo/haarscharf/`, `demo/sonnenwerk/` – 110 Stellen, Befehl in [`DEMOS.md`](DEMOS.md) |
-| Firmenname in der Demo-Hinweisleiste | `demo/*/*.html` – 18 Stellen, HTML-Schreibweise `ERG&Auml;NZEN` |
 | Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
 
 ### 2. Bilder ersetzen
