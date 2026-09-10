@@ -976,8 +976,27 @@
             der Datenschutzerklärung als Empfänger nennen.
             Bis dahin fängt script.js den Versand ab und weist darauf hin.
           -->
+          <!-- ==========================================================
+               NETLIFY FORMS - fertig vorbereitet, aber noch abgeschaltet.
+
+               name + data-netlify: Netlify liest beim Deploy das HTML, erkennt
+                 daran das Formular und richtet es selbst ein. Kein PHP, kein
+                 externer Formulardienst noetig.
+               data-netlify-honeypot: zeigt auf das unsichtbare Feld unten. Wer
+                 es ausfuellt, ist ein Bot. Das Feld gab es hier schon, bevor
+                 Netlify feststand - es passt zufaellig genau.
+               action: die Seite, auf der der Besucher nach dem Absenden landet.
+
+               ZUM SCHARFSCHALTEN: data-entwurf="true" entfernen. Solange es da
+               ist, blockiert script.js das Absenden und sagt das dem Besucher.
+               Ein Formular, das so tut, als haette es gesendet, waere schlimmer
+               als keines. Das Attribut faellt zusammen mit den uebrigen
+               Entwurfs-Kennzeichen (Schritt 4 der Launch-Checkliste).
+               ========================================================== -->
           <form class="formular reveal" id="anfrage-formular" novalidate
-                action="[BITTE ERGÄNZEN: Formular-Endpunkt]" method="post">
+                name="anfrage" method="post" action="/danke.html"
+                data-netlify="true" data-netlify-honeypot="website"
+                data-entwurf="true">
 
             <div class="feld">
               <label for="f-name">Name <span class="pflicht" aria-hidden="true">*</span></label>
