@@ -28,6 +28,7 @@ assets/
   projekt-haarscharf.jpg      Echter Screenshot des Demo-Projekts HAARSCHARF.
   projekt-wenzel.jpg          Echter Screenshot des Demo-Projekts Frisörsalon Wenzel
   projekt-sonnenwerk.jpg      Echter Screenshot des Demo-Projekts Sonnenwerk Solartechnik
+  og-vorschau.jpg             Vorschaubild fürs Teilen, 1200 × 630 px
 
 demo/
   demo-hinweis.css            Hinweisleiste, die jede Demo-Seite als Schaustück kennzeichnet
@@ -63,7 +64,7 @@ ausführlichen Checkliste.
 - [ ] Platzhalter füllen: Firmenname, Name, Anschrift, E-Mail, Telefon → [1](#1-platzhalter-ausfüllen)
 - [ ] Impressum und Datenschutzerklärung vervollständigen → [1](#1-platzhalter-ausfüllen)
 - [ ] Steuerhinweis festlegen: § 19 UStG oder zzgl. USt. → [1](#1-platzhalter-ausfüllen)
-- [ ] Hoster eintragen – bei GitHub Pages ist das GitHub Inc., USA → [1](#1-platzhalter-ausfüllen)
+- [ ] Hoster eintragen – das ist **Netlify, Inc., USA** → [1](#1-platzhalter-ausfüllen)
 - [ ] Zuständige Landesdatenschutzbehörde eintragen → [1](#1-platzhalter-ausfüllen)
 
 **Geht jederzeit, auch schon vorher:**
@@ -71,7 +72,7 @@ ausführlichen Checkliste.
 - [ ] Gewerbeanmeldung als Einzelunternehmen → danach Impressum ausfüllen
 - [ ] *(optional)* Portraitfoto einsetzen – die Karte trägt bewusst Initialen,
       ein Foto ist keine Pflicht → [2](#2-bilder-ersetzen)
-- [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
+- [x] ~~Vorschaubild fürs Teilen anlegen~~ – `assets/og-vorschau.jpg`, im `<head>` verlinkt
 - [ ] **Kontaktformular scharf schalten** – `data-entwurf` am Formular entfernen
       → [3](#3-kontaktformular-scharf-schalten)
 - [ ] Auftragsverarbeitungsvertrag mit Netlify abschließen (gilt **nicht** automatisch
@@ -80,6 +81,10 @@ ausführlichen Checkliste.
       Ergebnis und Datum notieren
 - [ ] E-Mail-Benachrichtigung für Formularabsendungen im Netlify-Dashboard einschalten
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
+- [x] ~~Ort, Einsatzgebiet, Erreichbarkeit, Antwortzeit~~ – eingesetzt:
+      Göttingen und Umkreis, Rückruf abends und am Wochenende, Antwort in 24 Stunden
+- [x] ~~Geschäftsbezeichnung und Name~~ – **Morbe Webdesign**, Inhaber **Jannik Morbe**;
+      Titel und Beschreibung tragen jetzt „Göttingen“
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
 
@@ -111,21 +116,17 @@ Der Reihe nach:
 
 | Was | Wo |
 |---|---|
-| Firmenname / Marke | alle drei HTML-Dateien, im Kopfbereich und Fußbereich |
-| Vor- und Nachname | `index.html` (Über mich), `impressum.html`, `datenschutz.html` |
 | Ladungsfähige Anschrift | `impressum.html`, `datenschutz.html` |
 | E-Mail-Adresse (auch im `mailto:`) | `index.html` (Kontakt), beide Rechtsseiten |
 | Telefonnummer (auch im `tel:`) | `index.html`, beide Rechtsseiten – oder Zeilen löschen |
-| Domain / canonical / Open Graph | `index.html`, `<head>` |
+| Domain / canonical / Open Graph / og:image | `index.html`, `<head>` – 4 Stellen |
 | Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
 | USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
 | Speicherdauer der Logs + Anschrift des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **Netlify, Inc., USA**; Anschrift gegen deren Impressum abgleichen |
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 10 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 13 |
 | Domain in den Demos | `demo/haarscharf/`, `demo/sonnenwerk/` – 110 Stellen, Befehl in [`DEMOS.md`](DEMOS.md) |
-| Firmenname in der Demo-Hinweisleiste | `demo/*/*.html` – 18 Stellen, HTML-Schreibweise `ERG&Auml;NZEN` |
 | Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
-| Erreichbarkeit, Einsatzgebiet, Antwortzeit | `index.html`, Kasten „Lieber direkt?“ |
 
 ### 2. Bilder ersetzen
 
@@ -352,6 +353,14 @@ Getestet in Chromium über einen lokalen Server:
   Scrollen eine sichtbar gebrochene Kante. Jetzt läuft die Fragezeile über die volle
   Spaltenbreite, und nur der Antworttext ist auf 44 rem begrenzt, damit die Zeilen lesbar
   bleiben. Wer hier etwas ergänzt: `wrap--schmal` gehört nicht um eine ganze Sektion.
+
+- **Im Kopfbereich steht nur „Morbe", überall sonst „Morbe Webdesign".** Die
+  Wortmarke im Logo ist die Kurzform; der volle Name steht im Seitentitel, im
+  Fußbereich, in beiden Rechtsseiten und in den strukturierten Daten. Das ist
+  unproblematisch, weil das Impressum den vollständigen Namen samt Inhaber
+  trägt — und im Kopfbereich erklärt die Zeile direkt darunter ohnehin, worum
+  es geht („Webdesign für lokale Betriebe"). Ein Logo muss nicht buchstabieren,
+  was die Überschrift eine Zeile später sagt.
 
 - **Die drei Demos liegen unter `demo/` auf dieser Seite, nicht bei GitHub Pages.**
   Vorher sollten sie aus drei eigenen Repositories veröffentlicht werden. Das hätte
