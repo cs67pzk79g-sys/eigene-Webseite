@@ -1532,8 +1532,22 @@ code {
 .feld label { font-size: var(--t-klein); font-weight: 600; }
 .pflicht { color: var(--kupfer-700); }
 
+/* Gegenstueck zum Pflichtstern: Alle anderen Felder sind Pflicht, deshalb
+   braucht das eine freiwillige Feld eine sichtbare Kennzeichnung. Bewusst
+   ein Wort statt eines Symbols - "optional" ist nicht erklaerungsbeduerftig. */
+.feld__optional {
+  margin-left: .4em;
+  font-size: var(--t-mini);
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+/* Jeder neue Eingabetyp muss hier mit aufgenommen werden - sonst faellt das
+   Feld auf die Browser-Voreinstellung zurueck und sieht flacher aus als die
+   Nachbarn. Genau das ist beim Telefonfeld zunaechst passiert. */
 .feld input[type="text"],
 .feld input[type="email"],
+.feld input[type="tel"],
 .feld textarea {
   width: 100%;
   min-height: 3rem;

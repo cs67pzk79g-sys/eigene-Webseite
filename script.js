@@ -430,6 +430,21 @@
         }
       },
       {
+        feld: form.querySelector('#f-telefon'),
+        fehler: document.getElementById('fehler-telefon'),
+        pruefen: function (wert) {
+          var roh = wert.trim();
+          if (roh.length === 0) return '';          // freiwillig: leer ist in Ordnung
+          // Absichtlich sehr grosszuegig. Rufnummern werden mit +49, 0049, Klammern,
+          // Schraegstrichen, Punkten und Leerzeichen geschrieben - jedes strengere
+          // Muster sperrt gueltige Nummern aus. Geprueft wird nur, ob ueberhaupt
+          // genug Ziffern da sind, damit Tippfehler wie "asdf" auffallen.
+          var ziffern = roh.replace(/\D/g, '');
+          if (ziffern.length < 6) return 'Diese Telefonnummer sieht unvollständig aus.';
+          return '';
+        }
+      },
+      {
         feld: form.querySelector('#f-projekt'),
         fehler: document.getElementById('fehler-projekt'),
         pruefen: function (wert) {

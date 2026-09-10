@@ -993,6 +993,21 @@
               <p class="feld__fehler" id="fehler-mail" role="alert"></p>
             </div>
 
+            <!-- Freiwilliges Feld: Viele Betriebsinhaber sind tagsueber auf der
+                 Baustelle oder im Salon und rufen lieber zurueck, als eine E-Mail zu
+                 tippen. Bewusst NICHT als Pflichtfeld - sonst kostet es Anfragen,
+                 statt welche zu retten. Die Datenschutzerklaerung nennt es in
+                 Abschnitt 4 ausdruecklich als freiwillige Angabe. -->
+            <div class="feld">
+              <label for="f-telefon">Telefon <span class="feld__optional">optional</span></label>
+              <input type="tel" id="f-telefon" name="telefon" autocomplete="tel"
+                     inputmode="tel" aria-describedby="hilfe-telefon fehler-telefon">
+              <p class="feld__hilfe" id="hilfe-telefon">
+                Nur, wenn Ihnen ein Rückruf lieber ist als eine E-Mail.
+              </p>
+              <p class="feld__fehler" id="fehler-telefon" role="alert"></p>
+            </div>
+
             <div class="feld">
               <label for="f-projekt">Worum geht es? <span class="pflicht" aria-hidden="true">*</span></label>
               <textarea id="f-projekt" name="projekt" rows="6" required
