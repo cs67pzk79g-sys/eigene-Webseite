@@ -67,7 +67,10 @@ ausführlichen Checkliste.
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
 - [ ] **Kontaktformular scharf schalten** – Empfänger in `kontakt.php` eintragen und
       `data-entwurf` am Formular entfernen → [3](#3-kontaktformular-scharf-schalten)
-- [ ] Hosting-Paket mit PHP buchen (deutscher Anbieter) und AV-Vertrag abschließen
+- [ ] Hosting-Paket bei **ALL-INKL.COM** buchen (Tarif *PrivatPlus* deckt eigene Seite
+      und Demo-Projekte ab) und den AV-Vertrag im KAS abschließen
+- [ ] `kontakt.php` dort testen, **bevor** die Seite live geht – falls `mail()` gesperrt
+      ist, muss auf SMTP umgebaut werden
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
@@ -108,7 +111,7 @@ Der Reihe nach:
 | Domain / canonical / Open Graph | `index.html`, `<head>` |
 | Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
 | USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
-| Hosting-Anbieter + Speicherdauer der Logs | `datenschutz.html`, Abschnitt 2 – bei GitHub Pages ist das **GitHub Inc., USA**, inklusive Hinweis auf den Drittlandtransfer |
+| Speicherdauer der Logs + genaue Firmierung des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **ALL-INKL.COM**; Firmierung und Anschrift wörtlich aus deren Impressum übernehmen |
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 9 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 12 |
 | Links zu den Demo-Projekten | `index.html`, Abschnitt Referenzen – siehe Hinweis unten |
