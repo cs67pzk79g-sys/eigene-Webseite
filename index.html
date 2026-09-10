@@ -977,15 +977,14 @@
             Bis dahin fängt script.js den Versand ab und weist darauf hin.
           -->
           <!-- ==========================================================
-               NETLIFY FORMS - fertig vorbereitet, aber noch abgeschaltet.
+               Das Formular wird von kontakt.php entgegengenommen. Das Skript
+               prueft die Angaben noch einmal, schickt sie an das eigene
+               Postfach und leitet danach auf danke.html weiter. Es braucht
+               nur PHP - jedes gaengige Webhosting-Paket kann das, ein
+               Fremddienst ist nicht noetig.
 
-               name + data-netlify: Netlify liest beim Deploy das HTML, erkennt
-                 daran das Formular und richtet es selbst ein. Kein PHP, kein
-                 externer Formulardienst noetig.
-               data-netlify-honeypot: zeigt auf das unsichtbare Feld unten. Wer
-                 es ausfuellt, ist ein Bot. Das Feld gab es hier schon, bevor
-                 Netlify feststand - es passt zufaellig genau.
-               action: die Seite, auf der der Besucher nach dem Absenden landet.
+               Das unsichtbare Feld "website" weiter unten ist die Spamfalle;
+               kontakt.php wertet sie ebenfalls aus.
 
                ZUM SCHARFSCHALTEN: data-entwurf="true" entfernen. Solange es da
                ist, blockiert script.js das Absenden und sagt das dem Besucher.
@@ -994,8 +993,7 @@
                Entwurfs-Kennzeichen (Schritt 4 der Launch-Checkliste).
                ========================================================== -->
           <form class="formular reveal" id="anfrage-formular" novalidate
-                name="anfrage" method="post" action="/danke.html"
-                data-netlify="true" data-netlify-honeypot="website"
+                method="post" action="kontakt.php"
                 data-entwurf="true">
 
             <div class="feld">
