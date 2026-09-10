@@ -63,7 +63,7 @@ ausführlichen Checkliste.
 - [ ] Platzhalter füllen: Firmenname, Name, Anschrift, E-Mail, Telefon → [1](#1-platzhalter-ausfüllen)
 - [ ] Impressum und Datenschutzerklärung vervollständigen → [1](#1-platzhalter-ausfüllen)
 - [ ] Steuerhinweis festlegen: § 19 UStG oder zzgl. USt. → [1](#1-platzhalter-ausfüllen)
-- [ ] Hoster eintragen – bei GitHub Pages ist das GitHub Inc., USA → [1](#1-platzhalter-ausfüllen)
+- [ ] Hoster eintragen – das ist **Netlify, Inc., USA** → [1](#1-platzhalter-ausfüllen)
 - [ ] Zuständige Landesdatenschutzbehörde eintragen → [1](#1-platzhalter-ausfüllen)
 
 **Geht jederzeit, auch schon vorher:**
