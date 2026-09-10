@@ -126,7 +126,6 @@ Der Reihe nach:
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 10 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 13 |
 | Domain in den Demos | `demo/haarscharf/`, `demo/sonnenwerk/` – 110 Stellen, Befehl in [`DEMOS.md`](DEMOS.md) |
-| Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
 
 ### 2. Bilder ersetzen
 

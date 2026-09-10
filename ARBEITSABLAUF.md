@@ -105,12 +105,50 @@ geklärt sein, bevor es einem Kunden zugesagt wird.
 
 ---
 
-## 5. Was noch für die eigene Seite fehlt
+## 5. Name und Domain
+
+**Geschäftsbezeichnung: Morbe Webdesign.** Inhaber: Jannik Morbe. Als
+Kleingewerbe im Einzelunternehmen gibt es keine Firma im rechtlichen Sinn — im
+Impressum steht der bürgerliche Name, „Morbe Webdesign" ist die frei wählbare
+Geschäftsbezeichnung. Sie musste nirgends angemeldet werden und wird bei der
+Gewerbeanmeldung nur mit angegeben.
+
+Geprüft vor der Entscheidung: keine gleichnamigen Webdesign-Anbieter in der
+Region, in der Branche nur ein entfernter Namensvetter mit Umlaut und anderem
+Auftritt (tumo media bei Dresden). Der erste Kandidat, **Nexora**, wurde
+verworfen — drei Webdesign-Anbieter im deutschsprachigen Raum tragen ihn
+bereits, dazu fünf eingetragene Firmen in Deutschland, darunter eine Berliner
+Softwarefirma. Der Name stammt aus einer verbreiteten Webflow-Vorlage, was die
+Häufung erklärt.
+
+**Domain: noch nicht gekauft.** Frei sind (Stand September 2026)
+`morbe-webdesign.de`, `webdesign-morbe.de` und `morbeweb.de`; `morbe.de` ist
+vergeben. Der Kauf wartet bewusst, bis Firmen-Mail und Geschäftskonto stehen —
+dann laufen Vertrag, Rechnung und Zahlung von Anfang an sauber über den Betrieb.
+
+Rechtlich verliert man dadurch nichts: Bei einem Einzelunternehmen ist der
+Domaininhaber in beiden Fällen dieselbe natürliche Person. Der Unterschied ist
+reine Buchhaltung. Das Risiko, dass jemand zuvorkommt, ist gering — ein
+Nachname mit Bindestrich und Branchenwort ist für Domainhändler wertlos.
+
+Zwei Vorsichtsmaßnahmen bis dahin: nicht im Suchfeld eines Registrars nach der
+Domain suchen und sie dann liegen lassen (manche Anbieter werten Suchanfragen
+aus), und den Namen nicht öffentlich streuen, bevor die Domain gehört. Zieht
+sich die Gewerbeanmeldung über zwei, drei Monate, lieber zwischendurch kaufen.
+
+Die Domain steckt an **117 Stellen** im Repository: 7 auf der Firmenseite
+(canonical, og:url, og:image, twitter:image) und 110 in den Demos. Die Befehle
+zum Ersetzen stehen in [`DEMOS.md`](DEMOS.md).
+
+---
+
+## 6. Was noch für die eigene Seite fehlt
 
 Steht ausführlich in der [README](README.md) unter „Was noch zu tun ist". Kurzfassung:
 
 - Gewerbeanmeldung, danach Impressum und Datenschutz mit echten Daten
-- Kurztext für die Über-mich-Karte, Ort und Einsatzgebiet
+- Kurztext für die Über-mich-Karte
+- Domain kaufen und die 117 Platzhalter ersetzen
 - Am Launch-Tag: `data-entwurf` am Formular entfernen, E-Mail-Benachrichtigung im
   Netlify-Dashboard einschalten, Entwurfshinweise raus, `noindex` aus den drei
   öffentlichen Seiten, `robots.txt` und `sitemap.xml` anlegen, LocalBusiness-Schema
