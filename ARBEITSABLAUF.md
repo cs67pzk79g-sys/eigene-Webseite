@@ -95,10 +95,9 @@ geklärt sein, bevor es einem Kunden zugesagt wird.
 - [ ] **Prüfen, ob die kostenlose Netlify-Stufe Mitarbeiter erlaubt** (siehe Abschnitt 3)
 - [ ] **Postfach-Anbieter auswählen.** Netlify liefert keines, für `info@ihre-domain.de`
       wird ein separater Dienst gebraucht.
-- [ ] **Demo-Projekte umziehen?** `DEMOS-VORBEREITEN.md` beschreibt den Weg über
-      GitHub Pages. Unter der eigenen Domain — etwa `demo.ihre-domain.de` — wären sie vom
-      eigenen Impressum abgedeckt statt jede von einem eigenen, und die Adresse sähe vor
-      einem Kunden besser aus als eine `github.io`-Adresse.
+- [x] ~~**Demo-Projekte umziehen?**~~ Erledigt: Sie liegen jetzt unter `demo/` in
+      diesem Repository und werden mit der Firmenseite ausgeliefert. Ein Impressum,
+      eine Datenschutzerklärung, keine zusätzlichen Domains → [`DEMOS.md`](DEMOS.md)
 - [ ] **Textbaustein Datenschutz für Kundenprojekte.** Die Formulierungen aus
       `datenschutz.html`, Abschnitte 2 und 4, lassen sich fast wörtlich übernehmen. Wird
       eine Kundenseite ohne passende Datenschutzerklärung übergeben, ist das ein Mangel —

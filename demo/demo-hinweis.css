@@ -1,0 +1,79 @@
+/* =============================================================================
+   DEMO-HINWEIS
+
+   Die Leiste, die jede Demo-Seite als Schaustueck kennzeichnet, plus der
+   Rueckweg zur Firmenseite.
+
+   Warum diese Datei ausserhalb der drei Demo-Ordner liegt: Die Leiste gehoert
+   nicht zur jeweiligen Demo, sondern zur Firmenseite, die sie zeigt. Deshalb
+   sieht sie ueber alle drei Demos hinweg gleich aus und stuetzt sich auf keine
+   einzige Variable, Schrift oder Klasse der jeweiligen Demo - sonst wuerde sie
+   in einem der drei Entwuerfe zerfallen.
+
+   Eingebunden wird sie relativ (../demo-hinweis.css). Damit bleiben die Demos
+   auch als Ordner lauffaehig und haengen nicht an einer Domain.
+   ============================================================================= */
+
+.demo-hinweis {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: .7rem 1rem;
+  background: #2A2118;
+  color: #F5EAD9;
+  font: 500 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  text-align: center;
+  /* Ueber allem, was in der Demo einen Stapelwert setzt (Sonnenwerk: 500) */
+  position: relative;
+  z-index: 900;
+}
+
+.demo-hinweis__text {
+  margin: 0 auto;
+  max-width: 62rem;
+}
+
+.demo-hinweis strong { color: #FFFFFF; }
+
+/* Die beiden Wege hinaus stehen in einer eigenen Zeile. Kein Trennzeichen
+   dazwischen: Ein Mittelpunkt haengt, sobald die Zeile umbricht, allein am
+   Ende der vorigen Zeile -- der Abstand trennt genauso deutlich. */
+.demo-hinweis__wege {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1.5rem;
+  margin: .15rem 0 0;
+}
+
+.demo-hinweis a {
+  color: #FFD79A;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  /* Mindestens 44 px hoch, damit der Verweis am Handy sicher zu treffen ist
+     (WCAG 2.5.5). inline-flex statt line-height: So bleibt der Text auch dann
+     mittig, wenn ein langer Firmenname ueber zwei Zeilen laeuft. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.demo-hinweis a:hover,
+.demo-hinweis a:focus-visible { color: #FFFFFF; }
+
+.demo-hinweis a:focus-visible {
+  outline: 2px solid #FFD79A;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Am Handy linksbuendig: Zentrierter Flattersatz ueber drei, vier Zeilen ist
+   muehsamer zu lesen als eine gerade linke Kante. */
+@media (max-width: 34rem) {
+  .demo-hinweis {
+    font-size: 14px;
+    text-align: left;
+  }
+  .demo-hinweis__wege { justify-content: flex-start; }
+}

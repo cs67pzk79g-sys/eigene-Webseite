@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Frisörsalon Wenzel – Ihr Familienfriseur in Walsrode</title>
+  <meta name="description" content="Frisörsalon Wenzel in Walsrode: Familienbetrieb seit 2010. Termin bequem online buchen oder kurz per WhatsApp schreiben. Damen, Herren und Kinder.">
+  <meta name="theme-color" content="#faf6f1">
+
+  <!-- Favicon inline als SVG: spart einen Request und ein 404 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23c0623c'/><text x='16' y='23' font-family='sans-serif' font-size='18' font-weight='700' fill='%23faf6f1' text-anchor='middle'>W</text></svg>">
+
+  <!-- Eine selbst gehostete Variable-Font-Datei für alle Schnitte:
+       kein externer Request, kein Datenabfluss, schneller Seitenaufbau -->
+  <link rel="preload" href="assets/fonts/nunito-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../demo-hinweis.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+<div class="demo-hinweis" role="note">
+  <p class="demo-hinweis__text">
+    <strong>Demo-Projekt.</strong> Dieser Betrieb ist frei erfunden &ndash; samt
+    Anschrift, Preisen, Team und Bewertungen.
+  </p>
+  <p class="demo-hinweis__wege">
+    <a href="../../index.html">Zur&uuml;ck zu [BITTE ERG&Auml;NZEN: Firmenname]</a>
+    <a href="../../impressum.html">Impressum</a>
+  </p>
+</div>
+
+  <!-- ============================================================
+       KOPFBEREICH / NAVIGATION
+       Sticky, bekommt beim Scrollen per JS die Klasse "is-scrolled"
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#top">
+        <span class="brand__name">Frisörsalon Wenzel</span>
+        <span class="brand__place">Walsrode · seit 2010</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="hauptnavigation">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-toggle__label">Menü</span>
+      </button>
+
+      <nav class="site-nav" id="hauptnavigation" aria-label="Hauptnavigation">
+        <ul class="site-nav__list">
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#leistungen">Preise</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#bewertungen">Bewertungen</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li class="site-nav__cta"><a class="btn btn--primary btn--small" href="#termin">Termin buchen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hauptinhalt">
+
+    <!-- ============================================================
+         1. HERO
+         Das Wichtigste zuerst: Sind wir offen? Wie erreiche ich euch?
+         ============================================================ -->
+    <section class="hero" id="top">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow">Familienbetrieb in Walsrode</p>
+          <h1 class="hero__title">Ihr Friseur um die Ecke.<br>Seit über 15 Jahren.</h1>
+          <p class="hero__lead">
+            Waschen, schneiden, föhnen ohne Schnickschnack: bei uns bekommen Sie ehrliche
+            Beratung, faire Preise und ein Team, das Sie beim Namen kennt.
+          </p>
+
+          <!-- Öffnungsstatus wird per JS aus den echten Öffnungszeiten berechnet -->
+          <div class="status" id="status-badge" aria-live="polite">
+            <span class="status__dot" aria-hidden="true"></span>
+            <span class="status__text">Öffnungszeiten werden geprüft&nbsp;…</span>
+          </div>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#termin">Termin buchen</a>
+            <a class="btn btn--whatsapp" href="https://wa.me/4951611234560" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.96L2 22l5.23-1.37a9.9 9.9 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.16 8.16 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.86 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.53-3.68 8.19-8.16 8.19Zm4.5-6.13c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12s-.64.8-.79.97c-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.3Z"/></svg>
+              Per WhatsApp schreiben
+            </a>
+          </div>
+          <p class="hero__hint">Die meisten Termine machen wir per WhatsApp aus &ndash; das geht am schnellsten.</p>
+        </div>
+
+        <div class="hero__media">
+          <img src="assets/images/salon-hero.webp" alt="Heller Salonraum mit Holzboden, Friseurstühlen und großen Spiegeln" width="900" height="790" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. ÜBER UNS
+         ============================================================ -->
+    <section class="section" id="ueber-uns">
+      <div class="container section__split">
+        <div class="section__media">
+          <img src="assets/images/salon-innen.webp" alt="Friseurin richtet einer Kundin im Salon die Haare" width="820" height="730" loading="lazy" decoding="async">
+        </div>
+        <div class="section__body">
+          <p class="eyebrow">Über uns</p>
+          <h2>Zwei Stühle, eine Familie &ndash; und viele Stammkunden</h2>
+          <p>
+            2010 haben wir, <strong>Sabine und Thomas Wenzel</strong>, den Salon in der Bahnhofstraße
+            übernommen. Damals mit zwei Stühlen und einer geliehenen Kaffeemaschine. Heute sind wir
+            zu dritt &ndash; und viele unserer Kundinnen und Kunden von damals kommen immer noch.
+          </p>
+          <p>
+            Das ist uns wichtiger als jeder Trend: Sie sitzen bei uns nicht jedes Mal bei jemand
+            Neuem. Wir wissen, dass Ihr Pony schneller wächst als bei anderen, dass Sie den Nacken
+            lieber kürzer mögen und dass Ihr Sohn beim ersten Termin ein bisschen Zeit braucht.
+          </p>
+          <ul class="facts">
+            <li><strong>Seit 2010</strong> in der Bahnhofstraße</li>
+            <li><strong>Meisterbetrieb</strong> mit eigener Ausbildung</li>
+            <li><strong>Ohne Termin</strong> geht oft auch &ndash; fragen Sie kurz an</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. LEISTUNGEN & PREISE
+         Bewusst eine einfache Liste: alles sofort sichtbar, keine Tabs
+         ============================================================ -->
+    <section class="section section--alt" id="leistungen">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Leistungen &amp; Preise</p>
+          <h2>Was es kostet &ndash; ohne Kleingedrucktes</h2>
+          <p class="section__intro">
+            Alle Preise verstehen sich inklusive Waschen und Beratung. Bei sehr langem oder sehr
+            dichtem Haar sagen wir Ihnen den genauen Preis vorher, nicht an der Kasse.
+          </p>
+        </header>
+
+        <div class="price-groups">
+          <div class="price-group">
+            <h3 class="price-group__title">Damen</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Waschen, Schneiden, Föhnen</span><span class="price-list__value">ab 42&nbsp;€</span></li>
+              <li><span class="price-list__name">Waschen, Schneiden, Föhnen (langes Haar)</span><span class="price-list__value">ab 52&nbsp;€</span></li>
+              <li><span class="price-list__name">Nur Föhnen &amp; Styling</span><span class="price-list__value">ab 24&nbsp;€</span></li>
+              <li><span class="price-list__name">Farbe (Ansatz)</span><span class="price-list__value">ab 48&nbsp;€</span></li>
+              <li><span class="price-list__name">Strähnen / Foliensträhnen</span><span class="price-list__value">ab 65&nbsp;€</span></li>
+              <li><span class="price-list__name">Dauerwelle</span><span class="price-list__value">ab 72&nbsp;€</span></li>
+            </ul>
+          </div>
+
+          <div class="price-group">
+            <h3 class="price-group__title">Herren</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Waschen, Schneiden, Föhnen</span><span class="price-list__value">ab 26&nbsp;€</span></li>
+              <li><span class="price-list__name">Maschinenschnitt</span><span class="price-list__value">ab 19&nbsp;€</span></li>
+              <li><span class="price-list__name">Bart trimmen &amp; in Form bringen</span><span class="price-list__value">ab 14&nbsp;€</span></li>
+              <li><span class="price-list__name">Haare &amp; Bart zusammen</span><span class="price-list__value">ab 36&nbsp;€</span></li>
+              <li><span class="price-list__name">Grauabdeckung</span><span class="price-list__value">ab 29&nbsp;€</span></li>
+            </ul>
+          </div>
+
+          <div class="price-group">
+            <h3 class="price-group__title">Kinder</h3>
+            <ul class="price-list">
+              <li><span class="price-list__name">Bis 6 Jahre</span><span class="price-list__value">ab 15&nbsp;€</span></li>
+              <li><span class="price-list__name">7 bis 12 Jahre</span><span class="price-list__value">ab 19&nbsp;€</span></li>
+              <li><span class="price-list__name">Erster Haarschnitt (mit Foto für Zuhause)</span><span class="price-list__value">12&nbsp;€</span></li>
+            </ul>
+            <p class="price-group__note">
+              Für die Kleinen haben wir Zeit, ein Kinderbuch und einen Aufsatz für den Stuhl.
+            </p>
+          </div>
+        </div>
+
+        <p class="price-footnote">
+          Stand: Januar 2026. Wir nehmen EC-Karte und bar. Bitte sagen Sie ab, wenn es nicht passt &ndash;
+          ein kurzer Anruf reicht.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. TEAM
+         ============================================================ -->
+    <section class="section" id="team">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Unser Team</p>
+          <h2>Die drei, die Sie bei uns antreffen</h2>
+        </header>
+
+        <ul class="team-grid">
+          <li class="team-card">
+            <img src="assets/images/team-sabine.webp" alt="Sabine Wenzel schneidet einer Kundin die Haare" width="560" height="560" loading="lazy" decoding="async">
+            <div class="team-card__body">
+              <h3 class="team-card__name">Sabine Wenzel</h3>
+              <p class="team-card__role">Inhaberin &amp; Friseurmeisterin</p>
+              <p>
+                Schneidet seit über 25 Jahren und hat für jede Haarstruktur eine ehrliche Meinung.
+                Wenn Sie unsicher sind, was passt: fragen Sie Sabine.
+              </p>
+            </div>
+          </li>
+          <li class="team-card">
+            <img src="assets/images/team-thomas.webp" alt="Thomas Wenzel beim Herrenschnitt" width="560" height="560" loading="lazy" decoding="async">
+            <div class="team-card__body">
+              <h3 class="team-card__name">Thomas Wenzel</h3>
+              <p class="team-card__role">Inhaber &amp; Herrenfach</p>
+              <p>
+                Zuständig für Herrenschnitte und Bärte. Bekannt dafür, dass er beim Nacken
+                lieber zweimal nachschaut als einmal zu kurz zu gehen.
+              </p>
+            </div>
+          </li>
+          <li class="team-card">
+            <img src="assets/images/team-nina.webp" alt="Nina Krüger im Gespräch mit einem Kunden" width="560" height="560" loading="lazy" decoding="async">
+            <div class="team-card__body">
+              <h3 class="team-card__name">Nina Krüger</h3>
+              <p class="team-card__role">Friseurin, Schwerpunkt Farbe</p>
+              <p>
+                Seit 2018 im Team und unsere Farbspezialistin &ndash; von der dezenten Grauabdeckung
+                bis zu Strähnen, die nach Sommer aussehen.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. GALERIE
+         Einfaches Grid, keine Lightbox - das reicht hier völlig
+         ============================================================ -->
+    <section class="section section--alt" id="galerie">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Galerie</p>
+          <h2>Ein paar Eindrücke aus dem Laden</h2>
+        </header>
+
+        <ul class="gallery">
+          <li><img src="assets/images/galerie-1.webp" alt="Haarschnitt mit Schere und Kamm aus der Nähe" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-2.webp" alt="Haarewaschen am Waschbecken" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-3.webp" alt="Kamm gleitet durch langes, frisch gewaschenes Haar" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-4.webp" alt="Friseurin schneidet eine Haarpartie mit der Schere" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-5.webp" alt="Blick durch den Salon mit Stylingplätzen und Spiegeln" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-6.webp" alt="Bartträger beim Haarschnitt im Salon" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-7.webp" alt="Kundin bekommt die Haare geschnitten" width="640" height="640" loading="lazy" decoding="async"></li>
+          <li><img src="assets/images/galerie-8.webp" alt="Friseurstühle und Spiegel im Salonraum" width="640" height="640" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. BEWERTUNGEN (Mockup mit Beispieldaten)
+         ============================================================ -->
+    <section class="section" id="bewertungen">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Bewertungen</p>
+          <h2>Was unsere Kundinnen und Kunden sagen</h2>
+        </header>
+
+        <div class="rating-summary">
+          <div class="rating-summary__score">
+            <span class="rating-summary__number">4,8</span>
+            <span class="stars" role="img" aria-label="4,8 von 5 Sternen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.3 5.8 21l1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.3 5.8 21l1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.3 5.8 21l1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.3 5.8 21l1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.3 5.8 21l1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></svg>
+            </span>
+          </div>
+          <p class="rating-summary__meta">
+            <strong>127 Bewertungen</strong> bei Google
+          </p>
+        </div>
+
+        <ul class="reviews">
+          <li class="review">
+            <span class="stars stars--small" role="img" aria-label="5 von 5 Sternen">★★★★★</span>
+            <blockquote>
+              <p>„Ich gehe seit zwölf Jahren dorthin und bin noch nie unzufrieden rausgegangen.
+              Man wird beim Namen begrüßt und muss nie ewig warten.“</p>
+            </blockquote>
+            <p class="review__author">Petra K.</p>
+          </li>
+          <li class="review">
+            <span class="stars stars--small" role="img" aria-label="5 von 5 Sternen">★★★★★</span>
+            <blockquote>
+              <p>„Fairer Preis, ordentliche Arbeit, kein Verkaufsgerede. Für Herrenschnitte in
+              Walsrode die erste Adresse.“</p>
+            </blockquote>
+            <p class="review__author">Michael S.</p>
+          </li>
+          <li class="review">
+            <span class="stars stars--small" role="img" aria-label="5 von 5 Sternen">★★★★★</span>
+            <blockquote>
+              <p>„Mein Sohn hatte richtig Angst vorm Friseur. Hier durfte er erst mal zugucken.
+              Jetzt geht er freiwillig hin.“</p>
+            </blockquote>
+            <p class="review__author">Anja T.</p>
+          </li>
+          <li class="review">
+            <span class="stars stars--small" role="img" aria-label="4 von 5 Sternen">★★★★☆</span>
+            <blockquote>
+              <p>„Sehr nette Beratung zur Farbe, das Ergebnis stimmt. Samstags sollte man
+              früh anfragen, da ist einiges los.“</p>
+            </blockquote>
+            <p class="review__author">Frank W.</p>
+          </li>
+        </ul>
+
+        <p class="demo-note">
+          Beispieldaten für diese Demo-Seite. Im echten Projekt werden hier die tatsächlichen
+          Google-Rezensionen eingebunden.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. TERMIN & KONTAKT
+         Herzstück der Seite: buchen, schreiben, anrufen, herfinden
+         ============================================================ -->
+    <section class="section section--alt" id="termin">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Termin &amp; Kontakt</p>
+          <h2>Termin machen &ndash; wie es Ihnen am liebsten ist</h2>
+        </header>
+
+        <div class="booking">
+          <!-- Buchungswidget: wird im echten Projekt vom Buchungstool geliefert -->
+          <div class="booking__widget">
+            <div class="widget-placeholder">
+              <svg class="widget-placeholder__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M7 3v3m10-3v3M3.5 9.5h17M5 6h14a1.5 1.5 0 0 1 1.5 1.5v12A1.5 1.5 0 0 1 19 21H5a1.5 1.5 0 0 1-1.5-1.5v-12A1.5 1.5 0 0 1 5 6Z"/>
+                <path fill="currentColor" d="M7.5 12.5h3v3h-3zM13.5 12.5h3v3h-3z"/>
+              </svg>
+              <p class="widget-placeholder__title">Hier würde das Fresha-Buchungswidget eingebettet</p>
+              <p class="widget-placeholder__text">
+                Terminkalender, freie Zeiten und Bestätigungs-E-Mail kommen direkt aus Fresha &ndash;
+                nichts wird doppelt gepflegt. In dieser Demo steht an dieser Stelle ein Platzhalter.
+              </p>
+            </div>
+          </div>
+
+          <!-- Direktkontakt als gleichwertige Alternative -->
+          <div class="booking__direct">
+            <h3>Lieber direkt?</h3>
+            <p>Schreiben Sie uns eine Nachricht oder rufen Sie an. Wir melden uns meist innerhalb
+              weniger Stunden zurück.</p>
+            <a class="btn btn--whatsapp btn--block" href="https://wa.me/4951611234560" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.96L2 22l5.23-1.37a9.9 9.9 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.16 8.16 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.86 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.53-3.68 8.19-8.16 8.19Zm4.5-6.13c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12s-.64.8-.79.97c-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.3Z"/></svg>
+              WhatsApp: 0 51 61 / 12 34 56
+            </a>
+            <a class="btn btn--outline btn--block" href="tel:+4951611234560">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M6.6 3.5h2.2l1.6 4-2 1.3a12 12 0 0 0 5.3 5.3l1.3-2 4 1.6v2.2a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+              Anrufen: 0 51 61 / 12 34 56
+            </a>
+            <p class="booking__hours-hint" id="status-hint">
+              <!-- wird per JS mit dem aktuellen Status gefüllt -->
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Öffnungszeiten: heutiger Tag wird per JS hervorgehoben -->
+          <div class="card">
+            <h3>Öffnungszeiten</h3>
+            <table class="hours" id="hours-table">
+              <caption class="visually-hidden">Öffnungszeiten des Frisörsalons Wenzel</caption>
+              <tbody>
+                <tr data-day="1"><th scope="row">Montag</th><td>geschlossen</td></tr>
+                <tr data-day="2"><th scope="row">Dienstag</th><td>09:00 – 18:00</td></tr>
+                <tr data-day="3"><th scope="row">Mittwoch</th><td>09:00 – 18:00</td></tr>
+                <tr data-day="4"><th scope="row">Donnerstag</th><td>09:00 – 20:00</td></tr>
+                <tr data-day="5"><th scope="row">Freitag</th><td>09:00 – 18:00</td></tr>
+                <tr data-day="6"><th scope="row">Samstag</th><td>08:00 – 13:00</td></tr>
+                <tr data-day="0"><th scope="row">Sonntag</th><td>geschlossen</td></tr>
+              </tbody>
+            </table>
+            <p class="card__note">
+              <strong>Urlaub:</strong> Vom 20. Juli bis 3. August 2026 bleibt der Salon geschlossen.
+            </p>
+          </div>
+
+          <!-- Anfahrt -->
+          <div class="card">
+            <h3>So finden Sie uns</h3>
+            <address class="address">
+              Frisörsalon Wenzel<br>
+              Bahnhofstraße 14<br>
+              29664 Walsrode
+            </address>
+            <div class="map-placeholder" role="img" aria-label="Kartenausschnitt mit dem Standort in der Bahnhofstraße 14, Walsrode">
+              <svg viewBox="0 0 400 220" aria-hidden="true" class="map-placeholder__svg">
+                <rect width="400" height="220" fill="#efe6db"/>
+                <path d="M0 150h400M0 90h400M120 0v220M280 0v220" stroke="#e0d2c2" stroke-width="10" fill="none"/>
+                <path d="M0 120h400" stroke="#d9c8b5" stroke-width="18" fill="none"/>
+                <circle cx="200" cy="110" r="30" fill="#c0623c" opacity=".15"/>
+                <path d="M200 92a11 11 0 0 1 11 11c0 8-11 20-11 20s-11-12-11-20a11 11 0 0 1 11-11Z" fill="#c0623c"/>
+                <circle cx="200" cy="103" r="4" fill="#faf6f1"/>
+              </svg>
+              <p class="map-placeholder__note">Im echten Projekt: eingebettete Karte (DSGVO-konform erst nach Klick)</p>
+            </div>
+            <p class="card__note">
+              Direkt an der Bahnhofstraße, zwei Minuten vom Marktplatz. Parkplätze finden Sie
+              im Hof hinter dem Haus und gegenüber an der Sparkasse.
+            </p>
+          </div>
+
+          <!-- Kontaktformular -->
+          <div class="card" id="kontakt">
+            <h3>Nachricht schreiben</h3>
+            <form class="form" id="kontakt-formular" novalidate>
+              <div class="field">
+                <label for="feld-name">Ihr Name</label>
+                <input type="text" id="feld-name" name="name" autocomplete="name" required>
+                <p class="field__error" id="fehler-name" hidden></p>
+              </div>
+              <div class="field">
+                <label for="feld-kontakt">Telefon oder E-Mail</label>
+                <input type="text" id="feld-kontakt" name="kontakt" autocomplete="tel" required>
+                <p class="field__error" id="fehler-kontakt" hidden></p>
+              </div>
+              <div class="field">
+                <label for="feld-nachricht">Ihre Nachricht</label>
+                <textarea id="feld-nachricht" name="nachricht" rows="4" required></textarea>
+                <p class="field__error" id="fehler-nachricht" hidden></p>
+              </div>
+              <div class="field field--check">
+                <label class="check">
+                  <input type="checkbox" id="feld-datenschutz" name="datenschutz" required>
+                  <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage
+                    gespeichert werden. (<a href="../../datenschutz.html">Datenschutz</a>)</span>
+                </label>
+                <p class="field__error" id="fehler-datenschutz" hidden></p>
+              </div>
+              <button type="submit" class="btn btn--primary btn--block">Nachricht senden</button>
+              <p class="form__status" id="formular-status" role="status"></p>
+              <p class="form__note">Demo-Formular: Es wird nichts versendet und nichts gespeichert.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       8. FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__col">
+        <p class="site-footer__brand">Frisörsalon Wenzel</p>
+        <address class="address">
+          Bahnhofstraße 14<br>
+          29664 Walsrode
+        </address>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__title">Kontakt</p>
+        <ul class="site-footer__list">
+          <li><a href="tel:+4951611234560">0 51 61 / 12 34 56</a></li>
+          <li><a href="https://wa.me/4951611234560" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:hallo@frisoersalon-wenzel.de">hallo@frisoersalon-wenzel.de</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__title">Folgen</p>
+        <ul class="site-footer__list">
+          <li><a href="#top">Instagram</a></li>
+          <li><a href="#top">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__title">Rechtliches</p>
+        <ul class="site-footer__list">
+          <li><a href="../../impressum.html">Impressum</a></li>
+          <li><a href="../../datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footer__demo">
+        <strong>Demo-Projekt.</strong> Frisörsalon Wenzel ist ein erfundener Betrieb.
+        Name, Adresse, Telefonnummer, Preise und Bewertungen sind frei erfunden und dienen
+        nur der Veranschaulichung dieser Beispiel-Website.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Fester WhatsApp-Button, vor allem für Mobil -->
+  <a class="whatsapp-fab" href="https://wa.me/4951611234560" rel="noopener" aria-label="Uns per WhatsApp schreiben">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.96L2 22l5.23-1.37a9.9 9.9 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.16 8.16 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.86 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.53-3.68 8.19-8.16 8.19Zm4.5-6.13c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12s-.64.8-.79.97c-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.73 2.64 4.19 3.7.59.26 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.3Z"/></svg>
+  </a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
