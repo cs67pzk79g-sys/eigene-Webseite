@@ -15,6 +15,7 @@ kein Build-Schritt, keine Abhängigkeiten.
 ```
 index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über mich, FAQ, Kontakt)
 danke.html                    Bestätigung nach dem Absenden des Formulars
+netlify.toml                  Hosting-Einstellungen: kein Build, interne Dateien gesperrt
 404.html                      Fehlerseite – wird vom Hoster bei unbekannter Adresse ausgeliefert
 impressum.html                Impressum-Gerüst nach § 5 DDG
 datenschutz.html              Datenschutzerklärung nach Art. 13 DSGVO
@@ -292,6 +293,22 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **`netlify.toml` statt Klicks im Dashboard.** Ohne die Datei stünden die
+  Hosting-Einstellungen nur im Netlify-Konto — von Hand gesetzt, pro Projekt neu, für
+  niemanden nachlesbar. Im Repository wandern sie bei jedem Klon mit und lassen sich in
+  Kundenprojekte kopieren.
+
+  **Der wichtigste Teil sind die drei Weiterleitungen.** Netlify veröffentlicht alles im
+  publish-Verzeichnis. Ohne sie wären die Arbeitsnotizen unter `ihre-domain.de/README.md`
+  öffentlich abrufbar — mit Preiskalkulation, Rechtsfragen und Launch-Checkliste darin.
+  **Kommt eine weitere `.md`-Datei ins Wurzelverzeichnis, gehört sie dort ebenfalls
+  hinein.** Dateien und Ordner, die mit einem Punkt beginnen (`.claude/`, `.DS_Store`),
+  veröffentlicht Netlify ohnehin nicht.
+
+  Die Sicherheits-Kopfzeilen sind knapp gehalten: nur solche, die bei einer statischen
+  Seite ohne fremde Einbindungen nichts kaputtmachen können. Eine Content-Security-Policy
+  fehlt absichtlich — die will geprüft sein, statt geraten.
 
 - **Das Formular läuft über Netlify Forms, nicht über PHP oder einen Formulardienst.**
   Netlify liest beim Deploy das HTML, erkennt am Attribut `data-netlify="true"` das

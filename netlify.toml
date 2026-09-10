@@ -1,0 +1,79 @@
+# =============================================================================
+# NETLIFY-KONFIGURATION
+#
+# Warum diese Datei existiert: Ohne sie stehen die Einstellungen nur im
+# Netlify-Dashboard – von Hand geklickt, pro Projekt neu, und nirgends
+# nachlesbar. Hier stehen sie im Repository, wandern bei jedem Klon mit und
+# lassen sich in Kundenprojekte kopieren.
+# =============================================================================
+
+
+[build]
+  # Kein Build-Schritt: Die Seite ist reines HTML, CSS und JavaScript. Genau das
+  # ist der Punkt – siehe "Echter Code statt Baukasten" auf der Startseite.
+  command = ""
+
+  # Was veröffentlicht wird. "." ist das Wurzelverzeichnis des Repositorys.
+  publish = "."
+
+
+# -----------------------------------------------------------------------------
+# INTERNE DATEIEN NICHT AUSLIEFERN
+#
+# Netlify veröffentlicht alles im publish-Verzeichnis. Ohne diese Regeln wären
+# die Arbeitsnotizen unter ihre-domain.de/README.md oeffentlich abrufbar – mit
+# Preiskalkulation, Rechtsfragen und Launch-Checkliste darin.
+#
+# Kommt eine weitere .md-Datei dazu, gehoert sie hier ebenfalls hinein.
+# -----------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/ARBEITSABLAUF.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/DEMOS-VORBEREITEN.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+
+# -----------------------------------------------------------------------------
+# SICHERHEITS-KOPFZEILEN
+#
+# Bewusst knapp gehalten: nur Kopfzeilen, die bei einer statischen Seite ohne
+# fremde Einbindungen nichts kaputtmachen koennen. Eine Content-Security-Policy
+# fehlt absichtlich – die will geprueft sein, statt geraten.
+# -----------------------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Verhindert, dass die Seite in einem fremden Rahmen eingebettet wird
+    # (Clickjacking): Jemand legt eine unsichtbare Ebene darueber und faengt
+    # Klicks ab, die eigentlich dem Formular gelten.
+    X-Frame-Options = "DENY"
+
+    # Der Browser haelt sich an den vom Server gemeldeten Dateityp, statt ihn zu
+    # erraten. Eine als Bild ausgelieferte Datei wird dann nicht doch als Skript
+    # ausgefuehrt.
+    X-Content-Type-Options = "nosniff"
+
+    # Beim Klick auf einen externen Link erfaehrt die Zielseite nur die Domain,
+    # nicht die genaue Unterseite.
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Die Schriften liegen lokal und aendern sich praktisch nie – ein Jahr
+# Zwischenspeicher spart bei jedem Wiederbesuch zwei Ladevorgaenge.
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
