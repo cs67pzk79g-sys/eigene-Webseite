@@ -13,7 +13,7 @@ kein Build-Schritt, keine Abhängigkeiten.
 ## Dateien
 
 ```
-index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über uns, FAQ, Kontakt)
+index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über mich, FAQ, Kontakt)
 404.html                      Fehlerseite – wird vom Hoster bei unbekannter Adresse ausgeliefert
 impressum.html                Impressum-Gerüst nach § 5 DDG
 datenschutz.html              Datenschutzerklärung nach Art. 13 DSGVO
@@ -59,8 +59,7 @@ ausführlichen Checkliste.
 
 **Geht jederzeit, auch schon vorher:**
 
-- [ ] **Rechtsform klären: GbR oder Einzelgewerbe?** Die Seite tritt als „wir“ auf;
-      davon hängt ab, wer im Impressum steht → [1](#1-platzhalter-ausfüllen)
+- [ ] Gewerbeanmeldung als Einzelunternehmen → danach Impressum ausfüllen
 - [ ] *(optional)* Portraitfotos einsetzen – die Karten tragen bewusst Initialen,
       Fotos sind keine Pflicht → [2](#2-bilder-ersetzen)
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
@@ -99,7 +98,7 @@ Der Reihe nach:
 | Was | Wo |
 |---|---|
 | Firmenname / Marke | alle drei HTML-Dateien, im Kopfbereich und Fußbereich |
-| Vor- und Nachname **beider Personen** | `index.html` (Über uns), `impressum.html`, `datenschutz.html` |
+| Vor- und Nachname | `index.html` (Über mich), `impressum.html`, `datenschutz.html` |
 | Ladungsfähige Anschrift | `impressum.html`, `datenschutz.html` |
 | E-Mail-Adresse (auch im `mailto:`) | `index.html` (Kontakt), beide Rechtsseiten |
 | Telefonnummer (auch im `tel:`) | `index.html`, beide Rechtsseiten – oder Zeilen löschen |
@@ -110,8 +109,7 @@ Der Reihe nach:
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 9 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 12 |
 | Links zu den Demo-Projekten | `index.html`, Abschnitt Referenzen – siehe Hinweis unten |
-| Rechtsform (GbR oder Einzelgewerbe) | `impressum.html` – siehe den ausführlichen Kommentar über den Pflichtangaben |
-| Kurztexte der beiden Personen | `index.html`, Abschnitt „Über uns“ |
+| Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
 | Erreichbarkeit, Einsatzgebiet, Antwortzeit | `index.html`, Kasten „Lieber direkt?“ |
 
 ### 2. Bilder ersetzen
@@ -121,11 +119,10 @@ Der Reihe nach:
   800 px decken damit auch Displays mit doppelter Pixeldichte ab. Größer aufzunehmen
   bringt nichts Sichtbares, kostet aber Ladezeit. Kommt ein weiteres Projekt dazu, im
   selben Format aufnehmen, damit die Kacheln zusammenpassen.
-- **Portraits**: In der Sektion „Über uns“ tragen beide Karten einen Kreis mit den
+- **Portrait**: In der Sektion „Über mich“ trägt die Karte einen Kreis mit den
   Initialen. Das ist eine Entscheidung, kein offener Platzhalter – die Seite ist damit
-  fertig. Wer später doch Fotos möchte, ersetzt den `span` durch den `<img>`-Tag, der
-  als Kommentar daneben steht, und nimmt beide Bilder im selben Zuschnitt auf, sonst
-  wirken die Karten ungleich. **Wichtig:** Werden die Namen geändert, müssen die
+  fertig. Wer später doch ein Foto möchte, ersetzt den `span` durch den `<img>`-Tag,
+  der als Kommentar daneben steht. **Wichtig:** Wird der Name geändert, müssen die
   Initialen mitgeändert werden.
 - **Vorschaubild fürs Teilen** (Open Graph, 1200 × 630 px): unter `assets/`
   ablegen und im `<head>` als `og:image` verlinken. Ohne das sieht der Link in
@@ -340,12 +337,22 @@ Getestet in Chromium über einen lokalen Server:
   Festpreis vorab, eine Telefonnummer und ein benanntes Einsatzgebiet. Fotos lassen sich
   jederzeit nachrüsten.
 
-- **Die Seite spricht durchgängig als „wir“, und beide Personen tragen dieselbe
-  Rollenzeile.** Das ist die sichtbare Umsetzung des gemeinsamen Auftritts: Es gibt
-  keine Aufteilung in „der eine gestaltet, der andere programmiert“, weil es sie im
-  Betrieb nicht gibt. Die Kundenstimme bleibt davon unberührt – im Beispielsatz zur
-  Kleinunternehmerregelung, in den Antworten des Paketberaters und in der
-  Einwilligungserklärung des Formulars spricht weiterhin der Besucher in der Ich-Form.
+- **Die Seite spricht als Einzelperson („ich“).** Der Betrieb wurde zwischenzeitlich
+  zu zweit geplant und die Seite entsprechend auf „wir“ umgestellt; seit der Mitgründer
+  ausgestiegen ist, steht sie wieder durchgängig in der Ich-Form.
+
+  **Eine Ausnahme, die bewusst stehen bleibt:** das einschließende „wir“, das *Sie und
+  ich* meint – „Wir gehen die Seite gemeinsam durch“, „Texte und Bilder stimmen wir
+  gemeinsam ab“, „legen wir im Erstgespräch gemeinsam fest“, „besprechen wir im
+  Erstgespräch“. Das ist auch für einen Einzelunternehmer korrektes Deutsch; „Ich gehe
+  die Seite gemeinsam durch“ wäre schlicht falsch. Erkennbar sind diese Stellen daran,
+  dass sie eine gemeinsame Handlung beschreiben, meist mit dem Wort „gemeinsam“.
+
+  **Drei weitere „wir“ gehören nicht dem Anbieter** und dürfen nie mit umgestellt
+  werden: die Schlagzeile in der Branchen-Vorschau („Wenn's eilt, sind wir am selben
+  Tag da“) gehört dem fiktiven Beispielbetrieb, „Über uns“ in der Liste typischer
+  Unterseiten ist ein Seitenname auf der *Kunden*-Website, und der Platzhaltertext im
+  Kontaktformular spricht aus Sicht des Besuchers.
 
 - **Keine Angaben zu Ausbildung, Schule oder Alter.** Dazu besteht keine Pflicht, und
   die frühere Formulierung war zudem sachlich falsch. Was bleibt, ist der ehrliche Satz,
