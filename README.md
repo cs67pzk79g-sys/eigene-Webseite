@@ -15,7 +15,6 @@ kein Build-Schritt, keine Abhängigkeiten.
 ```
 index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über mich, FAQ, Kontakt)
 danke.html                    Bestätigung nach dem Absenden des Formulars
-kontakt.php                   Nimmt das Formular entgegen und schickt es per E-Mail
 404.html                      Fehlerseite – wird vom Hoster bei unbekannter Adresse ausgeliefert
 impressum.html                Impressum-Gerüst nach § 5 DDG
 datenschutz.html              Datenschutzerklärung nach Art. 13 DSGVO
@@ -66,12 +65,13 @@ ausführlichen Checkliste.
 - [ ] *(optional)* Portraitfoto einsetzen – die Karte trägt bewusst Initialen,
       ein Foto ist keine Pflicht → [2](#2-bilder-ersetzen)
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
-- [ ] **Kontaktformular scharf schalten** – Empfänger in `kontakt.php` eintragen und
-      `data-entwurf` am Formular entfernen → [3](#3-kontaktformular-scharf-schalten)
-- [ ] Hosting-Paket bei **ALL-INKL.COM** buchen (Tarif *PrivatPlus* deckt eigene Seite
-      und Demo-Projekte ab) und den AV-Vertrag im KAS abschließen
-- [ ] `kontakt.php` dort testen, **bevor** die Seite live geht – falls `mail()` gesperrt
-      ist, muss auf SMTP umgebaut werden
+- [ ] **Kontaktformular scharf schalten** – `data-entwurf` am Formular entfernen
+      → [3](#3-kontaktformular-scharf-schalten)
+- [ ] Auftragsverarbeitungsvertrag mit Netlify abschließen (gilt **nicht** automatisch
+      mit der Anmeldung)
+- [ ] Auf dataprivacyframework.gov prüfen, ob Netlify mit aktivem Status geführt wird –
+      Ergebnis und Datum notieren
+- [ ] E-Mail-Benachrichtigung für Formularabsendungen im Netlify-Dashboard einschalten
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
@@ -112,7 +112,7 @@ Der Reihe nach:
 | Domain / canonical / Open Graph | `index.html`, `<head>` |
 | Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
 | USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
-| Speicherdauer der Logs + genaue Firmierung des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **ALL-INKL.COM**; Firmierung und Anschrift wörtlich aus deren Impressum übernehmen |
+| Speicherdauer der Logs + Anschrift des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **Netlify, Inc., USA**; Anschrift gegen deren Impressum abgleichen |
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 9 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 12 |
 | Links zu den Demo-Projekten | `index.html`, Abschnitt Referenzen – siehe Hinweis unten |
@@ -171,21 +171,19 @@ schlimmer als gar keines.
 
 Zum Aktivieren:
 
-1. In `index.html` das `action` des `<form id="anfrage-formular">` auf den echten
-   Endpunkt setzen (eigenes PHP-Skript beim Hoster oder ein Formulardienst).
-2. Den gewählten Weg in `datenschutz.html`, Abschnitt 4, als Empfänger
-   eintragen. Bei einem externen Dienst gehören Name, Anschrift und ein Hinweis
-   auf möglichen Drittlandtransfer dazu.
+1. `data-entwurf="true"` am `<form id="anfrage-formular">` entfernen. Das `action`
+   steht bereits auf dem Endwert `/danke.html`, die Netlify-Attribute sind gesetzt.
+2. Im Netlify-Dashboard unter *Forms → Notifications* eine E-Mail-Benachrichtigung
+   einrichten. Ohne das sammeln sich Anfragen dort, ohne dass jemand davon erfährt.
+   Netlify als Empfänger steht bereits in `datenschutz.html`, Abschnitt 4.
 3. Serverseitig noch einmal prüfen: Die Prüfung in `script.js` ist reine
    Bequemlichkeit für den Nutzer, kein Schutz. Das Honeypot-Feld `website` muss
    auch auf dem Server ausgewertet werden.
 
-**Zuerst: Empfänger eintragen.** In `kontakt.php` stehen oben drei Einstellungen.
-`$empfaenger` ist Ihr Postfach. `$absender` **muss** eine Adresse Ihrer eigenen Domain
-sein, etwa `website@ihre-domain.de` – trägt dort die Adresse des Besuchers, landet die
-Benachrichtigung bei vielen Anbietern im Spam, weil Ihr Server nicht berechtigt ist, in
-fremdem Namen zu versenden. Die Adresse des Besuchers steht stattdessen im `Reply-To`;
-ein Klick auf „Antworten" geht also trotzdem an den richtigen Empfänger.
+**Zuerst: Benachrichtigung einschalten.** Netlify sammelt die Absendungen im
+Dashboard. Damit eine Anfrage auch in Ihrem Postfach landet, muss dort unter
+*Forms → Notifications* eine E-Mail-Benachrichtigung eingerichtet werden. Ohne das
+merken Sie eine Anfrage erst, wenn Sie zufällig ins Dashboard schauen.
 
 **Telefonfeld.** Das Formular fragt Name, E-Mail, Telefon und Projektbeschreibung ab.
 Das Telefonfeld ist **freiwillig** und als „optional" gekennzeichnet – die Zielgruppe steht
@@ -295,31 +293,31 @@ Getestet in Chromium über einen lokalen Server:
 
 ### Bewusste Entscheidungen
 
-- **Das Formular läuft über ein eigenes PHP-Skript, nicht über einen Fremddienst.**
-  `kontakt.php` prüft die Angaben, verschickt sie per E-Mail und leitet auf `danke.html`
-  weiter. Kein Formulardienst, kein zusätzlicher Auftragsverarbeitungsvertrag, keine
-  Daten außerhalb der EU. Jedes gängige deutsche Hosting-Paket kann das.
+- **Das Formular läuft über Netlify Forms, nicht über PHP oder einen Formulardienst.**
+  Netlify liest beim Deploy das HTML, erkennt am Attribut `data-netlify="true"` das
+  Formular und richtet es selbst ein. Das vorhandene Honeypot-Feld `website` wird über
+  `data-netlify-honeypot` mitgenutzt – es war schon da, bevor Netlify feststand.
 
-  **Zwei Dinge im Skript sind Sicherheit, nicht Kosmetik.** `kopfzeile_saeubern()`
-  entfernt Zeilenumbrüche aus allem, was in einen Mail-Kopf wandert – ohne das könnte
-  jemand über das E-Mail-Feld eine zusätzliche `Bcc:`-Zeile einschleusen und aus dem
-  Formular einen Spamverteiler machen (Header-Injection). Und alle Prüfungen aus
-  `script.js` laufen serverseitig noch einmal, weil sich die Prüfung im Browser umgehen
-  lässt. Die Weiterleitung nutzt Status 303, damit ein Neuladen der Bestätigungsseite die
-  Anfrage nicht ein zweites Mal abschickt.
+  **Kein PHP im Repository.** Netlify führt PHP nicht aus. Eine `.php`-Datei würde als
+  Klartext ausgeliefert – mit allem, was darin steht, bis hin zur Empfängeradresse. Es
+  gab zwischenzeitlich ein `kontakt.php` für den Fall eines deutschen Hosters; es wurde
+  beim Wechsel zurück zu Netlify **gelöscht**, nicht nur abgeschaltet. Falls die
+  Entscheidung je wieder kippt: `git log -- kontakt.php` findet es.
 
   **Ein Schalter, nicht zwei.** Das Formular trägt `data-entwurf="true"`; solange das
   Attribut da ist, blockiert `script.js` das Absenden und sagt dem Besucher offen, dass
-  nichts gesendet wurde. `action` steht dagegen schon auf dem Endwert `kontakt.php`. So
+  nichts gesendet wurde. `action` steht dagegen schon auf dem Endwert `/danke.html`. So
   gibt es am Launch-Tag genau einen Handgriff, und er gehört zur ohnehin fälligen
-  Entfernung der Entwurfs-Kennzeichen.
+  Entfernung der Entwurfs-Kennzeichen. Die Prüfung auf einen Platzhalter in `action`
+  bleibt als zweites Netz stehen.
 
-  **Warum kein Netlify.** Zwischenzeitlich war Netlify Forms eingebaut. Dagegen sprach
-  am Ende nicht die Technik, sondern der Zuschnitt: Netlify liefert keine Postfächer, die
-  Kunden aber brauchen – jedes Projekt bräuchte also zwei Anbieter. Dazu die englische
-  Oberfläche, für die Zielgruppe unbedienbar, und der Drittlandtransfer in die USA, der
-  in jede einzelne Kunden-Datenschutzerklärung müsste. Ein deutsches Paket bringt
-  Hosting, Domain und Postfach in einem Vertrag und macht das Thema gegenstandslos.
+  **Der Preis dafür steht in der Datenschutzerklärung.** Netlify ist ein US-Unternehmen;
+  Hosting und Formular laufen über deren Server. Abschnitt 2 nennt Anschrift, Logdaten
+  und die Übermittlung in die USA, Abschnitt 4 verweist für das Formular darauf. Zwei
+  Dinge sind vor dem Livegang zu erledigen: der Auftragsverarbeitungsvertrag mit Netlify
+  und die Prüfung auf dataprivacyframework.gov, ob Netlify dort mit aktivem Status
+  geführt wird – davon hängt ab, ob die Übermittlung auf dem Angemessenheitsbeschluss
+  oder auf Standardvertragsklauseln beruht.
 
 - **Die Danke-Seite bleibt dauerhaft auf `noindex`.** Wer eine Bestätigungsseite über
   Google findet, hat nichts abgeschickt und läse eine Bestätigung für etwas, das nie

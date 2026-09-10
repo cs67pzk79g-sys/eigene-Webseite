@@ -7,39 +7,43 @@ Stand: September 2026.
 
 ---
 
-## 1. Hosting-Anbieter: ALL-INKL.COM
+## 1. Hosting-Anbieter: Netlify
 
-Entschieden nach einem Vergleich mit Netlify, Hetzner, netcup und Mittwald.
+Verglichen wurden Netlify, ALL-INKL, Hetzner, netcup und Mittwald. Die Entscheidung ist
+zwischenzeitlich auf ALL-INKL gefallen und wieder zurück auf Netlify gegangen – der Stand
+hier ist der aktuelle.
 
-**Der ausschlaggebende Grund war nicht technisch.** Bei Kundenprojekten besitzt der Kunde
-den Hosting-Vertrag — er bekommt die Rechnungen, die Passwort-Mails, und er ruft dort an,
-wenn etwas klemmt. Ein Anbieter, den ein Handwerksmeister nicht bedienen kann, verlagert
-diesen Support auf mich, unbezahlt, nach einem abgerechneten Festpreisprojekt.
+**Wofür Netlify spricht:** Der Kunde legt sich ein Konto an und lädt mich als Mitarbeiter
+ein; ich verbinde das GitHub-Repository, ab dann geht jeder Push automatisch live. Kein
+FTP, keine Zugangsdaten, die weitergereicht werden. Formularverarbeitung ist eingebaut.
 
-ALL-INKL hat eine deutschsprachige Telefon-Hotline rund um die Uhr und ein
-Verwaltungssystem (KAS), das für Menschen gebaut ist und nicht für Administratoren.
+**Was Netlify nicht kann, und was daraus folgt:**
 
-### Welcher Tarif für wen
+| Punkt | Konsequenz |
+|---|---|
+| Keine E-Mail-Postfächer | Kunden brauchen `info@ihre-domain.de` → **zweiter Anbieter nötig** |
+| Oberfläche auf Englisch | Für die Zielgruppe kaum bedienbar → Rückfragen landen bei mir |
+| US-Unternehmen | Drittlandtransfer in **jede** Kunden-Datenschutzerklärung |
+| Kein PHP | `.php`-Dateien würden als Klartext ausgeliefert – dürfen nicht ins Repository |
 
-| | Tarif | Warum |
-|---|---|---|
-| **Eigene Seite** | PrivatPlus | 5 Domains: eigene Seite plus die drei Demo-Projekte |
-| **Kundenprojekte** | der kleinste | Ein Kunde braucht eine Domain und ein paar Postfächer |
+Diese vier Punkte sind der Grund, warum die Entscheidung zwischenzeitlich gekippt war.
+Sie bestehen weiter; sie sind bekannt und in Kauf genommen.
 
-Kunden nicht unnötig den größeren Tarif empfehlen.
+### Was das pro Projekt bedeutet
 
-### Warum nicht Netlify
+- **Auftragsverarbeitungsvertrag** mit Netlify abschließen. Gilt nicht automatisch mit
+  der Anmeldung.
+- **Auf dataprivacyframework.gov prüfen**, ob Netlify dort mit aktivem Status geführt
+  wird. Ergebnis und Datum notieren. Davon hängt ab, ob die Übermittlung in die USA auf
+  dem Angemessenheitsbeschluss oder auf Standardvertragsklauseln beruht.
+- **Textbaustein Datenschutz** in die Kundenseite übernehmen – Formulierungen stehen in
+  `datenschutz.html`, Abschnitte 2 und 4.
+- **Postfach separat lösen.** Netlify liefert keines.
 
-War zwischenzeitlich eingebaut und wurde wieder entfernt. Drei Gründe:
-
-- **Keine E-Mail-Postfächer.** Kunden brauchen `info@ihre-domain.de`. Jedes Projekt
-  bräuchte also zwei Anbieter, zwei Verträge, zwei Rechnungen.
-- **Englische Oberfläche**, für die Zielgruppe nicht bedienbar.
-- **Drittlandtransfer in die USA**, der in jede einzelne Kunden-Datenschutzerklärung
-  müsste — samt Auftragsverarbeitungsvertrag und jährlicher Prüfung, ob der Anbieter im
-  EU-US Data Privacy Framework gelistet ist.
-
-Bei deutschem Hosting entfällt das alles ersatzlos.
+Die Prüfung auf dataprivacyframework.gov muss man einmal machen, nicht pro Projekt – das
+Ergebnis gilt für alle. Aber sie muss regelmäßig wiederholt werden: Zertifizierungen
+laufen jährlich aus, und das Framework ist bereits der dritte Anlauf; die beiden
+Vorgänger wurden vom Europäischen Gerichtshof gekippt.
 
 ---
 
@@ -50,15 +54,16 @@ Bei deutschem Hosting entfällt das alles ersatzlos.
    das ist für einen Malermeister eine Hürde und führt zu einer Woche E-Mail-Pingpong.
    Stattdessen gemeinsam durchgehen, er sitzt daneben und gibt seine Daten ein.
    Dauert zehn Minuten und wirkt organisiert.
-3. **Eigenen FTP-Benutzer anlegen**, beschränkt auf das Webverzeichnis. Nicht den
-   Hauptzugang des Kunden verwenden — der öffnet auch Postfach und Rechnungsdaten.
+3. **Als Mitarbeiter einladen lassen.** Der Kunde lädt mich in seinem Netlify-Konto
+   ein; damit brauche ich seine Zugangsdaten nicht.
 4. **Website bauen**, Code in einem **privaten** GitHub-Repository.
 5. **Veröffentlichen** — siehe Abschnitt 3.
 6. **Übergabe**: alle Zugangsdaten an den Kunden, Passwörter ändern lassen.
 
 ### Zwei Regeln, die nicht verhandelbar sind
 
-**Der Hosting-Vertrag läuft auf den Kunden.** Nicht auf mich.
+**Das Netlify-Konto gehört dem Kunden.** Nicht mir. Ich bin dort eingeladener
+Mitarbeiter und kann jederzeit entfernt werden.
 
 **Die Domain läuft auf den Kunden.** Nicht auf mich.
 
@@ -70,36 +75,30 @@ dieser Satz nicht mehr.
 
 ## 3. Vom Code auf den Server
 
-Klassisches Hosting kennt kein automatisches Deployment wie Netlify. Drei Wege:
+Über Netlify: Repository verbinden, ab dann löst jeder Push zum Hauptzweig ein Deployment
+aus. Nichts weiter einzurichten.
 
-| Weg | Aufwand | Bewertung |
-|---|---|---|
-| Von Hand per FTP (FileZilla o. ä.) | keine Einrichtung | funktioniert immer, bei fünf Dateien eine Minute |
-| **GitHub Actions → FTP-Upload** | einmal pro Projekt | **empfohlen** |
-| Git per SSH auf dem Server | SSH nötig | bringt gegenüber Weg 2 nichts |
+**ZIP-Upload vermeiden.** Netlify erlaubt auch, einen Ordner per Drag-and-drop
+hochzuladen. Das funktioniert, lässt aber keine Versionsgeschichte entstehen – wenn eine
+Änderung etwas kaputt macht, kommt man nicht zurück. Über das Repository sieht man jede
+Änderung und kann jeden Stand wiederherstellen.
 
-**Weg 2 ist der Netlify-Ersatz:** Eine Konfigurationsdatei im Repository, ab dann lädt
-GitHub bei jedem Push die Dateien selbst hoch. Arbeitsweise bleibt `git push`.
-
-**Sicherheit dabei:** Der Upload braucht Zugangsdaten. Dafür den eigenen, auf ein
-Verzeichnis beschränkten FTP-Benutzer nehmen (siehe Abschnitt 2) und die Daten als
-GitHub Secrets hinterlegen. Das Repository muss privat sein — es sind Kundendaten.
-
-> **Noch nicht gebaut.** Die GitHub-Actions-Konfiguration steht aus. Sie soll so
-> kommentiert sein, dass sie sich in jedes Kundenprojekt kopieren lässt.
+**Vorher klären:** Erlaubt Netlifys kostenlose Stufe überhaupt, Mitarbeiter einzuladen?
+Teamfunktionen sind bei vielen Anbietern an bezahlte Tarife gebunden. Falls ein Kunde
+allein deswegen einen kostenpflichtigen Plan bräuchte, kippt die Rechnung – das sollte
+geklärt sein, bevor es einem Kunden zugesagt wird.
 
 ---
 
 ## 4. Offene Punkte
 
-- [ ] **GitHub-Actions-Konfiguration** für den FTP-Upload bauen (siehe Abschnitt 3)
-- [ ] **`kontakt.php` bei ALL-INKL testen, bevor die Seite live geht.** Manche Hoster
-      sperren die PHP-Funktion `mail()` und verlangen SMTP. Dann muss das Skript
-      umgebaut werden — etwa zehn Zeilen, aber das will man nicht am Launch-Tag merken.
-- [ ] **Demo-Projekte umziehen?** `DEMOS-VORBEREITEN.md` beschreibt noch den Weg über
-      GitHub Pages. Mit eigenem Hosting könnten sie unter `demo.ihre-domain.de/…` laufen.
-      Das spart drei separate Impressen — das eigene deckt sie ab — und sieht vor einem
-      Kunden besser aus als eine `github.io`-Adresse.
+- [ ] **Prüfen, ob die kostenlose Netlify-Stufe Mitarbeiter erlaubt** (siehe Abschnitt 3)
+- [ ] **Postfach-Anbieter auswählen.** Netlify liefert keines, für `info@ihre-domain.de`
+      wird ein separater Dienst gebraucht.
+- [ ] **Demo-Projekte umziehen?** `DEMOS-VORBEREITEN.md` beschreibt den Weg über
+      GitHub Pages. Unter der eigenen Domain — etwa `demo.ihre-domain.de` — wären sie vom
+      eigenen Impressum abgedeckt statt jede von einem eigenen, und die Adresse sähe vor
+      einem Kunden besser aus als eine `github.io`-Adresse.
 - [ ] **Textbaustein Datenschutz für Kundenprojekte.** Die Formulierungen aus
       `datenschutz.html`, Abschnitte 2 und 4, lassen sich fast wörtlich übernehmen. Wird
       eine Kundenseite ohne passende Datenschutzerklärung übergeben, ist das ein Mangel —
@@ -113,6 +112,7 @@ Steht ausführlich in der [README](README.md) unter „Was noch zu tun ist". Kur
 
 - Gewerbeanmeldung, danach Impressum und Datenschutz mit echten Daten
 - Kurztext für die Über-mich-Karte, Ort und Einsatzgebiet
-- Am Launch-Tag: Empfänger in `kontakt.php`, `data-entwurf` am Formular entfernen,
-  Entwurfshinweise raus, `noindex` aus den drei öffentlichen Seiten, `robots.txt` und
-  `sitemap.xml` anlegen, LocalBusiness-Schema aktivieren
+- Am Launch-Tag: `data-entwurf` am Formular entfernen, E-Mail-Benachrichtigung im
+  Netlify-Dashboard einschalten, Entwurfshinweise raus, `noindex` aus den drei
+  öffentlichen Seiten, `robots.txt` und `sitemap.xml` anlegen, LocalBusiness-Schema
+  aktivieren
