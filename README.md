@@ -80,6 +80,8 @@ ausführlichen Checkliste.
       Ergebnis und Datum notieren
 - [ ] E-Mail-Benachrichtigung für Formularabsendungen im Netlify-Dashboard einschalten
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
+- [x] ~~Ort, Einsatzgebiet, Erreichbarkeit, Antwortzeit~~ – eingesetzt:
+      Göttingen und Umkreis, Rückruf abends und am Wochenende, Antwort in 24 Stunden
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
 
@@ -125,7 +127,6 @@ Der Reihe nach:
 | Domain in den Demos | `demo/haarscharf/`, `demo/sonnenwerk/` – 110 Stellen, Befehl in [`DEMOS.md`](DEMOS.md) |
 | Firmenname in der Demo-Hinweisleiste | `demo/*/*.html` – 18 Stellen, HTML-Schreibweise `ERG&Auml;NZEN` |
 | Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
-| Erreichbarkeit, Einsatzgebiet, Antwortzeit | `index.html`, Kasten „Lieber direkt?“ |
 
 ### 2. Bilder ersetzen
 
