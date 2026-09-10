@@ -509,10 +509,14 @@
         return;
       }
 
-      // Solange kein echter Endpunkt eingetragen ist, wird nichts verschickt.
-      // Ein Formular, das so tut, als hätte es gesendet, ist schlimmer als keines.
+      // Solange die Seite ein Entwurf ist oder kein echtes Ziel eingetragen
+      // wurde, wird nichts verschickt. Ein Formular, das so tut, als hätte es
+      // gesendet, ist schlimmer als keines.
+      // data-entwurf entfernen schaltet das Formular scharf; die Prüfung auf
+      // den Platzhalter bleibt als zweites Netz stehen.
       var ziel = form.getAttribute('action') || '';
-      if (ziel === '' || ziel.indexOf('BITTE ERGÄNZEN') !== -1) {
+      if (form.hasAttribute('data-entwurf') ||
+          ziel === '' || ziel.indexOf('BITTE ERGÄNZEN') !== -1) {
         ereignis.preventDefault();
         if (status) {
           status.textContent =

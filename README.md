@@ -14,6 +14,7 @@ kein Build-Schritt, keine Abhängigkeiten.
 
 ```
 index.html                    Startseite (Hero, Leistungen, Referenzen, Ablauf, Über mich, FAQ, Kontakt)
+danke.html                    Bestätigung nach dem Absenden des Formulars
 404.html                      Fehlerseite – wird vom Hoster bei unbekannter Adresse ausgeliefert
 impressum.html                Impressum-Gerüst nach § 5 DDG
 datenschutz.html              Datenschutzerklärung nach Art. 13 DSGVO
@@ -63,8 +64,10 @@ ausführlichen Checkliste.
 - [ ] *(optional)* Portraitfoto einsetzen – die Karte trägt bewusst Initialen,
       ein Foto ist keine Pflicht → [2](#2-bilder-ersetzen)
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
-- [ ] **Kontaktformular scharf schalten** – Endpunkt einrichten und in der
-      Datenschutzerklärung als Empfänger eintragen → [3](#3-kontaktformular-scharf-schalten)
+- [ ] **Kontaktformular scharf schalten** – `data-entwurf` am Formular entfernen
+      → [3](#3-kontaktformular-scharf-schalten)
+- [ ] Auftragsverarbeitungsvertrag mit Netlify abschließen
+- [ ] Prüfen, ob Netlify im EU-US Data Privacy Framework gelistet ist
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
@@ -186,13 +189,15 @@ Feld je entfernt, muss es auch dort gestrichen werden.
 
 ### 4. Entwurfs-Kennzeichnung entfernen
 
-- Den `<!-- ENTWURF – NICHT LIVE SCHALTEN … -->`-Kommentar oben in allen vier
+- Den `<!-- ENTWURF – NICHT LIVE SCHALTEN … -->`-Kommentar oben in allen fünf
   HTML-Dateien (jeweils zweimal: vor `<html>` und im `<head>`).
-- Den Absatz `<p class="entwurf-hinweis">` im Fußbereich aller vier Seiten.
+- Den Absatz `<p class="entwurf-hinweis">` im Fußbereich aller fünf Seiten.
+- **`data-entwurf="true"` am `<form id="anfrage-formular">`** – erst damit sendet
+  das Formular tatsächlich.
 - **Wichtig:** `<meta name="robots" content="noindex, nofollow">` aus `index.html`,
   `impressum.html` und `datenschutz.html` entfernen. Bleibt die Zeile stehen, taucht
-  die Seite nie bei Google auf. In `404.html` bleibt sie stehen – eine Fehlerseite
-  gehört nicht in den Index.
+  die Seite nie bei Google auf. In `404.html` **und** `danke.html` bleibt sie stehen –
+  weder eine Fehlerseite noch eine Bestätigungsseite gehört in den Index.
 
 ### 5. SEO scharf schalten
 
@@ -278,6 +283,31 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **Das Formular läuft über Netlify Forms, nicht über PHP oder einen Formulardienst.**
+  Netlify liest beim Deploy das HTML, erkennt am Attribut `data-netlify="true"` das
+  Formular und richtet es selbst ein. Das vorhandene Honeypot-Feld `website` wird über
+  `data-netlify-honeypot` mitgenutzt – es war schon da, bevor Netlify feststand.
+
+  **Ein Schalter, nicht zwei.** Das Formular trägt `data-entwurf="true"`; solange das
+  Attribut da ist, blockiert `script.js` das Absenden und sagt dem Besucher offen, dass
+  nichts gesendet wurde. `action` steht dagegen schon auf dem Endwert `/danke.html`. So
+  gibt es am Launch-Tag genau einen Handgriff, und er gehört zur ohnehin fälligen
+  Entfernung der Entwurfs-Kennzeichen. Die alte Prüfung auf einen Platzhalter in `action`
+  bleibt als zweites Netz stehen.
+
+  **Der Preis dafür steht in der Datenschutzerklärung.** Netlify ist ein US-Unternehmen;
+  Hosting und Formular laufen über deren Server. Abschnitt 2 nennt Anschrift, Logdaten
+  und die Übermittlung in die USA, Abschnitt 4 verweist für das Formular darauf. Zwei
+  Dinge sind vor dem Livegang zu erledigen: der Auftragsverarbeitungsvertrag mit Netlify
+  und die Prüfung, ob Netlify im EU-US Data Privacy Framework gelistet ist – davon hängt
+  ab, ob die Übermittlung auf dem Angemessenheitsbeschluss oder auf
+  Standardvertragsklauseln beruht. Ein Hoster mit Servern in der EU würde beides
+  überflüssig machen.
+
+- **Die Danke-Seite bleibt dauerhaft auf `noindex`.** Wer eine Bestätigungsseite über
+  Google findet, hat nichts abgeschickt und läse eine Bestätigung für etwas, das nie
+  passiert ist. Aus demselben Grund trägt sie kein Canonical.
 
 - **Neue Eingabetypen im Formular gehören ins CSS.** Die Feldgestaltung greift über
   `.feld input[type="…"]`. Wird ein Feld mit einem noch nicht aufgeführten Typ ergänzt,
