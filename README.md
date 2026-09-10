@@ -60,12 +60,12 @@ ausführlichen Checkliste.
 **Geht jederzeit, auch schon vorher:**
 
 - [ ] Gewerbeanmeldung als Einzelunternehmen → danach Impressum ausfüllen
-- [ ] *(optional)* Portraitfotos einsetzen – die Karten tragen bewusst Initialen,
-      Fotos sind keine Pflicht → [2](#2-bilder-ersetzen)
+- [ ] *(optional)* Portraitfoto einsetzen – die Karte trägt bewusst Initialen,
+      ein Foto ist keine Pflicht → [2](#2-bilder-ersetzen)
 - [ ] Vorschaubild fürs Teilen anlegen (1200 × 630 px) → [2](#2-bilder-ersetzen)
 - [ ] **Kontaktformular scharf schalten** – Endpunkt einrichten und in der
       Datenschutzerklärung als Empfänger eintragen → [3](#3-kontaktformular-scharf-schalten)
-- [ ] **Optionales Telefonfeld im Kontaktformular** entscheiden → [3](#3-kontaktformular-scharf-schalten)
+- [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 
 **Zum Schluss, unmittelbar vor dem Livegang:**
 
@@ -173,14 +173,16 @@ Zum Aktivieren:
    Bequemlichkeit für den Nutzer, kein Schutz. Das Honeypot-Feld `website` muss
    auch auf dem Server ausgewertet werden.
 
-**Offene Entscheidung: optionales Telefonfeld.** Das Formular fragt Name, E-Mail und
-Projektbeschreibung ab. Die Zielgruppe – Betriebsinhaber zwischen 40 und 60, tagsüber auf
-der Baustelle oder im Salon – ruft häufig lieber zurück, als eine E-Mail zu tippen. Ein
-**freiwilliges** Feld „Telefon (wenn Ihnen ein Rückruf lieber ist)" kostet keine Hürde und
-kann Anfragen retten, die sonst nicht abgeschickt werden. Datenschutzrechtlich
-unproblematisch, solange es wirklich optional ist – dann aber auch in Abschnitt 4 der
-Datenschutzerklärung bei den erhobenen Daten mitnennen. Noch nicht umgesetzt, weil es eine
-Geschäftsentscheidung ist.
+**Telefonfeld.** Das Formular fragt Name, E-Mail, Telefon und Projektbeschreibung ab.
+Das Telefonfeld ist **freiwillig** und als „optional" gekennzeichnet – die Zielgruppe steht
+tagsüber auf der Baustelle oder im Salon und ruft häufig lieber zurück, als eine E-Mail zu
+tippen. Als Pflichtfeld würde es Anfragen kosten statt welche zu retten.
+
+Die Prüfung ist bewusst großzügig: Sie zählt nur, ob mindestens sechs Ziffern da sind.
+Rufnummern werden mit `+49`, `0049`, Klammern, Schrägstrichen, Punkten und Leerzeichen
+geschrieben – jedes strengere Muster sperrt gültige Nummern aus. Abschnitt 4 der
+Datenschutzerklärung nennt die Telefonnummer ausdrücklich als freiwillige Angabe; wird das
+Feld je entfernt, muss es auch dort gestrichen werden.
 
 ### 4. Entwurfs-Kennzeichnung entfernen
 
@@ -276,6 +278,12 @@ Getestet in Chromium über einen lokalen Server:
   Branchenwechsel ab – geprüft, nicht nur angenommen.
 
 ### Bewusste Entscheidungen
+
+- **Neue Eingabetypen im Formular gehören ins CSS.** Die Feldgestaltung greift über
+  `.feld input[type="…"]`. Wird ein Feld mit einem noch nicht aufgeführten Typ ergänzt,
+  fällt es stillschweigend auf die Browser-Voreinstellung zurück und sieht flacher aus
+  als seine Nachbarn – genau das ist beim Telefonfeld zunächst passiert. Ein Test
+  vergleicht deshalb Höhe, Breite, Rahmenstärke und Eckenradius aller Eingabefelder.
 
 - **Alle Sektionsüberschriften teilen dieselbe linke Kante.** Die FAQ lief anfangs in einer
   schmaleren Spalte und begann dadurch 224 px weiter rechts als jede andere Sektion – beim
