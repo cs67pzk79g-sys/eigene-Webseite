@@ -63,7 +63,6 @@ ausführlichen Checkliste.
 
 - [ ] Platzhalter füllen: Firmenname, Name, Anschrift, E-Mail, Telefon → [1](#1-platzhalter-ausfüllen)
 - [ ] Impressum und Datenschutzerklärung vervollständigen → [1](#1-platzhalter-ausfüllen)
-- [ ] Steuerhinweis festlegen: § 19 UStG oder zzgl. USt. → [1](#1-platzhalter-ausfüllen)
 - [ ] Hoster eintragen – das ist **Netlify, Inc., USA** → [1](#1-platzhalter-ausfüllen)
 - [ ] Zuständige Landesdatenschutzbehörde eintragen → [1](#1-platzhalter-ausfüllen)
 
@@ -83,6 +82,8 @@ ausführlichen Checkliste.
 - [x] ~~Optionales Telefonfeld im Kontaktformular~~ – eingebaut
 - [x] ~~Ort, Einsatzgebiet, Erreichbarkeit, Antwortzeit~~ – eingesetzt:
       Göttingen und Umkreis, Rückruf abends und am Wochenende, Antwort in 24 Stunden
+- [x] ~~Steuerhinweis~~ – **Kleinunternehmer nach § 19 UStG**, keine Umsatzsteuer;
+      der USt-IdNr.-Abschnitt im Impressum ist deshalb entfallen
 - [x] ~~Geschäftsbezeichnung und Name~~ – **Morbe Webdesign**, Inhaber **Jannik Morbe**;
       Titel und Beschreibung tragen jetzt „Göttingen“
 
@@ -120,13 +121,10 @@ Der Reihe nach:
 | E-Mail-Adresse (auch im `mailto:`) | `index.html` (Kontakt), beide Rechtsseiten |
 | Telefonnummer (auch im `tel:`) | `index.html`, beide Rechtsseiten – oder Zeilen löschen |
 | Domain / canonical / Open Graph / og:image | `index.html`, `<head>` – 4 Stellen |
-| Steuerhinweis (§ 19 UStG oder zzgl. USt.) | `index.html`, unter den Paketen |
-| USt-IdNr. | `impressum.html` – oder Abschnitt löschen, falls keine vorhanden |
 | Speicherdauer der Logs + Anschrift des Hosters | `datenschutz.html`, Abschnitt 2 – Anbieter ist **Netlify, Inc., USA**; Anschrift gegen deren Impressum abgleichen |
 | Zuständige Landesdatenschutzbehörde | `datenschutz.html`, Abschnitt 10 |
 | Stand (Monat/Jahr) | `datenschutz.html`, Abschnitt 13 |
 | Domain in den Demos | `demo/haarscharf/`, `demo/sonnenwerk/` – 110 Stellen, Befehl in [`DEMOS.md`](DEMOS.md) |
-| Kurztext zur Person | `index.html`, Abschnitt „Über mich“ |
 
 ### 2. Bilder ersetzen
 
