@@ -141,16 +141,19 @@
   -->
 </head>
 
-<body>
+<body id="seitenanfang">
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
   <!-- ===================================================================
        KOPFBEREICH / NAVIGATION
        =================================================================== -->
-  <header class="site-header" id="kopf">
+  <header class="site-header">
     <div class="wrap site-header__inner">
 
-      <a class="logo" href="#kopf" aria-label="Zur Startseite">
+      <!-- Ziel ist bewusst der Seitenanfang (body) und nicht der Kopfbereich:
+           Der klebt oben fest, gilt dem Browser deshalb als bereits sichtbar,
+           und ein Sprung dorthin ruckt nur um scroll-padding-top statt nach oben. -->
+      <a class="logo" href="#seitenanfang" aria-label="Zum Seitenanfang">
         <span class="logo__mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" width="32" height="32" focusable="false">
             <rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor"></rect>
