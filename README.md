@@ -241,14 +241,19 @@ muss alle sechs anfassen, sonst widerspricht sich die Seite:
 | Empfehlungstext Starter | `script.js`, `EMPFEHLUNGEN.starter` |
 | Empfehlungstext Business | `script.js`, `EMPFEHLUNGEN.business` |
 
-Der Wartungspreis und sein Umfang stehen an **vier** Stellen: im Wartungsblock
-(`index.html`, `.wartung__preis` und `.wartung__grenze`), in Schritt 5 des Ablaufs,
-in der FAQ-Antwort „Was ist, wenn ich später etwas ändern will?" – und dieselbe
-Antwort noch einmal im FAQPage-Schema im `<head>`. Die letzten beiden müssen
-wortgleich bleiben.
+Die Wartungspreise stehen an **vier** Stellen: im Wartungsblock (`index.html`,
+zwei Karten `.wartung__tarif` mit je einem `.wartung__betrag`, dazu
+`.wartung__grenze`), in Schritt 5 des Ablaufs, in der FAQ-Antwort „Was ist, wenn
+ich später etwas ändern will?" – und dieselbe Antwort noch einmal im
+FAQPage-Schema im `<head>`. Die letzten beiden müssen wortgleich bleiben.
 
-**Aktueller Stand:** Starter 900–1.300 €, Business 1.800–2.800 €, Wartung
-20–50 €/Monat mit bis zu zwei Textänderungen; alles darüber nach Aufwand.
+**Aktueller Stand:** Starter 900–1.300 €, Business 1.800–2.800 €.
+Wartung Starter 30 €/Monat (Onepager, zwei Textänderungen), Wartung Business
+50 €/Monat (mehrseitig, vier Textänderungen); alles darüber nach Aufwand.
+Beide Tarife setzen das jeweilige Website-Paket voraus und sind nicht einzeln
+buchbar – deshalb tragen die Karten bewusst keinen Knopf.
+
+Kein Jahresabo. Falls eines dazukommt, gehört es in dieselben vier Stellen.
 
 
 ## Rechtliche Einordnung (Stand des Entwurfs)
