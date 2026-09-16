@@ -90,7 +90,7 @@
         "name": "Was ist, wenn ich später etwas ändern will?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sie haben zwei Wege. Entweder Sie ändern selbst – Sie bekommen alle Dateien und Zugänge, und es gibt kein Baukasten-Abo. Oder Sie geben es an mich: Für kleine Anpassungen wie neue Öffnungszeiten gibt es die Wartung für 20 bis 50 € im Monat – darin enthalten sind bis zu zwei Textänderungen. Was darüber hinausgeht, rechne ich nach Aufwand ab. Die Wartung ist freiwillig und kommt erst zur Sprache, wenn Ihre Seite steht."
+          "text": "Sie haben zwei Wege. Entweder Sie ändern selbst – Sie bekommen alle Dateien und Zugänge, und es gibt kein Baukasten-Abo. Oder Sie geben es an mich: Für kleine Anpassungen wie neue Öffnungszeiten gibt es die Wartung – 30 € im Monat zur Starter-Website, 50 € zur Business-Website. Enthalten sind die Betreuung von Hosting und Domain, regelmäßige Backups und zwei beziehungsweise vier Textänderungen im Monat. Was darüber hinausgeht, rechne ich nach Aufwand ab. Die Wartung ist freiwillig und kommt erst zur Sprache, wenn Ihre Seite steht."
         }
       },
       {
@@ -569,13 +569,39 @@
             </p>
           </div>
           <div class="wartung__inhalt">
-            <p class="wartung__preis"><span class="wartung__betrag">20–50 €</span>
-              <span class="wartung__einheit">pro Monat</span></p>
-            <ul class="wartung__liste">
-              <li>Betreuung von Hosting und Domain</li>
-              <li><strong>Bis zu zwei Textänderungen im Monat</strong>, z.&nbsp;B. neue Öffnungszeiten</li>
-              <li>Regelmäßige Backups</li>
-            </ul>
+
+            <!-- Zwei Tarife statt einer Spanne: Eine Spanne von 20 bis 50 € laesst den
+                 Leser raten, wo er landet. Jeder Tarif haengt an genau einem Paket,
+                 deshalb steht die Zuordnung ueber dem Preis und nicht darunter.
+                 Bewusst OHNE Knopf - buchbar ist hier nichts, siehe Text links. -->
+            <div class="wartung__tarife">
+
+              <article class="wartung__tarif">
+                <h4 class="wartung__tarif-name">Wartung Starter</h4>
+                <p class="wartung__tarif-zu">Zur <strong>Starter</strong>-Website</p>
+                <p class="wartung__preis"><span class="wartung__betrag">30 €</span>
+                  <span class="wartung__einheit">pro Monat</span></p>
+                <ul class="wartung__liste">
+                  <li>Betreuung von Hosting und Domain</li>
+                  <li><strong>Bis zu zwei Textänderungen im Monat</strong>, z.&nbsp;B. neue Öffnungszeiten</li>
+                  <li>Regelmäßige Backups</li>
+                </ul>
+              </article>
+
+              <article class="wartung__tarif">
+                <h4 class="wartung__tarif-name">Wartung Business</h4>
+                <p class="wartung__tarif-zu">Zur <strong>Business</strong>-Website</p>
+                <p class="wartung__preis"><span class="wartung__betrag">50 €</span>
+                  <span class="wartung__einheit">pro Monat</span></p>
+                <ul class="wartung__liste">
+                  <li>Betreuung von Hosting und Domain</li>
+                  <li><strong>Bis zu vier Textänderungen im Monat</strong>, auf allen Unterseiten</li>
+                  <li>Regelmäßige Backups</li>
+                </ul>
+              </article>
+
+            </div>
+
             <p class="wartung__grenze">
               Was darüber hinausgeht, rechne ich nach Aufwand ab – als Stundensatz oder
               als Pauschale je Änderung, immer vorher abgesprochen.
@@ -744,8 +770,8 @@
             <span class="schritt__nr" aria-hidden="true">5</span>
             <h3 class="schritt__titel">Wartung – wenn Sie möchten</h3>
             <p>
-              Auf Wunsch kümmere ich mich weiter um Hosting, Backups und bis zu zwei
-              Textänderungen im Monat.
+              Auf Wunsch kümmere ich mich weiter um Hosting, Backups und Ihre
+              Textänderungen – 30 € im Monat zur Starter-Website, 50 € zur Business-Website.
               Wenn nicht, ist das Projekt hier abgeschlossen und Ihre Seite läuft weiter.
             </p>
           </li>
@@ -923,9 +949,11 @@
               </p>
               <p>
                 Oder Sie geben es an mich: Für kleine Anpassungen wie neue Öffnungszeiten
-                gibt es die Wartung für 20 bis 50 € im Monat – darin enthalten sind bis zu
-                zwei Textänderungen. Was darüber hinausgeht, rechne ich nach Aufwand ab.
-                Die Wartung ist freiwillig und kommt erst zur Sprache, wenn Ihre Seite steht.
+                gibt es die Wartung – 30 € im Monat zur Starter-Website, 50 € zur
+                Business-Website. Enthalten sind die Betreuung von Hosting und Domain,
+                regelmäßige Backups und zwei beziehungsweise vier Textänderungen im Monat.
+                Was darüber hinausgeht, rechne ich nach Aufwand ab. Die Wartung ist
+                freiwillig und kommt erst zur Sprache, wenn Ihre Seite steht.
               </p>
             </div>
           </details>

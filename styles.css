@@ -1176,10 +1176,38 @@ code {
   transform: rotate(42deg);
 }
 
-@media (min-width: 52rem) {
-  .wartung { grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
-  .wartung__inhalt { border-left: 1px solid var(--line); padding-left: 2.5rem; }
+/* Die beiden Tarife stehen nebeneinander, sobald Platz ist -- dasselbe Bild wie
+   Starter und Business daruber. Bewusst erst ab 42rem: Darunter werden die Karten
+   so schmal, dass "Bis zu zwei Textaenderungen im Monat" vierzeilig umbricht. */
+.wartung__tarife {
+  display: grid;
+  gap: 1.25rem;
 }
+
+@media (min-width: 42rem) {
+  .wartung__tarife { grid-template-columns: 1fr 1fr; }
+}
+
+/* Flacher als die Paketkarten und ohne Schatten: Sie gehoeren zur Wartung, nicht
+   ins Paketraster -- und nichts davon ist einzeln buchbar. */
+.wartung__tarif {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: clamp(1.1rem, 2.5vw, 1.4rem);
+}
+
+.wartung__tarif-name {
+  margin: 0 0 .15em;
+  font-size: clamp(1.05rem, 1rem + .35vw, 1.2rem);
+}
+
+.wartung__tarif-zu {
+  margin: 0 0 .9rem;
+  font-size: var(--t-klein);
+  color: var(--ink-muted);
+}
+.wartung__tarif-zu strong { color: var(--ink); }
 
 .preis-fussnote {
   margin-top: 1.75rem;
